@@ -113,7 +113,7 @@
                                         </ul>
                                     </li>
                                     <li class="megamenu-holder">
-                                        <a href="shop-left-sidebar.html">Shop</a>
+                                        <a href="index.php?act=shop-left-sidebar">Shop</a>
                                         <ul class="megamenu grid-container">
                                             <li class="grid-item">
                                                 <span class="title">Shop Layout</span>

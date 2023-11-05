@@ -141,7 +141,7 @@
                                                     alt=""></a>
                                             <div class="action_links">
                                                 <ul class="d-flex justify-content-center">
-                                                    <li class="add_to_cart"><a href="cart.html" title="Add to cart">
+                                                    <li class="add_to_cart"><a href="index.php?act=cart" title="Add to cart">
                                                             <span class="pe-7s-shopbag"></span></a></li>
                                                     <li class="wishlist"><a href="index.php?act=wishlist"
                                                             title="Add to Wishlist"><span class="pe-7s-like"></span></a>
