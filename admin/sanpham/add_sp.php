@@ -12,7 +12,7 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Thêm sản phẩm mới</h1>
                             </div>
-                            <form action="index.php?act=add_sp" class="user" method="post">
+                            <form action="index.php?act=add_sp" class="user" method="post" enctype="multipart/form-data">
                                 <div class="input-group">
                                     <select class="form-control bg-light border-0 small" name="id_dm">
                                         <?php 
@@ -26,26 +26,21 @@
                                 </div>
                                 <br>
                                 <div class="form-group row">
+                                    <!-- Tên -->
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
                                             placeholder="Tên sản phẩm" name="ten_sp">
                                     </div>
+                                    <!-- Giá -->
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName"
                                             placeholder="Giá" name="gia">
                                     </div>
                                 </div>
-                                
+                                        <!-- Ảnh  -->
                                     <input type="file" class="form-group"
-                                        id="exampleInputEmail" name="hinh">
-                                
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Size VD: M , L , XL , S"
-                                            name="size">
-                                    </div>
-                                </div>
+                                        id="exampleInputEmail" name="hinh_anh">
+                                        <!-- Size -->
                                 <div class="input-group">
                                     <select class="form-control bg-light border-0 small" name="id_size">
                                         <?php 
@@ -58,11 +53,12 @@
                                     </select>
                                 </div>
                                 <br>
+                                <!-- Mô tả -->
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="exampleInputPassword"
                                         placeholder="Mô tả sản phẩm" name="mota">
                                 </div>
-                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Thêm mới">
+                                <input type="submit" class="btn btn-primary btn-user btn-block" name="them_sp"value="Thêm mới">
                             </form>
                         </div>
                     </div>

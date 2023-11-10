@@ -9,9 +9,15 @@ function loadall_danhmuc()
 {
     $sql = "SELECT * FROM danh_muc";
     $list_dm = pdo_query($sql);
+    //var_dump($list_dm);
     return $list_dm;
 }
-
+function countall_sanpham_danhmuc()
+{
+    $sql = "SELECT danh_muc.id_dm as 'iddm', COUNT(*) as 'soluong' FROM san_pham JOIN danh_muc WHERE danh_muc.id_dm = san_pham.id_dm GROUP BY san_pham.id_dm;";
+    $count_sp_dm = pdo_query($sql);
+    return $count_sp_dm;
+}
 function loadone_danhmuc($id)
 {
     $sql = "SELECT * FROM danh_muc WHERE id_dm=".$id;

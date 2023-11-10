@@ -16,21 +16,27 @@
                             <th>Thao tác</th>
                         </tr>
                     </thead>
-                    <?php foreach ($list_dm as $dm) {
+                    <?php
+                    foreach ($list_dm as $dm) {
                         extract($dm);
-                        $sua_dm = "index.php?act=sua_dm&id=" . $id_dm;
-                        $xoa_dm = "index.php?act=xoa_dm&id=" . $id_dm;
-                        echo '<tbody>
+                        foreach ($count_sp_dm as $count) {
+                             extract($count);
+                             if ($iddm == $id_dm) {
+                                $sua_dm = "index.php?act=sua_dm&id=" . $id_dm;
+                                $xoa_dm = "index.php?act=xoa_dm&id=" . $id_dm;
+                                echo '<tbody>
                         <tr>
                             <td>' . $id_dm . '</td>
                             <td>' . $ten_dm . '</td>
-                            <td>Edinburgh</td>
+                            <td>' . $soluong . '</td>
                             <td style="display : flex ; justify-content:space-evenly;">
-                            <a href="'.$xoa_dm.'" class="btn btn-danger btn-circle "><i class="fas fa-trash"></i></a>
-                            <a href="'.$sua_dm.'" class="btn btn-danger btn-circle "><i class="fas fa-fw fa-wrench"></i></a>
+                            <a href="' . $xoa_dm . '" class="btn btn-danger btn-circle "><i class="fas fa-trash"></i></a>
+                            <a href="' . $sua_dm . '" class="btn btn-danger btn-circle "><i class="fas fa-fw fa-wrench"></i></a>
                             </td>
                         </tr>
                     </tbody>';
+                            }
+                        }
                     } ?>
 
                 </table>

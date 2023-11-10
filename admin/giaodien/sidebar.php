@@ -33,7 +33,7 @@
             <h6 class="collapse-header">Quản lí danh mục</h6>
             <a class="collapse-item" href="index.php?act=list_dm">List danh mục sản phẩm</a>
             <a class="collapse-item" href="index.php?act=add_dm">Thêm danh mục sản phẩm</a>
-            <a class="collapse-item" href="index.php?act=update_dm">Cập nhật mục sản phẩm</a>
+            
         </div>
     </div>
 </li>
@@ -51,7 +51,7 @@
             <h6 class="collapse-header">Quản lí sản phẩm</h6>
             <a class="collapse-item" href="index.php?act=list_sp">List sản phẩm</a>
             <a class="collapse-item" href="index.php?act=add_sp">Thêm sản phẩm</a>
-            <a class="collapse-item" href="index.php?act=update_sp">Cập nhật sản phẩm</a>
+            
         </div>
     </div>
 </li>

@@ -1,7 +1,7 @@
 <?php
-function insert_sanpham($tensp, $giasp, $hinh, $mota, $id_dm)
+function insert_sanpham($tensp, $giasp, $hinh, $mota, $id_dm,$id_size)
 {
-    $sql = " INSERT INTO san_pham(ten_sp,gia,hinh_anh,mo_ta,id_dm) VALUES('$tensp','$giasp','$hinh','$mota','$id_dm')";
+    $sql = " INSERT INTO san_pham(ten_sp,gia,hinh_anh,mo_ta,id_dm,id_size) VALUES('$tensp','$giasp','$hinh','$mota','$id_dm','$id_size')";
     pdo_execute($sql);
 }
 
@@ -18,6 +18,12 @@ function loadall_sanpham($kewword = " ", $id_dm = 0)
     $list_sp = pdo_query($sql);
     return $list_sp;
 }
+function loadone_sanpham($id_sp)
+{
+    $sql = "SELECT * FROM san_pham WHERE id_sp='$id_sp'";
+    $one_sp = pdo_query_one($sql);
+    return $one_sp;
+}
 function loadall_sanpham_home()
 {
     $sql = "SELECT * FROM san_pham WHERE 1 ORDER BY id DESC";
@@ -31,12 +37,7 @@ function loadall_sanpham_top10()
     $list_sp = pdo_query($sql);
     return $list_sp;
 }
-function loadone_sanpham($id)
-{
-    $sql = "SELECT * FROM san_pham WHERE id='$id'";
-    $sanpham = pdo_query_one($sql);
-    return $sanpham;
-}
+
 function load_ten_dm($id_danh_muc)
 {
     if($id_danh_muc >0){
@@ -54,17 +55,17 @@ function load_sanpham_cungloai($id,$id_danh_muc)
     $list_sp = pdo_query($sql);
     return $list_sp;
 }
-function delete_sanpham($id)
+function delete_sanpham($id_sp)
 {
-    $sql = "DELETE FROM san_pham WHERE id=" . $id;
+    $sql = "DELETE FROM san_pham WHERE id_sp=" . $id_sp;
     pdo_execute($sql);
 }
-function update_sp($id,$id_danh_muc, $tensp, $giasp, $mota, $filename)
+function update_sp($id_sp,$id_size,$id_dm, $ten_sp, $gia_sp, $mota, $filename)
 {
     if ($filename =="") {
-        $sql = " UPDATE san_pham SET id_danh_muc='$id_danh_muc',ten_sp='$tensp',gia='$giasp',mo_ta='$mota' WHERE id = '$id' ";
+        $sql = " UPDATE san_pham SET id_size='$id_size' ,id_dm='$id_dm',ten_sp='$ten_sp',gia='$gia_sp',mo_ta='$mota' WHERE id_sp = '$id_sp' ";
     } else {
-        $sql = " UPDATE san_pham SET id_danh_muc='$id_danh_muc',ten_sp='$tensp',gia='$giasp',hinh_anh='$filename' , mo_ta='$mota' WHERE id = '$id' ";
+        $sql = " UPDATE san_pham SET id_size='$id_size',id_dm='$id_dm',ten_sp='$ten_sp',gia='$gia_sp',hinh_anh='$filename' , mo_ta='$mota' WHERE id_sp = '$id_sp' ";
     }
     // echo $sql;die;
     pdo_execute($sql);

@@ -5,10 +5,25 @@
 
         <div style="display:flex; align-items:center;" class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Quản lí danh mục sản phẩm</h6>
-            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <form action="index.php?act=list_sp" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <!-- <div class="input-group">
+                    
+                    <div class="input-group-append">
+                        <input class="btn btn-primary " type="submit" name="ok" value="Lọc">
+                    </div>
+                </div> -->
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                         aria-label="Search" aria-describedby="basic-addon2" name="keyword">
+                    <select class="form-control bg-light border-0 small" name="id_dm">
+                        <option value="0">Tất cả sản phẩm</option>
+                        <?php
+                        foreach ($list_dm as $dm) {
+                            extract($dm);
+                            echo "<option class='input-group-append' value=$id_dm>$ten_dm</option>";
+                        }
+                        ?>
+                    </select>
                     <div class="input-group-append">
                         <input class="btn btn-primary " type="submit" name="ok" value="Lọc">
                     </div>
@@ -20,22 +35,51 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>ID phẩm</th>
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh</th>
                             <th>Giá</th>
                             <th>Size</th>
                             <th>Mô tả sản phẩm</th>
-                            <th>Số lượng sản phẩm</th>
+                            <th>Lượt xem</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                        </tr>
-                    </tbody>
+                    <?php
+
+                    foreach ($list_sp as $sp) {
+                        extract($sp);
+                        // foreach ($$list_size_sp as $size) {
+                        //     extract($size);
+                        //     if ($id == $id_size) {
+                        $sua_sp = "index.php?act=sua_sp&id=" . $id_sp;
+                        $xoa_sp = "index.php?act=xoa_sp&id=" . $id_sp;
+                        $hinh_anh_path = "../uploads/" . $hinh_anh;
+                        if (is_file($hinh_anh_path)) {
+                            $hinh_anh = "<img src='$hinh_anh_path' height='80' width='80'>";
+                        } else {
+                            $hinh_anh = " Không có hình ảnh";
+                        }
+                        echo '<tbody>
+                                    <tr>
+                                        <td>' . $id_sp . '</td>
+                                        <td>' . $ten_sp . '</td>
+                                        <td>' . $hinh_anh . '</td>
+                                        <td>' . $gia . '</td>
+                                        <td></td>
+                                        <td>' . $mo_ta . '</td>
+                                        <td>' . $luot_xem . '</td>
+                                        <td style="display : flex ; justify-content:space-evenly;">
+                                            <a href="' . $xoa_sp . '" class="btn btn-danger btn-circle "><i class="fas fa-trash"></i></a>
+                                            <a href="' . $sua_sp . '" class="btn btn-danger btn-circle "><i class="fas fa-fw fa-wrench"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>';
+                    }
+                    //     }
+                    // }
+                    ?>
+
                 </table>
             </div>
         </div>

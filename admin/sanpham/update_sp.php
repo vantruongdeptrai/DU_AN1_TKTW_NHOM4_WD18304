@@ -1,3 +1,18 @@
+<?php
+if (is_array($one_sp)) {
+    extract($one_sp);
+}
+if (is_array($list_size)) {
+    extract($list_size);
+}
+$hinh_anh_path = "../uploads/" . $hinh_anh;
+if (is_file($hinh_anh_path)) {
+    $hinh_anh = "<img src='$hinh_anh_path' height='80' width='80'>";
+} else {
+    $hinh_anh = " không có hình";
+}
+?>
+
 <body class="bg-gradient-primary">
 
     <div class="container">
@@ -10,51 +25,59 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Cập nhật sản phẩm mới</h1>
                             </div>
-                            <form class="user">
+                            <form action="index.php?act=update_sp" class="user" method="post"
+                                enctype="multipart/form-data">
+                                <div class="input-group">
+                                    
+                                    <select class="form-control bg-light border-0 small" name="id_dm">
+                                        <?php
+                                        foreach ($list_dm as $dm) {
+                                            extract($dm);
+                                            echo "<option class='input-group-append' value=$id_dm>$ten_dm</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                    
+                                </div>
+                                <br>
                                 <div class="form-group row">
+                                    <!-- Tên -->
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
+                                            placeholder="Tên sản phẩm" name="ten_sp" value="<?php echo $ten_sp ?>">
                                     </div>
+                                    <!-- Giá -->
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
+                                            placeholder="Giá" name="gia" value="<?php echo $gia ?>">
                                     </div>
                                 </div>
+                                <!-- Ảnh  -->
+                                <input type="file" class="form-group" id="exampleInputEmail" name="hinh_anh">
+                                <?php echo $hinh_anh ?>
+                                <!-- Size -->
+                                <div class="input-group">
+                                    <select class="form-control bg-light border-0 small" name="id_size">
+                                        <?php
+                                        foreach ($list_size as $size) {
+                                            extract($size);
+                                            echo "<option class='input-group-append' value=$id_size>$ten_size</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <br>
+                                <!-- Mô tả -->
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                    <input type="text" class="form-control form-control-user" id="exampleInputPassword"
+                                        placeholder="Mô tả sản phẩm" name="mota" value="<?php echo $mo_ta ?>">
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
-                                </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
-                                <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>
+                                <input type="hidden" name="id_sp" value="<?php echo $id_sp ?>">
+                                <input type="submit" class="btn btn-primary btn-user btn-block" name="cap_nhat"
+                                    value="Cập nhật">
                             </form>
-                            <hr>
-                            <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
-                            </div>
                         </div>
                     </div>
                 </div>
