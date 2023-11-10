@@ -16,7 +16,7 @@
                 include('view/cart/cart.php');
                 break;
             case 'checkout':
-                include('view/wishlist.php');
+                include('view/checkout.php');
                 break;
             case 'my-account':
                 include('view/account/my-account.php');

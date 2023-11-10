@@ -175,16 +175,7 @@
                                                     
                                                 </ul>
                                             </li>
-                                            <!-- <li class="submenu-holder"><a href="#">Blog Details Holder</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog-detail-fullwidth.html">Blog Detail Fullwidth</a>
-                                                    </li>
-                                                    <li><a href="blog-detail-left-sidebar.html">Blog Detail Left
-                                                            Sidebar</a></li>
-                                                    <li><a href="blog-detail-right-sidebar.html">Blog Detail Right
-                                                            Sidebar</a></li>
-                                                </ul>
-                                            </li> -->
+                                            
                                         </ul>
                                     </li>
                                     <li><a href="index.php?act=contact">Contact</a></li>
