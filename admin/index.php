@@ -4,6 +4,7 @@ include "../database/pdo.php";
 include "../database/dao/danhmuc.php";
 include "../database/dao/sanpham.php";
 include "../database/dao/size.php";
+include "../database/dao/chitietsanpham.php";
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {
@@ -57,7 +58,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             $list_dm = loadall_danhmuc();
             $list_sp = loadall_sanpham($keyword, $id_dm);
             $list_size = loadall_size();
-            
+            $list_ctsanpham = loadall_chitietsanpham();
             include('./sanpham/list_sp.php');
             break;
 
@@ -76,10 +77,12 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 } else {
                     echo "Lỗi up load file.";
                 }
-                insert_sanpham($ten_sp, $gia, $filename, $mota, $id_dm, $id_size);
+                insert_sanpham($ten_sp, $gia, $filename, $mota, $id_dm);
+                insert_ctsanpham($id_sp,$id_size);
             }
             $list_dm = loadall_danhmuc();
             $list_size = loadall_size();
+            
             include('./sanpham/add_sp.php');
             break;
         case 'sua_sp':

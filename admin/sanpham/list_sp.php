@@ -5,7 +5,8 @@
 
         <div style="display:flex; align-items:center;" class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Quản lí danh mục sản phẩm</h6>
-            <form action="index.php?act=list_sp" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <form action="index.php?act=list_sp" method="post"
+                class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <!-- <div class="input-group">
                     
                     <div class="input-group-append">
@@ -49,24 +50,24 @@
 
                     foreach ($list_sp as $sp) {
                         extract($sp);
-                        // foreach ($$list_size_sp as $size) {
-                        //     extract($size);
-                        //     if ($id == $id_size) {
-                        $sua_sp = "index.php?act=sua_sp&id=" . $id_sp;
-                        $xoa_sp = "index.php?act=xoa_sp&id=" . $id_sp;
-                        $hinh_anh_path = "../uploads/" . $hinh_anh;
-                        if (is_file($hinh_anh_path)) {
-                            $hinh_anh = "<img src='$hinh_anh_path' height='80' width='80'>";
-                        } else {
-                            $hinh_anh = " Không có hình ảnh";
-                        }
-                        echo '<tbody>
+                        foreach ($list_ctsanpham as $ctsp) {
+                            extract($ctsp);
+                            if ($idsp_ct == $id_sp) {
+                                $sua_sp = "index.php?act=sua_sp&id=" . $id_sp;
+                                $xoa_sp = "index.php?act=xoa_sp&id=" . $id_sp;
+                                $hinh_anh_path = "../uploads/" . $hinh_anh;
+                                if (is_file($hinh_anh_path)) {
+                                    $hinh_anh = "<img src='$hinh_anh_path' height='80' width='80'>";
+                                } else {
+                                    $hinh_anh = " Không có hình ảnh";
+                                }
+                                echo '<tbody>
                                     <tr>
                                         <td>' . $id_sp . '</td>
                                         <td>' . $ten_sp . '</td>
                                         <td>' . $hinh_anh . '</td>
                                         <td>' . $gia . '</td>
-                                        <td></td>
+                                        <td>' . $ten_size .'</td>
                                         <td>' . $mo_ta . '</td>
                                         <td>' . $luot_xem . '</td>
                                         <td style="display : flex ; justify-content:space-evenly;">
@@ -75,9 +76,9 @@
                                         </td>
                                     </tr>
                                 </tbody>';
+                            }
+                        }
                     }
-                    //     }
-                    // }
                     ?>
 
                 </table>

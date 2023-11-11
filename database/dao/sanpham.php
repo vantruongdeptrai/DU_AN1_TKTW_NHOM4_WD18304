@@ -1,7 +1,7 @@
 <?php
-function insert_sanpham($tensp, $giasp, $hinh, $mota, $id_dm,$id_size)
+function insert_sanpham($tensp, $giasp, $hinh, $mota, $id_dm)
 {
-    $sql = " INSERT INTO san_pham(ten_sp,gia,hinh_anh,mo_ta,id_dm,id_size) VALUES('$tensp','$giasp','$hinh','$mota','$id_dm','$id_size')";
+    $sql = " INSERT INTO san_pham(ten_sp,gia,hinh_anh,mo_ta,id_dm) VALUES('$tensp','$giasp','$hinh','$mota','$id_dm')";
     pdo_execute($sql);
 }
 
@@ -49,9 +49,9 @@ function load_ten_dm($id_danh_muc)
         return "";
     }
 }
-function load_sanpham_cungloai($id,$id_danh_muc)
+function load_sanpham_cungloai($id_sp,$id_dm)
 {
-    $sql = "SELECT * FROM san_pham WHERE id_danh_muc='$id_danh_muc' AND id !='$id'";
+    $sql = "SELECT * FROM san_pham WHERE id_dm='$id_dm' AND id_sp !='$id_sp'";
     $list_sp = pdo_query($sql);
     return $list_sp;
 }
