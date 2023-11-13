@@ -268,10 +268,7 @@
     <div class="product_section mb-80">
         <div class="container">
             <div class="section_title text-center mb-55">
-                <h2>Related Products</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br> tempor
-                    incididunt ut
-                    labore et dolore magna</p>
+                <h2>Sản phẩm cùng loại</h2>
             </div>
             <div class="row product_slick slick_navigation slick__activation" data-slick='{
                 "slidesToShow": 4,
@@ -402,11 +399,11 @@
                                         <div class="variants_size">
                                             <h2>size</h2>
                                             <select class="select_option">
-                                                <option selected value="1">s</option>
-                                                <option value="1">m</option>
-                                                <option value="1">l</option>
-                                                <option value="1">xl</option>
-                                                <option value="1">xxl</option>
+                                                <option selected value="1">S</option>
+                                                <option value="1">M</option>
+                                                <option value="1">L</option>
+                                                <option value="1">XL</option>
+                                                
                                             </select>
                                         </div>
                                         <div class="variants_color">

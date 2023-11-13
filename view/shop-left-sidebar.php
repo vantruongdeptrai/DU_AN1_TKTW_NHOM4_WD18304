@@ -24,39 +24,32 @@
                     <div class="product_sidebar product_widget">
                         <div class="widget__list widget_filter wow fadeInUp" data-wow-delay="0.1s"
                             data-wow-duration="1.1s">
-                            <h3>Filter</h3>
+                            <h3>Lọc sản phẩm</h3>
                             <div class="widget_filter_list mb-30">
-                                <h4>Filter By Size</h4>
+                                <h4>Lọc sản phẩm theo size</h4>
                                 <ul>
-                                    <li><a href="#">All (65)</a></li>
-                                    <li><a href="#">Small (15)</a></li>
-                                    <li><a href="#">Medium (10)</a></li>
-                                    <li><a href="#">Lerge (22)</a></li>
+                                    <li><a href="#">Tất cả</a></li>
+                                    <li><a href="#">S</a></li>
+                                    <li><a href="#">M</a></li>
+                                    <li><a href="#">L</a></li>
+                                    <li><a href="#">XL</a></li>
                                 </ul>
-                            </div>
-                            <div class="widget_filter_list">
-                                <h4>Filter By Price</h4>
-
-                                <div id="slider-range"></div>
-                                <div class="filter_price d-flex align-items-center">
-                                    <span>Price: </span>
-                                    <input type="text" id="amount">
-                                </div>
-
                             </div>
                         </div>
                         <div class="widget__list category wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1.2s">
-                            <h3>category</h3>
+                            <h3>Danh mục</h3>
                             <div class="widget_category">
-                                <ul>
-                                    <li><a href="#">All <span>(65)</span></a></li>
-                                    <li><a href="#">Cookies <span>(15)</span></a></li>
-                                    <li><a href="#">Desserts <span>(10)</span></a></li>
-                                    <li><a href="#">Muffins <span>(22)</span></a></li>
-                                    <li><a href="#">Pizza <span>(15)</span></a></li>
-                                    <li><a href="#">Doughnuts <span>(10)</span></a></li>
-                                    <li><a href="#">Danish <span>(24)</span></a></li>
-                                </ul>
+                                <?php 
+                                    if(is_array($list_dm_home)){
+                                        foreach($list_dm_home as $dm){
+                                            extract($dm);
+                                            echo '<ul>
+                                            <li><a href="#">- '.$ten_dm.'</span></a></li>
+                                        </ul>';
+                                        }
+                                    }
+                                ?>
+                                
                             </div>
                         </div>
                         <div class="widget__list wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="1.3s">
@@ -87,15 +80,12 @@
                             </div>
                             <div class="product_header_right d-flex align-items-center">
                                 <div class="sorting__by d-flex align-items-center">
-                                    <span>Sort By : </span>
+                                    <span>Sắp xếp theo</span>
                                     <form class="select_option" action="#">
                                         <select name="orderby" id="short">
-                                            <option selected value="1">Default</option>
-                                            <option value="2">Sort by popularity</option>
-                                            <option value="3">Sort by newness</option>
-                                            <option value="4"> low to high</option>
-                                            <option value="5"> high to low</option>
-                                            <option value="6">Product Name: Z</option>
+                                            <option selected value="1">Mặc định</option>
+                                            <option value="4">Giá từ thấp đến cao</option>
+                                            <option value="5">Giá từ thấp đến cao</option>
                                         </select>
                                     </form>
                                 </div>

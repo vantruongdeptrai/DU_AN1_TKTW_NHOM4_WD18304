@@ -136,40 +136,48 @@
         <div class="tab-content product_container">
 
             <!-- SẢN PHẨM ĐẶC TRƯNG -->
-
+            
             <div class="tab-pane fade show active" id="features" role="tabpanel">
                 <div class="product_gallery">
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <article class="single_product">
-                                <figure>
-                                    <div class="product_thumb">
-                                        <a href="index.php?act=single-product"><img
-                                                src="assets/img/product/product1.png" alt=""></a>
-                                        <div class="action_links">
-                                            <ul class="d-flex justify-content-center">
-                                                <li class="add_to_cart"><a href="index.php?act=cart"
-                                                        title="Add to cart">
-                                                        <span class="pe-7s-shopbag"></span></a></li>
-                                                <li class="wishlist"><a href="index.php?act=wishlist"
-                                                        title="Add to Wishlist"><span class="pe-7s-like"></span></a>
-                                                </li>
-                                                <li class="quick_button"><a href="#" title="Quick View"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_box"> <span
-                                                            class="pe-7s-look"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <figcaption class="product_content text-center">
-                                        <h4><a href="index.php?act=single-product">Products Name Here</a></h4>
-                                        <div class="price_box">
-                                            <span class="current_price">$22.00</span>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </article>
-                        </div>
-
+                    <?php
+            if (is_array($list_sp_home)) {
+                foreach ($list_sp_home as $sp) {
+                    extract($sp);
+                    $hinh = $img_path . $hinh_anh;
+                    $link_sp = "index.php?act=single-product&id=" . $id_sp;
+                    echo '<div class="col-lg-3 col-md-4 col-sm-6">
+                    <article class="single_product">
+                        <figure>
+                            <div class="product_thumb">
+                                <a href="'.$link_sp.'"><img style="width:3500px; height:350px;"
+                                        src="'.$hinh.'" alt=""></a>
+                                <div class="action_links">
+                                    <ul class="d-flex justify-content-center">
+                                        <li class="add_to_cart"><a href="index.php?act=cart"
+                                                title="Add to cart">
+                                                <span class="pe-7s-shopbag"></span></a></li>
+                                        <li class="wishlist"><a href="index.php?act=wishlist"
+                                                title="Add to Wishlist"><span class="pe-7s-like"></span></a>
+                                        </li>
+                                        <li class="quick_button"><a href="#" title="Quick View"
+                                                data-bs-toggle="modal" data-bs-target="#modal_box"> <span
+                                                    class="pe-7s-look"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <figcaption class="product_content text-center">
+                                <h4><a href="index.php?act=single-product">'.$ten_sp.'</a></h4>
+                                <div class="price_box">
+                                    <span class="current_price">'.$gia.'</span>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>';
+                }
+            }
+            ?>
                     </div>
                 </div>
             </div>
@@ -283,63 +291,6 @@
     </div>
 </div>
 <!-- banner fullwidth section end -->
-
-<!-- product section start -->
-<div class="product_section mb-80 wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="1.1s">
-    <div class="container">
-        <div class="section_title text-center mb-55">
-            <h2>Best Seller</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod <br> tempor
-                incididunt ut
-                labore et dolore magna</p>
-        </div>
-        <div class="row product_slick slick_navigation slick__activation" data-slick='{
-                "slidesToShow": 4,
-                "slidesToScroll": 1,
-                "arrows": true,
-                "dots": false,
-                "autoplay": false,
-                "speed": 300,
-                "infinite": true ,  
-                "responsive":[ 
-                  {"breakpoint":992, "settings": { "slidesToShow": 3 } }, 
-                  {"breakpoint":768, "settings": { "slidesToShow": 2 } }, 
-                  {"breakpoint":500, "settings": { "slidesToShow": 1 } }  
-                 ]                                                     
-            }'>
-            <div class="col-lg-3">
-                <article class="single_product">
-                    <figure>
-                        <div class="product_thumb">
-                            <a href="single-product.html"><img src="assets/img/product/product1.png" alt=""></a>
-                            <div class="action_links">
-                                <ul class="d-flex justify-content-center">
-                                    <li class="add_to_cart"><a href="cart.html" title="Add to cart"> <span
-                                                class="pe-7s-shopbag"></span></a></li>
-                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span
-                                                class="pe-7s-like"></span></a></li>
-                                    <li class="quick_button"><a href="#" title="Quick View" data-bs-toggle="modal"
-                                            data-bs-target="#modal_box">
-                                            <span class="pe-7s-look"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <figcaption class="product_content text-center">
-                            <h4><a href="single-product.html">Products Name Here</a></h4>
-                            <div class="price_box">
-                                <span class="current_price">$22.00</span>
-                            </div>
-                        </figcaption>
-                    </figure>
-                </article>
-            </div>
-
-            <!-- Thêm nhiều sản phẩm sẽ có list ngang và 2 nút phải trái -->
-
-        </div>
-    </div>
-</div>
-<!-- product section end -->
 
 <!-- brand section start -->
 <div class="brand_section_area mb-100 wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="1.1s">
