@@ -78,11 +78,12 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                     echo "Lỗi up load file.";
                 }
                 insert_sanpham($ten_sp, $gia, $filename, $mota, $id_dm);
+                loadall_sanpham();
                 insert_ctsanpham($id_sp,$id_size);
             }
             $list_dm = loadall_danhmuc();
             $list_size = loadall_size();
-            
+            $list_ctsanpham = loadall_chitietsanpham();
             include('./sanpham/add_sp.php');
             break;
         case 'sua_sp':
@@ -97,7 +98,10 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             if (isset($_GET["id"]) && $_GET["id"] > 0) {
                 delete_sanpham($_GET["id"]);
             }
-            $list_sp = loadall_sanpham();
+            $list_sp = loadall_sanpham("",0);
+            $list_ctsanpham = loadall_chitietsanpham();
+            $list_size = loadall_size();
+            $list_dm = loadall_danhmuc();
             include('./sanpham/list_sp.php');
             break;
         case 'update_sp':
@@ -116,11 +120,13 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 } else {
                     //echo "Lỗi up load file.";
                 }
-                update_sp($id_sp,$id_size,$id_dm, $ten_sp, $gia, $mota, $filename);
+                //update_sp($id_sp,$id_size,$id_dm, $ten_sp, $gia, $mota, $filename);
+                update_ctsanpham($id_sp, $id_size, $id_dm, $ten_sp, $gia, $mota, $filename);
             }
             $list_sp = loadall_sanpham("",0);
             $list_size = loadall_size();
             $list_dm = loadall_danhmuc();
+            $list_ctsanpham = loadall_chitietsanpham();
             include('./sanpham/list_sp.php');
             break;
         // TÀI KHOẢN //

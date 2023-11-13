@@ -55,6 +55,7 @@
                                 <br>
                                 <!-- Mô tả -->
                                 <div class="form-group">
+                                    
                                     <input type="text" class="form-control form-control-user" id="exampleInputPassword"
                                         placeholder="Mô tả sản phẩm" name="mota">
                                 </div>

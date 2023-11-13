@@ -1,7 +1,7 @@
 <?php
 function insert_ctsanpham($id_sp, $id_size)
 {
-    $sql = "INSERT INTO chi_tiet_sp(id_sp,id_size) VALUES('$id_sp','$id_size')";
+    $sql = "INSERT INTO chi_tiet_sp(id_sp,id_size) SELECT '$id_sp', '$id_size' FROM san_pham , size";
     pdo_execute($sql);
 }
 function loadall_chitietsanpham()
@@ -13,8 +13,25 @@ function loadall_chitietsanpham()
     $list_chitietsp = pdo_query($sql);
     return $list_chitietsp;
 }
-function update_ctsanpham($id_sp,$id_size){
-    $sql = "UPDATE chi_tiet_sp SET id_sp='$id_sp',id_size='$id_size'";
+function update_ctsanpham($id_sp, $id_size, $id_dm, $ten_sp, $gia_sp, $mota, $filename)
+{
+    if ($filename == "") {
+        $sql = "UPDATE san_pham   
+    LEFT JOIN 
+    chi_tiet_sp  
+    ON san_pham.id_sp = chi_tiet_sp.id_sp 
+    SET id_size='$id_size' ,id_dm='$id_dm',ten_sp='$ten_sp',gia='$gia_sp',mo_ta='$mota' WHERE san_pham.id_sp = '$id_sp'";
+    } else {
+        $sql = "UPDATE san_pham   
+    LEFT JOIN 
+    chi_tiet_sp  
+    ON san_pham.id_sp = chi_tiet_sp.id_sp 
+    SET id_size='$id_size' ,id_dm='$id_dm',ten_sp='$ten_sp',gia='$gia_sp',hinh_anh='$filename',mo_ta='$mota' WHERE san_pham.id_sp = '$id_sp'";
+    }
+    pdo_execute($sql);
+}
+function delete_ctsanpham($id_sp, $id_size){
+    $sql = "";
     pdo_execute($sql);
 }
 ?>
