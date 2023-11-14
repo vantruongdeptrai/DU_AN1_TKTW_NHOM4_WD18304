@@ -39,24 +39,12 @@
                             <th>ID phẩm</th>
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh</th>
-                            <th>Giá</th>
-                            
-                            <th>Mô tả sản phẩm</th>
-                            <th>Lượt xem</th>
-                            <th>Thao tác</th>
+                            <th>Size</th>
                         </tr>
                     </thead>
                     <?php
-
-                    foreach ($list_sp as $sp) {
-                        extract($sp);
-                        //foreach ($list_ctsanpham as $ctsp) {
-                            //extract($ctsp);
-                            //var_dump($ctsp);
-                            //if ($idsp_ct == $id_sp) {
-                                $sua_sp = "index.php?act=sua_sp&id=" . $id_sp;
-                                $xoa_sp = "index.php?act=xoa_sp&id=" . $id_sp;
-                                $chitiet_sp = "index.php?act=spct&id=". $id_sp;
+                        foreach ($list_ctsanpham as $ctsp) {
+                            extract($ctsp);
                                 $hinh_anh_path = "../uploads/" . $hinh_anh;
                                 if (is_file($hinh_anh_path)) {
                                     $hinh_anh = "<img src='$hinh_anh_path' height='80' width='80'>";
@@ -65,24 +53,14 @@
                                 }
                                 echo '<tbody>
                                     <tr>
-                                        <td>' . $id_sp . '</td>
+                                        <td>' . $idsp_ct . '</td>
                                         <td>' . $ten_sp . '</td>
                                         <td>' . $hinh_anh . '</td>
-                                        <td>' . $gia . '</td>
-                                        <td>' . $mo_ta . '</td>
-                                        <td>' . $luot_xem . '</td>
-                                        <td style="display : flex ; justify-content:space-evenly;">
-                                            <a href="' . $xoa_sp . '" class="btn btn-danger btn-circle "><i class="fas fa-trash"></i></a>
-                                            <a href="' . $sua_sp . '" class="btn btn-danger btn-circle "><i class="fas fa-fw fa-wrench"></i></a>
-                                            <a href="' . $chitiet_sp . '" class="btn btn-danger btn-circle "><i class="fas fa-info-circle"></i></a>
-                                        </td>
+                                        <td>' . $ten_size . '</td>
                                     </tr>
                                 </tbody>';
                             }
-                        //}
-                    //}
                     ?>
-
                 </table>
             </div>
         </div>

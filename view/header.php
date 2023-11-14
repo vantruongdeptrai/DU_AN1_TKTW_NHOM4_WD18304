@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from template.hasthemes.com/bucker/bucker/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 01 Nov 2023 14:31:06 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -68,6 +69,32 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="header_top_inner d-flex justify-content-between">
+                            <?php
+                            if (isset($_SESSION["user"]) && is_array($_SESSION["user"])) {
+                                extract($_SESSION["user"]);
+                                ?>
+                                <div class="welcome_text">
+                                    <p>World Wide Completely Free Returns and Free Shipping</p>
+                                </div>
+                                <div class="header_top_sidebar d-flex align-items-center">
+                                    <ul class="d-flex">
+                                        <li><i class="icofont-phone"></i> <a href="tel:+84339925350"></a>
+                                        </li>
+                                        <li><i class="icofont-envelope"></i> <a
+                                                href="mailto:demo@example.com">demo@example.com</a></li>
+                                        <li class="account_link"> <i class="icofont-user-alt-7"></i><a href="#"><?php echo $user?></a>
+                                            <ul class="dropdown_account_link">
+                                                <li><a href="index.php?act=my-account">My Account</a></li>
+                                                <li><a href="index.php?act=login-register">Login</a></li>
+                                                <li><a href="index.php?act=contact">Contact</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <?php
+                            } else {
+                                ?>
                             <div class="welcome_text">
                                 <p>World Wide Completely Free Returns and Free Shipping</p>
                             </div>
@@ -86,7 +113,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -103,7 +130,7 @@
                             <nav>
                                 <ul class="d-flex">
                                     <li><a class="active" href="index.php">Home</a>
-                                        
+
                                     </li>
                                     <li><a href="index.php?act=about">About</a></li>
                                     <li><a href="#">Pages</a>
@@ -121,7 +148,7 @@
                                                     <li>
                                                         <a href="shop-fullwidth.html">Shop Fullwidth</a>
                                                     </li>
-                                                    
+
                                                 </ul>
                                             </li>
                                             <li class="grid-item">
@@ -130,7 +157,7 @@
                                                     <li>
                                                         <a href="single-product.html">Single Product Default</a>
                                                     </li>
-                                                    
+
                                                 </ul>
                                             </li>
                                             <li class="grid-item">
@@ -139,7 +166,7 @@
                                                     <li>
                                                         <a href="shop-left-sidebar.html">Classic Carrot Cake</a>
                                                     </li>
-                                                    
+
                                                 </ul>
                                             </li>
                                             <li class="grid-item">
@@ -169,13 +196,15 @@
                                     </li>
                                     <li><a href="index.php?act=blog-left-sidebar">Blog</a>
                                         <ul class="bucker-dropdown">
-                                            <li class="submenu-holder"><a href="index.php?act=blog-left-sidebar">Blog Holder</a>
+                                            <li class="submenu-holder"><a href="index.php?act=blog-left-sidebar">Blog
+                                                    Holder</a>
                                                 <ul class="submenu">
-                                                    <li><a href="index.php?act=blog-left-sidebar">Blog Left Sidebar</a></li>
-                                                    
+                                                    <li><a href="index.php?act=blog-left-sidebar">Blog Left Sidebar</a>
+                                                    </li>
+
                                                 </ul>
                                             </li>
-                                            
+
                                         </ul>
                                     </li>
                                     <li><a href="index.php?act=contact">Contact</a></li>
@@ -258,5 +287,3 @@
             <button type="submit"><span class="pe-7s-search"></span></button>
         </form>
     </div>
-
-    

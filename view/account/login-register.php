@@ -19,17 +19,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <form action="#">
+                    <form action="index.php?act=dang_nhap" method="post">
                         <div class="login-form">
                             <h4 class="login-title">Đăng nhập</h4>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label>Email</label>
-                                    <input type="email" placeholder="Email Address">
+                                    <label>User</label>
+                                    <input type="text" placeholder="User" name="user">
                                 </div>
                                 <div class="col-lg-12">
                                     <label>Mật khẩu</label>
-                                    <input type="password" placeholder="Password">
+                                    <input type="password" placeholder="Password" name="password">
                                 </div>
                                 <div class="col-sm-8 align-self-center">
                                     <div class="check-box">
@@ -39,36 +39,37 @@
                                 </div>
                                 <div class="col-sm-4 pt-1 mt-md-0">
                                     <div class="forgotton-password_info">
-                                        <a href="#"> Quên mật khẩu ?</a>
+                                        <a href="index.php?act=quen_mk"> Quên mật khẩu ?</a>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 pt-5">
-                                    <button class="btn custom-btn md-size">Đăng nhập</button>
+                                    <input style="align-items: center; color:black;" class="btn custom-btn md-size" type="submit" value="Đăng nhập" name="dang_nhap">
+                                    <div></div>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="col-lg-6 pt-5 pt-lg-0">
-                    <form action="#">
+                    <form action="index.php?act=dang_ki" method="post">
                         <div class="login-form">
                             <h4 class="login-title">Đăng kí</h4>
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <label>Tên người dùng</label>
-                                    <input type="text" placeholder="User">
+                                    <input type="text" placeholder="User" name="user">
                                 </div>
                                 <div class="col-md-12">
                                     <label>Email</label>
-                                    <input type="email" placeholder="Email">
+                                    <input type="email" placeholder="Email" name="email">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Password</label>
-                                    <input type="password" placeholder="Password">
+                                    <input type="password" placeholder="Password" name="password">
                                 </div>
                                 
                                 <div class="col-12">
-                                    <button class="btn custom-btn md-size">Đăng kí</button>
+                                    <input style="align-items: center; color:black;" class="btn custom-btn md-size" type="submit" value="Đăng kí" name="dang_ki">
                                 </div>
                             </div>
                         </div>

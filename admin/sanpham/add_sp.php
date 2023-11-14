@@ -12,16 +12,17 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Thêm sản phẩm mới</h1>
                             </div>
-                            <form action="index.php?act=add_sp" class="user" method="post" enctype="multipart/form-data">
+                            <form action="index.php?act=add_sp" class="user" method="post"
+                                enctype="multipart/form-data">
                                 <div class="input-group">
                                     <select class="form-control bg-light border-0 small" name="id_dm">
-                                        <?php 
-                                            foreach($list_dm as $dm){
-                                                extract($dm);
-                                                echo "<option class='input-group-append' value=$id_dm>$ten_dm</option>";
-                                            }
+                                        <?php
+                                        foreach ($list_dm as $dm) {
+                                            extract($dm);
+                                            echo "<option class='input-group-append' value=$id_dm>$ten_dm</option>";
+                                        }
                                         ?>
-                                        
+
                                     </select>
                                 </div>
                                 <br>
@@ -37,29 +38,60 @@
                                             placeholder="Giá" name="gia">
                                     </div>
                                 </div>
-                                        <!-- Ảnh  -->
-                                    <input type="file" class="form-group"
-                                        id="exampleInputEmail" name="hinh_anh">
-                                        <!-- Size -->
-                                <div class="input-group">
-                                    <select class="form-control bg-light border-0 small" name="id_size">
-                                        <?php 
-                                            foreach($list_size as $size){
-                                                extract($size);
-                                                echo "<option class='input-group-append' value=$id_size>$ten_size</option>";
-                                            }
-                                        ?>
-                                        
-                                    </select>
-                                </div>
+                                <!-- Ảnh  -->
+                                <input type="file" class="form-group" id="exampleInputEmail" name="hinh_anh">
+
                                 <br>
                                 <!-- Mô tả -->
                                 <div class="form-group">
-                                    
+
                                     <input type="text" class="form-control form-control-user" id="exampleInputPassword"
                                         placeholder="Mô tả sản phẩm" name="mota">
                                 </div>
-                                <input type="submit" class="btn btn-primary btn-user btn-block" name="them_sp"value="Thêm mới">
+                                <input type="submit" class="btn btn-primary btn-user btn-block" name="them_sp"
+                                    value="Thêm mới">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Thêm size</h1>
+                            </div>
+                            <!-- Size -->
+                            <form action="index.php?act=update_spct" method="post">
+                                <label>ID sản phẩm</label>
+                                <div class="input-group">
+                                    <select class="form-control bg-light border-0 small" name="id_sp">
+                                        <?php
+                                        foreach ($list_sp as $sp) {
+                                            extract($sp);
+                                            echo "<option class='input-group-append' value=$id_sp>$id_sp</option>";
+                                        }
+                                        ?>
+
+                                    </select>
+                                    
+                                </div>
+                                <br>
+                                <label>Size</label>
+                                <div class="input-group">
+                                    <select class="form-control bg-light border-0 small" name="id_size">
+                                        <?php
+                                        foreach ($list_size as $size) {
+                                            extract($size);
+                                            echo "<option class='input-group-append' value=$id_size>$ten_size</option>";
+                                        }
+                                        ?>
+
+                                    </select>
+                                    
+                                </div>
+                                <br>
+                                <input type="submit" class="btn btn-primary btn-user btn-block" name="update_spct"
+                                    value="Thêm size">
                             </form>
                         </div>
                     </div>
