@@ -16,6 +16,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
     switch ($act) {
 
         //         SẢN PHẨM         //
+        //hải nguu vl
 
         case 'shop-left-sidebar':
             include('view/shop-left-sidebar.php');
