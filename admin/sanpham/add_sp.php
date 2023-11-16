@@ -40,7 +40,20 @@
                                 </div>
                                 <!-- Ảnh  -->
                                 <input type="file" class="form-group" id="exampleInputEmail" name="hinh_anh">
+                                <br>
+                                <label>Size</label>
+                                <!-- <div class="input-group">
+                                    <select class="form-control bg-light border-0 small" name="id_size"> -->
+                                        <?php
+                                        // foreach ($list_size as $size) {
+                                        //     extract($size);
+                                        //     echo "<option class='input-group-append' value=$id_size>$ten_size</option>";
+                                        // }
+                                        ?>
 
+                                    <!-- </select>
+
+                                </div> -->
                                 <br>
                                 <!-- Mô tả -->
                                 <div class="form-group">
@@ -54,48 +67,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Thêm size</h1>
-                            </div>
-                            <!-- Size -->
-                            <form action="index.php?act=update_spct" method="post">
-                                <label>ID sản phẩm</label>
-                                <div class="input-group">
-                                    <select class="form-control bg-light border-0 small" name="id_sp">
-                                        <?php
-                                        foreach ($list_sp as $sp) {
-                                            extract($sp);
-                                            echo "<option class='input-group-append' value=$id_sp>$id_sp</option>";
-                                        }
-                                        ?>
-
-                                    </select>
-                                    
-                                </div>
-                                <br>
-                                <label>Size</label>
-                                <div class="input-group">
-                                    <select class="form-control bg-light border-0 small" name="id_size">
-                                        <?php
-                                        foreach ($list_size as $size) {
-                                            extract($size);
-                                            echo "<option class='input-group-append' value=$id_size>$ten_size</option>";
-                                        }
-                                        ?>
-
-                                    </select>
-                                    
-                                </div>
-                                <br>
-                                <input type="submit" class="btn btn-primary btn-user btn-block" name="update_spct"
-                                    value="Thêm size">
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <div class="card-body p-0">
+                
+            </div>
             </div>
         </div>
 

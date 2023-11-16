@@ -16,7 +16,6 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
     switch ($act) {
 
         //         SẢN PHẨM         //
-        //hải nguu vl
 
         case 'shop-left-sidebar':
             include('view/shop-left-sidebar.php');
@@ -58,17 +57,25 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 $checkuser = check_user($user, $password);
                 if (is_array($checkuser)) {
                     $_SESSION["user"] = $checkuser;
+                    ob_start();
                     header("location: index.php");
+                    ob_end_clean();
+
                 } else {
                     echo "Tài khoản không tồn tại , vui lòng kiểm tra hoặc đăng ký !";
                 }
             }
-            include ('view/home.php');
+            include('view/home.php');
             break;
         case 'dang_xuat':
             session_unset();
-            header("location:index.php");
-            break;
+            session_destroy();
+            ob_start();
+            header("location: index.php");
+            ob_end_clean();
+            echo "<meta http-equiv='refresh' content='0;URL=index.php'/>";
+            exit();
+            //break;
         case 'contact':
             include('view/contact.php');
             break;

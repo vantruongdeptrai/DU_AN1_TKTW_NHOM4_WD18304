@@ -46,42 +46,8 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
         // SẢN PHẨM //
 
-            // list sp 
 
-        case 'list_sp':
-            if (isset($_POST["ok"]) && $_POST["ok"]) {
-
-                $keyword = $_POST["keyword"];
-                $id_dm = $_POST["id_dm"];
-            } else {
-                $keyword = '';
-                $id_dm = 0;
-            }
-            $list_dm = loadall_danhmuc();
-            $list_sp = loadall_sanpham($keyword, $id_dm);
-            $list_size = loadall_size();
-            $list_ctsanpham = loadall_chitietsanpham();
-            include('./sanpham/list_sp.php');
-            break;
-
-            //san pham chi tiet
-
-        case 'spct':
-            if (isset($_POST["ok"]) && $_POST["ok"]) {
-                $keyword = $_POST["keyword"];
-                $id_dm = $_POST["id_dm"];
-            } else {
-                $keyword = '';
-                $id_dm = 0;
-            }
-            $list_dm = loadall_danhmuc();
-            $list_sp = loadall_sanpham($keyword, $id_dm);
-            $list_size = loadall_size();
-            $list_ctsanpham = loadall_chitietsanpham();
-            include('./sanpham/list_sp_chitiet.php');
-            break;
-
-            //them san pham
+        //them san pham
 
         case 'add_sp':
             if (isset($_POST["them_sp"]) && $_POST["them_sp"]) {
@@ -103,41 +69,106 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             $list_sp = loadall_sanpham("", 0);
             $list_dm = loadall_danhmuc();
             $list_size = loadall_size();
-            $list_ctsanpham = loadall_chitietsanpham();
             include('./sanpham/add_sp.php');
             break;
 
-                //sua san pham
+        // list sp 
 
-        case 'sua_sp':
-            if (isset($_GET["id"]) && $_GET["id"] > 0) {
-                $one_sp = loadone_sanpham($_GET["id"]);
+        case 'list_sp':
+            if (isset($_POST["ok"]) && $_POST["ok"]) {
+
+                $keyword = $_POST["keyword"];
+                $id_dm = $_POST["id_dm"];
+            } else {
+                $keyword = '';
+                $id_dm = 0;
             }
-            $list_size = loadall_size();
             $list_dm = loadall_danhmuc();
-            include('./sanpham/update_sp.php');
+            $list_sp = loadall_sanpham($keyword, $id_dm);
+            $list_size = loadall_size();
+            include('./sanpham/list_sp.php');
             break;
 
-            //xoa san pham
+        // thêm sản phẩm chi tiết
+
+        case 'them_ctsp':
+            if (isset($_POST['id_sp']) && $_POST['id_sp'] && isset($_POST['id_size']) && $_POST['id_size']) {
+                insert_ctsp($_POST['id_sp'], $_POST['id_size']);
+            }
+            $list_sp = loadall_sanpham("", 0);
+            $list_size = loadall_size();
+            include('./sanpham/add_ctsp.php');
+            break;
+
+        //list sản phẩm chi tiết    
+
+        case 'list_ctsp':
+            $list_ctsp = load_ctsp();
+            include('./sanpham/list_sp_chitiet.php');
+            break;
+        case 'xem_chitiet':
+            if (isset($_GET["id"]) && $_GET["id"] > 0) {
+                $id = $_GET["id"];
+                $list_ctsp = load_ctsp();
+                //$list_chitietsp = load_spct($id);
+            }
+            include('./sanpham/list_sp_chitiet.php');
+            break;
+
+        //xóa sản phẩm chi tiết  
+
+        case 'xoa_spct':
+            if (isset($_GET["id"]) && $_GET["id"] > 0) {
+                $id = $_GET["id"];
+                delete_ctsp($id);
+                //$list_chitietsp = load_spct($id);
+            }
+            $list_ctsp = load_ctsp();
+            include('./sanpham/list_sp_chitiet.php');
+            break;
+
+        //xóa sản phẩm
 
         case 'xoa_sp':
             if (isset($_GET["id"]) && $_GET["id"] > 0) {
                 delete_sanpham($_GET["id"]);
             }
             $list_sp = loadall_sanpham("", 0);
-            $list_ctsanpham = loadall_chitietsanpham();
             $list_size = loadall_size();
             $list_dm = loadall_danhmuc();
             include('./sanpham/list_sp.php');
             break;
 
-        //cap nhat san pham
+        //sửa sản phẩm 
+
+        case 'sua_sp':
+            if (isset($_GET["id"]) && $_GET["id"] > 0) {
+                $one_sp = loadone_sanpham($_GET["id"]);
+                
+            }
+            $list_size = loadall_size();
+            $list_dm = loadall_danhmuc();
+            include('./sanpham/update_sp.php');
+            break;
+
+        //sửa sản phẩm chi tiết
+
+        case 'sua_spct':
+            if (isset($_GET["id"]) && $_GET["id"] > 0) {
+                $one_ctsp = load_one_ctsp($_GET["id"]);
+            }
+            $list_size = loadall_size();
+            $list_dm = loadall_danhmuc();
+            $list_ctsp = load_ctsp();
+            include('./sanpham/update_spct.php');
+            break;
+        //cập nhật sản phẩm
 
         case 'update_sp':
             if (isset($_POST["cap_nhat"]) && $_POST["cap_nhat"]) {
                 $id_dm = $_POST["id_dm"];
                 $id_sp = $_POST["id_sp"];
-                $id_size = $_POST["id_size"];
+                //$id_size = $_POST["id_size"];
                 $ten_sp = $_POST["ten_sp"];
                 $gia = $_POST["gia"];
                 $mota = $_POST["mota"];
@@ -149,30 +180,24 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 } else {
                     //echo "Lỗi up load file.";
                 }
-                //update_sp($id_sp,$id_size,$id_dm, $ten_sp, $gia, $mota, $filename);
-                update_ctsanpham($id_sp, $id_size, $id_dm, $ten_sp, $gia, $mota, $filename);
-                //insert_ctsanpham($id_sp,$id_size);
+                update_sp($id_sp, $id_dm, $ten_sp, $gia, $mota, $filename);
             }
             $list_sp = loadall_sanpham("", 0);
             $list_size = loadall_size();
             $list_dm = loadall_danhmuc();
-            $list_ctsanpham = loadall_chitietsanpham();
             include('./sanpham/list_sp.php');
             break;
-
-            //cap nhat san pham chi tiet
-
+            
         case 'update_spct':
-            if (isset($_POST["update_spct"]) && $_POST["update_spct"]) {
+            if(isset($_POST["cap_nhat_size"])&&$_POST["cap_nhat_size"]){
                 $id_sp = $_POST["id_sp"];
                 $id_size = $_POST["id_size"];
-                insert_ctsanpham($id_sp, $id_size);
+                $id_ctsp = $_POST["id_ctsp"];
+                update_ctsp($id_ctsp,$id_sp,$id_size);
             }
-            $list_sp = loadall_sanpham("", 0);
-            $list_ctsanpham = loadall_chitietsanpham();
+            $list_ctsp = load_ctsp();
             $list_size = loadall_size();
-            $list_dm = loadall_danhmuc();
-            include('./sanpham/list_sp.php');
+            include('./sanpham/list_sp_chitiet.php');
             break;
         // TÀI KHOẢN //
         case 'list_tk':

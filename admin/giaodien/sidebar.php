@@ -51,6 +51,7 @@
             <h6 class="collapse-header">Quản lí sản phẩm</h6>
             <a class="collapse-item" href="index.php?act=list_sp">List sản phẩm</a>
             <a class="collapse-item" href="index.php?act=add_sp">Thêm sản phẩm</a>
+            <a class="collapse-item" href="index.php?act=them_ctsp">Thêm thuộc tính</a>
             
         </div>
     </div>

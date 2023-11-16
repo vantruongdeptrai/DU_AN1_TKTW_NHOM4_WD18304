@@ -65,14 +65,12 @@
     <!--header area start-->
     <header class="header_section">
         <div class="header_top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="header_top_inner d-flex justify-content-between">
-                            <?php
-                            if (isset($_SESSION["user"]) && is_array($_SESSION["user"])) {
-                                extract($_SESSION["user"]);
-                                ?>
+            <?php if (isset($_SESSION["user"]) && is_array($_SESSION["user"])) {
+                extract($_SESSION["user"]); ?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header_top_inner d-flex justify-content-between">
                                 <div class="welcome_text">
                                     <p>World Wide Completely Free Returns and Free Shipping</p>
                                 </div>
@@ -80,9 +78,47 @@
                                     <ul class="d-flex">
                                         <li><i class="icofont-phone"></i> <a href="tel:+84339925350"></a>
                                         </li>
-                                        <li><i class="icofont-envelope"></i> <a
-                                                href="mailto:demo@example.com">demo@example.com</a></li>
-                                        <li class="account_link"> <i class="icofont-user-alt-7"></i><a href="#"><?php echo $user?></a>
+                                        <li><i class="icofont-envelope"></i> <a href="mailto:demo@example.com">
+                                                <?php echo $email ?>
+                                            </a></li>
+                                        <li class="account_link"> <i class="icofont-user-alt-7"></i><a href="#">
+                                                <?php echo $user ?>
+                                            </a>
+                                            <ul class="dropdown_account_link">
+                                                <li><a href="index.php?act=my-account">My Account</a></li>
+                                                <li><a href="index.php?act=login-register">Login</a></li>
+                                                <li><a href="index.php?act=contact">Contact</a></li>
+                                                <?php if ($vai_tro == 1) { ?>
+                                                    <li><a href="admin/index.php">Đăng nhập admin</a></li>
+                                                <?php } ?>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            } else {
+                ?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header_top_inner d-flex justify-content-between">
+                                <div class="welcome_text">
+                                    <p>World Wide Completely Free Returns and Free Shipping</p>
+                                </div>
+                                <div class="header_top_sidebar d-flex align-items-center">
+                                    <ul class="d-flex">
+                                        <li><i class="icofont-phone"></i> <a href="tel:+84339925350"></a>
+                                        </li>
+                                        <li><i class="icofont-envelope"></i> <a href="mailto:demo@example.com">
+                                                <?php //echo $email ?>Email
+                                            </a></li>
+                                        <li class="account_link"> <i class="icofont-user-alt-7"></i><a href="#">
+                                                <?php //echo $user ?>Account
+                                            </a>
                                             <ul class="dropdown_account_link">
                                                 <li><a href="index.php?act=my-account">My Account</a></li>
                                                 <li><a href="index.php?act=login-register">Login</a></li>
@@ -92,31 +128,10 @@
                                     </ul>
                                 </div>
                             </div>
-                            <?php
-                            } else {
-                                ?>
-                            <div class="welcome_text">
-                                <p>World Wide Completely Free Returns and Free Shipping</p>
-                            </div>
-                            <div class="header_top_sidebar d-flex align-items-center">
-                                <ul class="d-flex">
-                                    <li><i class="icofont-phone"></i> <a href="tel:+00123456789">+00 123 456 789</a>
-                                    </li>
-                                    <li><i class="icofont-envelope"></i> <a
-                                            href="mailto:demo@example.com">demo@example.com</a></li>
-                                    <li class="account_link"> <i class="icofont-user-alt-7"></i><a href="#">Account</a>
-                                        <ul class="dropdown_account_link">
-                                            <li><a href="index.php?act=my-account">My Account</a></li>
-                                            <li><a href="index.php?act=login-register">Login</a></li>
-                                            <li><a href="index.php?act=contact">Contact</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        <?php } ?>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
         <div class="container">
             <div class="row">

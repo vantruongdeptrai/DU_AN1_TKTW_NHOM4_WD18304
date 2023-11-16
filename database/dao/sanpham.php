@@ -20,7 +20,7 @@ function loadall_sanpham($kewword = " ", $id_dm = 0)
 }
 function loadone_sanpham($id_sp)
 {
-    $sql = "SELECT * FROM san_pham WHERE id_sp='$id_sp'";
+    $sql = "SELECT * FROM san_pham WHERE id_sp='$id_sp' ";
     $one_sp = pdo_query_one($sql);
     return $one_sp;
 }
@@ -60,12 +60,12 @@ function delete_sanpham($id_sp)
     $sql = "DELETE FROM san_pham WHERE id_sp=" . $id_sp;
     pdo_execute($sql);
 }
-function update_sp($id_sp,$id_size,$id_dm, $ten_sp, $gia_sp, $mota, $filename)
+function update_sp($id_sp,$id_dm, $ten_sp, $gia_sp, $mota, $filename)
 {
     if ($filename =="") {
-        $sql = " UPDATE san_pham SET id_size='$id_size' ,id_dm='$id_dm',ten_sp='$ten_sp',gia='$gia_sp',mo_ta='$mota' WHERE id_sp = '$id_sp' ";
+        $sql = " UPDATE san_pham SET id_dm='$id_dm',ten_sp='$ten_sp',gia='$gia_sp',mo_ta='$mota' WHERE id_sp = '$id_sp' ";
     } else {
-        $sql = " UPDATE san_pham SET id_size='$id_size',id_dm='$id_dm',ten_sp='$ten_sp',gia='$gia_sp',hinh_anh='$filename' , mo_ta='$mota' WHERE id_sp = '$id_sp' ";
+        $sql = " UPDATE san_pham SET id_dm='$id_dm',ten_sp='$ten_sp',gia='$gia_sp',hinh_anh='$filename' , mo_ta='$mota' WHERE id_sp = '$id_sp' ";
     }
     // echo $sql;die;
     pdo_execute($sql);

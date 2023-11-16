@@ -7,12 +7,6 @@
             <h6 class="m-0 font-weight-bold text-primary">Quản lí sản phẩm</h6>
             <form action="index.php?act=list_sp" method="post"
                 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                <!-- <div class="input-group">
-                    
-                    <div class="input-group-append">
-                        <input class="btn btn-primary " type="submit" name="ok" value="Lọc">
-                    </div>
-                </div> -->
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                         aria-label="Search" aria-describedby="basic-addon2" name="keyword">
@@ -50,13 +44,12 @@
 
                     foreach ($list_sp as $sp) {
                         extract($sp);
-                        //foreach ($list_ctsanpham as $ctsp) {
-                            //extract($ctsp);
-                            //var_dump($ctsp);
-                            //if ($idsp_ct == $id_sp) {
+                        //foreach ($list_size as $size) {
+                            //extract($size);
+                            //if($id_size == $id_size) {
                                 $sua_sp = "index.php?act=sua_sp&id=" . $id_sp;
                                 $xoa_sp = "index.php?act=xoa_sp&id=" . $id_sp;
-                                $chitiet_sp = "index.php?act=spct&id=". $id_sp;
+                                $chitiet_sp = "index.php?act=xem_chitiet&id=". $id_sp;
                                 $hinh_anh_path = "../uploads/" . $hinh_anh;
                                 if (is_file($hinh_anh_path)) {
                                     $hinh_anh = "<img src='$hinh_anh_path' height='80' width='80'>";

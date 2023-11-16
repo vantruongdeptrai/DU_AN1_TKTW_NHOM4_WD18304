@@ -57,17 +57,6 @@ if (is_file($hinh_anh_path)) {
                                 <!-- Ảnh  -->
                                 <input type="file" class="form-group" id="exampleInputEmail" name="hinh_anh">
                                 <?php echo $hinh_anh ?>
-                                <!-- Size -->
-                                <div class="input-group">
-                                    <select class="form-control bg-light border-0 small" name="id_size">
-                                        <?php
-                                        foreach ($list_size as $size) {
-                                            extract($size);
-                                            echo "<option class='input-group-append' value=$id_size>$ten_size</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
                                 <br>
                                 <!-- Mô tả -->
                                 <div class="form-group">

@@ -36,30 +36,40 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID phẩm</th>
+                            <th>ID sản phẩm</th>
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh</th>
                             <th>Size</th>
+                            <th>Thao tác</th>
                         </tr>
                     </thead>
                     <?php
-                        foreach ($list_ctsanpham as $ctsp) {
-                            extract($ctsp);
-                                $hinh_anh_path = "../uploads/" . $hinh_anh;
-                                if (is_file($hinh_anh_path)) {
-                                    $hinh_anh = "<img src='$hinh_anh_path' height='80' width='80'>";
-                                } else {
-                                    $hinh_anh = " Không có hình ảnh";
-                                }
-                                echo '<tbody>
+                    //foreach ($list_chitietsp as $spct) {
+                        //extract($spct);
+                        foreach ($list_ctsp as $spct) {
+                            
+                            extract($spct);
+                        $xoa_ctsp = "index.php?act=xoa_spct&id=" . $id_ctsp;
+                        $sua_ctsp = "index.php?act=sua_spct&id=" . $id_ctsp;
+                        $hinh_anh_path = "../uploads/" . $hinh_anh;
+                        if (is_file($hinh_anh_path)) {
+                            $hinh_anh = "<img src='$hinh_anh_path' height='80' width='80'>";
+                        } else {
+                            $hinh_anh = " Không có hình ảnh";
+                        }
+                        echo '<tbody>
                                     <tr>
-                                        <td>' . $idsp_ct . '</td>
+                                        <td>' . $id_sp . '</td>
                                         <td>' . $ten_sp . '</td>
                                         <td>' . $hinh_anh . '</td>
                                         <td>' . $ten_size . '</td>
+                                        <td>
+                                            <a href="' . $xoa_ctsp . '" class="btn btn-danger btn-circle "><i class="fas fa-trash"></i></a>
+                                            <a href="' . $sua_ctsp . '" class="btn btn-danger btn-circle "><i class="fas fa-fw fa-wrench"></i></a>
+                                        </td>
                                     </tr>
                                 </tbody>';
-                            }
+                    }
                     ?>
                 </table>
             </div>
