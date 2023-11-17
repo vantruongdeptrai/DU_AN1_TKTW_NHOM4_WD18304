@@ -43,8 +43,9 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 pt-5">
-                                    <input style="align-items: center; color:black;" class="btn custom-btn md-size" type="submit" value="Đăng nhập" name="dang_nhap">
-                                    <div></div>
+                                    <button class="btn custom-btn">
+                                        <input style="align-items: center; border:none; color:white;" class="md-size" type="submit" value="Đăng nhập" name="dang_nhap">
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -67,9 +68,10 @@
                                     <label>Password</label>
                                     <input type="password" placeholder="Password" name="password">
                                 </div>
-                                
-                                <div class="col-12">
-                                    <input style="align-items: center; color:black;" class="btn custom-btn md-size" type="submit" value="Đăng kí" name="dang_ki">
+                                <div class="col-lg-12 pt-5">
+                                    <button class="btn custom-btn">
+                                        <input style="align-items: center; border:none; color:white;" class=" md-size" type="submit" value="Đăng kí" name="dang_ki">
+                                    </button>
                                 </div>
                             </div>
                         </div>

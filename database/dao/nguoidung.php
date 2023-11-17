@@ -25,29 +25,20 @@ function check_user($user, $password)
 function check_email($email)
 {
     $sql = "SELECT * FROM nguoi_dung WHERE email='$email'";
-    $sp = pdo_query_one($sql);
-    return $sp;
+    $check_email = pdo_query_one($sql);
+    return $check_email;
 }
-function update_taikhoan($id,$user,$password,$email, $dia_chi, $sdt)
+function update_taikhoan($id,$user,$email, $dia_chi, $sdt)
 {
-    $sql = " UPDATE nguoi_dung SET user='$user',password='$password', email='$email' , dia_chi='$dia_chi' , sdt='$sdt' WHERE id = '$id' ";
+    $sql = " UPDATE nguoi_dung SET user='$user', email='$email' , dia_chi='$dia_chi' , sdt='$sdt' WHERE id_user = '$id' ";
     //var_dump($sql);
     pdo_execute($sql);
 }
 function update_mk($id,$user,$newpass)
 {
-    $sql = " UPDATE nguoi_dung SET user='$user',password='$newpass' WHERE id = '$id' ";
+    $sql = " UPDATE nguoi_dung SET user='$user',password='$newpass' WHERE id_user = '$id' ";
     //var_dump($sql);
     pdo_execute($sql);
 }
-function loadone_tk($id){
-    $sql = "SELECT * FROM nguoi_dung WHERE id='$id'";
-    $taikhoan = pdo_query_one($sql);
-    return $taikhoan;
-}
-function delete_tk($id){
-    $sql = "DELETE FROM nguoi_dung WHERE id='$id'";
-    $taikhoan = pdo_query_one($sql);
-    return $taikhoan;
-}
+
 ?>

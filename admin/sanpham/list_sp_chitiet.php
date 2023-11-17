@@ -40,6 +40,7 @@
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh</th>
                             <th>Size</th>
+                            <th>Số lượng</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
@@ -63,6 +64,7 @@
                                         <td>' . $ten_sp . '</td>
                                         <td>' . $hinh_anh . '</td>
                                         <td>' . $ten_size . '</td>
+                                        <td>Số lượng</td>
                                         <td>
                                             <a href="' . $xoa_ctsp . '" class="btn btn-danger btn-circle "><i class="fas fa-trash"></i></a>
                                             <a href="' . $sua_ctsp . '" class="btn btn-danger btn-circle "><i class="fas fa-fw fa-wrench"></i></a>

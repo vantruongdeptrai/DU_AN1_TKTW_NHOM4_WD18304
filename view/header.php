@@ -72,7 +72,7 @@
                         <div class="col-12">
                             <div class="header_top_inner d-flex justify-content-between">
                                 <div class="welcome_text">
-                                    <p>World Wide Completely Free Returns and Free Shipping</p>
+                                    <p>Xin chào bạn đến với Bucker</p>
                                 </div>
                                 <div class="header_top_sidebar d-flex align-items-center">
                                     <ul class="d-flex">
@@ -85,9 +85,11 @@
                                                 <?php echo $user ?>
                                             </a>
                                             <ul class="dropdown_account_link">
-                                                <li><a href="index.php?act=my-account">My Account</a></li>
-                                                <li><a href="index.php?act=login-register">Login</a></li>
-                                                <li><a href="index.php?act=contact">Contact</a></li>
+                                                <li><a href="index.php?act=my-account">Tài khoản của tôi</a></li>
+                                                <li><a href="index.php?act=login-register">Đăng nhập</a></li>
+                                                <li><a href="index.php?act=dang_xuat">Đăng xuất</a></li>
+                                                <li><a href="index.php?act=doi_mk">Đổi mật khẩu</a></li>
+                                                <li><a href="index.php?act=contact">Liên hệ</a></li>
                                                 <?php if ($vai_tro == 1) { ?>
                                                     <li><a href="admin/index.php">Đăng nhập admin</a></li>
                                                 <?php } ?>
@@ -106,8 +108,8 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="header_top_inner d-flex justify-content-between">
-                                <div class="welcome_text">
-                                    <p>World Wide Completely Free Returns and Free Shipping</p>
+                            <div class="welcome_text">
+                                    <p>Xin chào bạn đến với Bucker</p>
                                 </div>
                                 <div class="header_top_sidebar d-flex align-items-center">
                                     <ul class="d-flex">
@@ -117,12 +119,15 @@
                                                 <?php //echo $email ?>Email
                                             </a></li>
                                         <li class="account_link"> <i class="icofont-user-alt-7"></i><a href="#">
-                                                <?php //echo $user ?>Account
+                                                <?php //echo $user ?>Tài khoản
                                             </a>
                                             <ul class="dropdown_account_link">
-                                                <li><a href="index.php?act=my-account">My Account</a></li>
-                                                <li><a href="index.php?act=login-register">Login</a></li>
-                                                <li><a href="index.php?act=contact">Contact</a></li>
+                                                <li><a href="index.php?act=my-account">Tài khoản của tôi</a></li>
+                                                <li><a href="index.php?act=login-register">Đăng nhập</a></li>
+                                                <li><a href="index.php?act=contact">Liên hệ</a></li>
+                                                <li>
+                                                    <a href="index.php?act=quen_mk">Quên mật khẩu</a>
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>

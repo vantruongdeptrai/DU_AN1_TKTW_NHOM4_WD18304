@@ -65,6 +65,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                     echo "Tài khoản không tồn tại , vui lòng kiểm tra hoặc đăng ký !";
                 }
             }
+            echo "<meta http-equiv='refresh' content='0;URL=index.php'/>";
             include('view/home.php');
             break;
         case 'dang_xuat':
@@ -76,6 +77,48 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             echo "<meta http-equiv='refresh' content='0;URL=index.php'/>";
             exit();
             //break;
+        case 'quen_mk':
+            if (isset($_POST["gui_mk"]) && $_POST["gui_mk"]) {
+                $email = $_POST["email"];
+                $check_email = check_email($email);
+
+                if (is_array($check_email)) {
+                    $thongbao = "Mật khẩu của bạn là : " . $check_email["password"];
+                } else {
+                    $thongbao = "Email này không tồn tại";
+                }
+
+            }
+            include "view/account/quen_mk.php";
+            break;
+
+        case 'capnhat_taikhoan':
+            if(isset($_POST["capnhat_tk"]) && $_POST["capnhat_tk"]){
+                $id = $_POST["id_user"];
+                $user = $_POST["user"];
+                $password = $_POST["password"];
+                $sdt = $_POST["sdt"];
+                $dia_chi = $_POST["diachi"];
+                $email = $_POST["email"];
+                update_taikhoan($id,$user,$email, $dia_chi, $sdt);
+                $_SESSION["user"] = check_user($user,$password);
+                $thongbao = "Cập nhật tài khoản thành công";
+            }
+            include "view/account/my-account.php";
+            break;
+        
+        case 'doi_mk':
+            if (isset($_POST['doi_mk']) && $_POST['doi_mk']) {
+                $id = $_POST['id_user'];
+                $user = $_POST['user'];
+                $password = $_POST['password'];
+                $newpass = $_POST['newpassword'];
+                update_mk($id,$user,$newpass);
+                $_SESSION["user"] = check_user($user,$password);
+                $thongbao = "Đổi mật khẩu thành công . Vui lòng đăng nhập lại !";
+            }
+            include "view/account/doi_mk.php";
+            break;
         case 'contact':
             include('view/contact.php');
             break;
