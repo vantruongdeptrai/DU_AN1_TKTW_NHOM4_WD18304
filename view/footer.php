@@ -298,11 +298,28 @@
     <script src="assets/js/mailchimp-ajax.js"></script>
     <script src="assets/js/jquery-ui.min.js"></script>
     <script src="assets/js/jquery.zoom.min.js"></script>
+    <script src="assets/js/ajax.js"></script>
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
-
-
+    <script>
+        $(document).ready(function () {
+            $('#priceFilter').change(function () {
+                var selectedPrice = $(this).val();
+                
+                $.ajax({
+                    type: 'POST',
+                    url: './view/loc_sp.php',
+                    data: { price: selectedPrice },
+                    success: function (response) {
+                        // console.log(JSON.parse(response));
+                        $('#productList').html(response);
+                        
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 

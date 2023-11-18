@@ -47,8 +47,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <!--modernizr min js here-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
-
+    
 
     <!-- Structured Data  -->
     <script type="application/ld+json">

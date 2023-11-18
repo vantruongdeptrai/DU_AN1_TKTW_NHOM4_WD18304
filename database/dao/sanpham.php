@@ -37,7 +37,21 @@ function loadall_sanpham_top10()
     $list_sp = pdo_query($sql);
     return $list_sp;
 }
-
+function loadall_sanpham_gia(){
+    $sql = "SELECT * FROM san_pham WHERE 1 ORDER BY gia DESC limit 0,10";
+    $list_sp = pdo_query($sql);
+    return $list_sp;
+}
+function loadall_sanpham_size($id_size){
+    if($id_size>0){
+        $sql = "SELECT * FROM san_pham WHERE id_size='$id_size'";
+        $size = pdo_query_one($sql);
+        extract($size);
+        return $ten_size;
+    }else{
+        return "";
+    }
+}
 function load_ten_dm($id_danh_muc)
 {
     if($id_danh_muc >0){

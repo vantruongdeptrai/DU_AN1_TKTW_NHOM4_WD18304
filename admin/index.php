@@ -195,6 +195,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 $id_ctsp = $_POST["id_ctsp"];
                 update_ctsp($id_ctsp,$id_sp,$id_size);
             }
+            //$one_ctsp = load_one_ctsp($id_ctsp);
             $list_ctsp = load_ctsp();
             $list_size = loadall_size();
             include('./sanpham/list_sp_chitiet.php');

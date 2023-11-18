@@ -18,6 +18,10 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         //         SẢN PHẨM         //
 
         case 'shop-left-sidebar':
+            if(isset($_POST["orderby"])&&$_POST["orderby"]){
+                
+            }
+            loadall_sanpham_gia();
             include('view/shop-left-sidebar.php');
             break;
         case 'single-product':
