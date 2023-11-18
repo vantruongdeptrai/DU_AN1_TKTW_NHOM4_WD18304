@@ -26,13 +26,13 @@
                         <h3>Lọc sản phẩm</h3>
                         <div class="widget_filter_list mb-30">
                             <h4>Lọc sản phẩm theo size</h4>
-                            <ul>
-                                <li><a href="#">Tất cả</a></li>
-                                <li><a href="#">S</a></li>
-                                <li><a href="#">M</a></li>
-                                <li><a href="#">L</a></li>
-                                <li><a href="#">XL</a></li>
-                            </ul>
+                            <select id="sizeFilter">
+                                    <option>Mặc định</option>
+                                    <option value="XL">XL</option>
+                                    <option value="L">L</option>
+                                    <option value="M">M</option>
+                                    <option value="S">S</option>
+                            </select>
                         </div>
                     </div>
                     <div class="widget__list category wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1.2s">
@@ -56,18 +56,7 @@
                             <img src="assets/img/others/product-sidaber-banner.png" alt="">
                         </div>
                     </div>
-                    <div class="widget__list tags wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1.4s">
-                        <h3>Tags</h3>
-                        <div class="widget_tags">
-                            <ul>
-                                <li><a href="#">Cookies</a></li>
-                                <li><a href="#">Doughnuts</a></li>
-                                <li><a href="#">Desserts</a></li>
-                                <li><a href="#">Muffins</a></li>
-                                <li><a href="#">Doughnuts</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
@@ -107,13 +96,11 @@
 
 
                     <!--shop gallery start-->
-                    <div id="productList">
-                        <!-- Danh sách sản phẩm sẽ được cập nhật ở đây -->
-                    </div>
-                    <div class="product_page_gallery">
+            
+                    <div class="product_page_gallery" >
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="grid">
-                                <div class="row grid__product">
+                                <div class="row grid__product" id="product_page_gallery">
                                     <?php
                                     if (is_array($list_sp_home)) {
                                         foreach ($list_sp_home as $sp) {
@@ -129,13 +116,13 @@
                                                                         src="' . $hinh . '" alt=""></a>
                                                                 <div class="action_links">
                                                                     <ul class="d-flex justify-content-center">
-                                                                        <li class="add_to_cart"><a href="cart.html"
+                                                                        <li class="add_to_cart"><a href="index.php?act=cart"
                                                                                 title="Add to cart">
                                                                                 <span class="pe-7s-shopbag"></span></a></li>
                                                                         <li class="wishlist"><a href="#"
                                                                                 title="Add to Wishlist"><span
                                                                                     class="pe-7s-like"></span></a></li>
-                                                                        <li class="quick_button"><a href="#" title="Quick View"
+                                                                        <li class="quick_button"><a href="#" title="Xem nhanh"
                                                                                 data-bs-toggle="modal"
                                                                                 data-bs-target="#modal_box"> <span
                                                                                     class="pe-7s-look"></span></a></li>
@@ -162,210 +149,64 @@
                             </div>
                             <div class="tab-pane fade" id="list">
                                 <div class="list__product">
-                                    <article class="product_list_items border-bottom">
-                                        <figure class="product_list_flex d-flex align-items-center">
-                                            <div class="product_thumb">
-                                                <a href="single-product.html"><img
-                                                        src="assets/img/product/product12.png" alt=""></a>
-                                                <div class="action_links">
-                                                    <ul class="d-flex justify-content-center">
-                                                        <li class="add_to_cart"><a href="cart.html" title="Add to cart">
-                                                                <span class="pe-7s-shopbag"></span></a></li>
-                                                        <li class="wishlist"><a href="#" title="Add to Wishlist"><span
-                                                                    class="pe-7s-like"></span></a></li>
-                                                        <li class="quick_button"><a href="#" title="Quick View"
-                                                                data-bs-toggle="modal" data-bs-target="#modal_box">
-                                                                <span class="pe-7s-look"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_list_content">
-                                                <h4><a href="single-product.html">Products Name Here</a></h4>
-                                                <div class="product__ratting">
-                                                    <ul class="d-flex">
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price_box">
-                                                    <span class="current_price">$22.00</span>
-                                                </div>
-                                                <div class="product__desc">
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                        Dignissimos aliquam maiores impedit temporibus ratione
-                                                        eveniet adipisci ab quisquam in quam.</p>
-                                                </div>
-                                                <div class="action_links product_list_action">
-                                                    <ul class="d-flex">
-                                                        <li class="add_to_cart"><a href="cart.html" title="Add to cart">
-                                                                <span class="pe-7s-shopbag"></span></a></li>
-                                                        <li class="wishlist"><a href="#" title="Add to Wishlist"><span
-                                                                    class="pe-7s-like"></span></a></li>
-                                                        <li class="quick_button"><a href="#" title="Quick View"
-                                                                data-bs-toggle="modal" data-bs-target="#modal_box">
-                                                                <span class="pe-7s-look"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article class="product_list_items border-bottom">
-                                        <figure class="product_list_flex d-flex align-items-center">
-                                            <div class="product_thumb">
-                                                <a href="single-product.html"><img src="assets/img/product/product1.png"
-                                                        alt=""></a>
-                                                <div class="action_links">
-                                                    <ul class="d-flex justify-content-center">
-                                                        <li class="add_to_cart"><a href="cart.html" title="Add to cart">
-                                                                <span class="pe-7s-shopbag"></span></a></li>
-                                                        <li class="wishlist"><a href="#" title="Add to Wishlist"><span
-                                                                    class="pe-7s-like"></span></a></li>
-                                                        <li class="quick_button"><a href="#" title="Quick View"
-                                                                data-bs-toggle="modal" data-bs-target="#modal_box">
-                                                                <span class="pe-7s-look"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_list_content">
-                                                <h4><a href="single-product.html">Lorem, ipsum dolor.</a></h4>
-                                                <div class="product__ratting">
-                                                    <ul class="d-flex">
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price_box">
-                                                    <span class="current_price">$24.00</span>
-                                                </div>
-                                                <div class="product__desc">
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                        Dignissimos aliquam maiores impedit temporibus ratione
-                                                        eveniet adipisci ab quisquam in quam.</p>
-                                                </div>
-                                                <div class="action_links product_list_action">
-                                                    <ul class="d-flex">
-                                                        <li class="add_to_cart"><a href="cart.html" title="Add to cart">
-                                                                <span class="pe-7s-shopbag"></span></a></li>
-                                                        <li class="wishlist"><a href="#" title="Add to Wishlist"><span
-                                                                    class="pe-7s-like"></span></a></li>
-                                                        <li class="quick_button"><a href="#" title="Quick View"
-                                                                data-bs-toggle="modal" data-bs-target="#modal_box">
-                                                                <span class="pe-7s-look"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article class="product_list_items border-bottom">
-                                        <figure class="product_list_flex d-flex align-items-center">
-                                            <div class="product_thumb">
-                                                <a href="single-product.html"><img src="assets/img/product/product3.png"
-                                                        alt=""></a>
-                                                <div class="action_links">
-                                                    <ul class="d-flex justify-content-center">
-                                                        <li class="add_to_cart"><a href="cart.html" title="Add to cart">
-                                                                <span class="pe-7s-shopbag"></span></a></li>
-                                                        <li class="wishlist"><a href="#" title="Add to Wishlist"><span
-                                                                    class="pe-7s-like"></span></a></li>
-                                                        <li class="quick_button"><a href="#" title="Quick View"
-                                                                data-bs-toggle="modal" data-bs-target="#modal_box">
-                                                                <span class="pe-7s-look"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_list_content">
-                                                <h4><a href="single-product.html">Sit amet consecte elit.</a></h4>
-                                                <div class="product__ratting">
-                                                    <ul class="d-flex">
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price_box">
-                                                    <span class="current_price">$26.00</span>
-                                                </div>
-                                                <div class="product__desc">
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                        Dignissimos aliquam maiores impedit temporibus ratione
-                                                        eveniet adipisci ab quisquam in quam.</p>
-                                                </div>
-                                                <div class="action_links product_list_action">
-                                                    <ul class="d-flex">
-                                                        <li class="add_to_cart"><a href="cart.html" title="Add to cart">
-                                                                <span class="pe-7s-shopbag"></span></a></li>
-                                                        <li class="wishlist"><a href="#" title="Add to Wishlist"><span
-                                                                    class="pe-7s-like"></span></a></li>
-                                                        <li class="quick_button"><a href="#" title="Quick View"
-                                                                data-bs-toggle="modal" data-bs-target="#modal_box">
-                                                                <span class="pe-7s-look"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
-                                    <article class="product_list_items border-bottom">
-                                        <figure class="product_list_flex d-flex align-items-center">
-                                            <div class="product_thumb">
-                                                <a href="single-product.html"><img src="assets/img/product/product4.png"
-                                                        alt=""></a>
-                                                <div class="action_links">
-                                                    <ul class="d-flex justify-content-center">
-                                                        <li class="add_to_cart"><a href="cart.html" title="Add to cart">
-                                                                <span class="pe-7s-shopbag"></span></a></li>
-                                                        <li class="wishlist"><a href="#" title="Add to Wishlist"><span
-                                                                    class="pe-7s-like"></span></a></li>
-                                                        <li class="quick_button"><a href="#" title="Quick View"
-                                                                data-bs-toggle="modal" data-bs-target="#modal_box">
-                                                                <span class="pe-7s-look"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <figcaption class="product_list_content">
-                                                <h4><a href="single-product.html">Atque earum ullam non.</a></h4>
-                                                <div class="product__ratting">
-                                                    <ul class="d-flex">
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                        <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="price_box">
-                                                    <span class="current_price">$22.00</span>
-                                                </div>
-                                                <div class="product__desc">
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                        Dignissimos aliquam maiores impedit temporibus ratione
-                                                        eveniet adipisci ab quisquam in quam.</p>
-                                                </div>
-                                                <div class="action_links product_list_action">
-                                                    <ul class="d-flex">
-                                                        <li class="add_to_cart"><a href="cart.html" title="Add to cart">
-                                                                <span class="pe-7s-shopbag"></span></a></li>
-                                                        <li class="wishlist"><a href="#" title="Add to Wishlist"><span
-                                                                    class="pe-7s-like"></span></a></li>
-                                                        <li class="quick_button"><a href="#" title="Quick View"
-                                                                data-bs-toggle="modal" data-bs-target="#modal_box">
-                                                                <span class="pe-7s-look"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                            </figcaption>
-                                        </figure>
-                                    </article>
+                                    <?php
+                                    if (is_array($list_sp_home)) {
+                                        foreach ($list_sp_home as $sp) {
+                                            extract($sp);
+                                            $hinh = $img_path . $hinh_anh;
+                                            $link_sp = "index.php?act=single-product&id=" . $id_sp;
+                                            echo '<article class="product_list_items border-bottom">
+                                                <figure class="product_list_flex d-flex align-items-center">
+                                                    <div class="product_thumb">
+                                                        <a href="' . $link_sp . '"><img style ="widht:200px;height:200px;"src="' . $hinh . '" alt=""></a>
+                                                        <div class="action_links">
+                                                            <ul class="d-flex justify-content-center">
+                                                                <li class="add_to_cart"><a href="cart.html" title="Add to cart">
+                                                                        <span class="pe-7s-shopbag"></span></a></li>
+                                                                <li class="wishlist"><a href="#" title="Add to Wishlist"><span
+                                                                            class="pe-7s-like"></span></a></li>
+                                                                <li class="quick_button"><a href="#" title="Quick View"
+                                                                        data-bs-toggle="modal" data-bs-target="#modal_box">
+                                                                        <span class="pe-7s-look"></span></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <figcaption class="product_list_content">
+                                                        <h4><a href="single-product.html">' . $ten_sp . '</a></h4>
+                                                        <div class="product__ratting">
+                                                            <ul class="d-flex">
+                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
+                                                                <li><a href="#"><i class="ion-android-star-outline"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="price_box">
+                                                            <span class="current_price">' . $gia . '</span>
+                                                        </div>
+                                                        <div class="product__desc">
+                                                            <p>'.$mo_ta.'</p>
+                                                        </div>
+                                                        <div class="action_links product_list_action">
+                                                            <ul class="d-flex">
+                                                                <li class="add_to_cart"><a href="cart.html" title="Add to cart">
+                                                                        <span class="pe-7s-shopbag"></span></a></li>
+                                                                <li class="wishlist"><a href="#" title="Add to Wishlist"><span
+                                                                            class="pe-7s-like"></span></a></li>
+                                                                <li class="quick_button"><a href="#" title="Quick View"
+                                                                        data-bs-toggle="modal" data-bs-target="#modal_box">
+                                                                        <span class="pe-7s-look"></span></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </figcaption>
+                                                </figure>
+                                            </article>';
+                                        }
+                                    }
+                                    ?>
+
                                 </div>
                             </div>
                         </div>

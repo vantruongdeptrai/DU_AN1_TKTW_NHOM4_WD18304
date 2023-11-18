@@ -25,12 +25,12 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="product_remove">remove</th>
-                                        <th class="product-thumbnail">images</th>
-                                        <th class="cart-product-name">Product</th>
-                                        <th class="product-price">Unit Price</th>
-                                        <th class="product-quantity">Quantity</th>
-                                        <th class="product-subtotal">Total</th>
+                                        <th class="product_remove">Thao tác</th>
+                                        <th class="product-thumbnail">Ảnh</th>
+                                        <th class="cart-product-name">Tên sản phẩm</th>
+                                        <th class="product-price">Giá</th>
+                                        <th class="product-quantity">Số lượng</th>
+                                        <th class="product-subtotal">Tổng tiền </th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -10,7 +10,7 @@ include "database/dao/chitietsanpham.php";
 include "global.php";
 $list_sp_home = loadall_sanpham_home();
 $list_dm_home = loadall_danhmuc();
-
+$load_ctsp_home = load_ctsp();
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {
@@ -18,13 +18,21 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         //         SẢN PHẨM         //
 
         case 'shop-left-sidebar':
-            if(isset($_POST["orderby"])&&$_POST["orderby"]){
-                
-            }
-            loadall_sanpham_gia();
+            
             include('view/shop-left-sidebar.php');
             break;
+        case 'xem_nhanh':
+
+            include('view/xem_nhanh.php');
         case 'single-product':
+            if(isset($_GET['id']) && ($_GET['id'])){
+                $id = $_GET['id'];
+                $load_one_sp = loadone_sanpham($id);
+                //var_dump($load_one_sp);
+                extract($load_one_sp);
+            }else{
+                include("view/home.php");
+            }
             include('view/single-product.php');
             break;
         case 'wishlist':

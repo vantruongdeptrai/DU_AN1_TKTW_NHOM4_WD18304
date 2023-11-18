@@ -1,14 +1,20 @@
+<?php 
+    if(is_array($load_one_sp)){
+        extract($load_one_sp);
+        $hinh = $img_path.$hinh_anh;
 
+    }
+?>
     <!-- breadcrumbs area start -->
     <div class="breadcrumbs_aree breadcrumbs_bg mb-100" data-bgimg="assets/img/others/breadcrumbs-bg.png">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumbs_text">
-                        <h1>Single Product</h1>
+                        <h1>Chi tiết sản phẩm</h1>
                         <ul>
-                            <li><a href="index.html">Home </a></li>
-                            <li> // Default Style</li>
+                            <li><a href="index.html">Trang chủ </a></li>
+                            <li> // Chi tiết sản phẩm</li>
                         </ul>
                     </div>
                 </div>
@@ -23,60 +29,17 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="single_product_gallery">
-                        <div class="product_gallery_inner d-flex">
                             <div class="product_gallery_main_img">
-                                <div class="gallery_img_list">
-                                    <img data-image="assets/img/product/product5.png"
-                                        src="assets/img/product/product5.png" alt="">
-                                </div>
-                                <div class="gallery_img_list">
-                                    <img src="assets/img/product/product2.png" alt="">
-                                </div>
-                                <div class="gallery_img_list">
-                                    <img src="assets/img/product/product1.png" alt="">
-                                </div>
-                                <div class="gallery_img_list">
-                                    <img src="assets/img/product/product7.png" alt="">
-                                </div>
-                                <div class="gallery_img_list">
-                                    <img src="assets/img/product/product8.png" alt="">
-                                </div>
-                                <div class="gallery_img_list">
-                                    <img src="assets/img/product/product9.png" alt="">
-                                </div>
-                                <div class="gallery_img_list">
-                                    <img src="assets/img/product/product10.png" alt="">
-                                </div>
-                                <div class="gallery_img_list">
-                                    <img src="assets/img/product/product11.png" alt="">
-                                </div>
+                                    <?php echo '<img style=" margin-left:50px;"
+                                        src="' . $hinh . '" alt="">' ?>
                             </div>
-                            <div class="product_gallery_btn_img">
-                                <a class="gallery_btn_img_list" href="javascript:void(0)"><img
-                                        src="assets/img/product/mini-product/product3.png" alt="tab-thumb"></a>
-                                <a class="gallery_btn_img_list" href="javascript:void(0)"><img
-                                        src="assets/img/product/mini-product/product1.png" alt="tab-thumb"></a>
-                                <a class="gallery_btn_img_list" href="javascript:void(0)"><img
-                                        src="assets/img/product/mini-product/product4.png" alt="tab-thumb"></a>
-                                <a class="gallery_btn_img_list" href="javascript:void(0)"><img
-                                        src="assets/img/product/mini-product/product5.png" alt="tab-thumb"></a>
-                                <a class="gallery_btn_img_list" href="javascript:void(0)"><img
-                                        src="assets/img/product/mini-product/product6.png" alt="tab-thumb"></a>
-                                <a class="gallery_btn_img_list" href="javascript:void(0)"><img
-                                        src="assets/img/product/mini-product/product8.png" alt="tab-thumb"></a>
-                                <a class="gallery_btn_img_list" href="javascript:void(0)"><img
-                                        src="assets/img/product/mini-product/product7.png" alt="tab-thumb"></a>
-                                <a class="gallery_btn_img_list" href="javascript:void(0)"><img
-                                        src="assets/img/product/mini-product/product2.png" alt="tab-thumb"></a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product_details_sidebar">
-                        <h2 class="product__title">Products Name Here</h2>
+                        <h2 class="product__title"><?php echo $ten_sp?></h2>
                         <div class="price_box">
-                            <span class="current_price">$22.00</span>
+                            <span class="current_price"><?php echo $gia?></span>
                         </div>
                         <div class="quickview__info mb-0">
                             <p class="product_review d-flex align-items-center">
@@ -90,15 +53,14 @@
                                 <span class="review__text"> (5 reviews)</span>
                             </p>
                         </div>
-                        <p class="product_details_desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                            eiusmoddll tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veni quis
-                            nostrud exercit ullamco laboris nisi ut aliquip.
+                        <p class="product_details_desc">
+                        <?php echo $mo_ta?>
                         </p>
                         <div class="product_pro_button quantity d-flex align-items-center">
                             <div class="pro-qty border">
                                 <input type="text" value="1">
                             </div>
-                            <a class="add_to_cart " href="#">add to cart</a>
+                            <a class="add_to_cart " href="#">Thêm vào giỏ hàng</a>
                             <a class="wishlist__btn" href="#"><i class="pe-7s-like"></i></a>
                             <a class="serch_btn" href="#"><i class="pe-7s-search"></i></a>
                         </div>
@@ -134,25 +96,7 @@
                     <div class="product_page_content_inner tab-content">
                         <div class="tab-pane fade show active" id="description" role="tabpanel">
                             <div class="product_tab_desc">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                    nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                    nulla
-                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                    officia
-                                    deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus
-                                    error
-                                    sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                                    quae
-                                    ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                    explicabo.
-                                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
-                                    quia
-                                    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
-                                    porro
-                                    quisquam est, qui dolorem ipsum</p>
+                                <p><?php echo $mo_ta?></p>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="aditional" role="tabpanel">
@@ -177,16 +121,7 @@
                                 </form>
                             </div>
                             <div class="product_info_desc">
-                                <p class="mb-0">Fashion has been creating well-designed collections since 2010. The
-                                    brand offers feminine designs delivering stylish separates and statement dresses
-                                    which have since evolved into a full ready-to-wear collection in which every
-                                    item is
-                                    a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with
-                                    youthful
-                                    elegance and unmistakable signature style. All the beautiful pieces are made in
-                                    Italy and manufactured with the greatest attention. Now Fashion extends to a
-                                    range
-                                    of accessories including shoes, hats, belts and more!</p>
+                                <p class="mb-0"><?php echo $mo_ta?></p>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="reviews" role="tabpanel">
@@ -350,31 +285,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal_tab_button">
-                                        <ul class="nav product_navactive owl-carousel" role="tablist">
-                                            <li>
-                                                <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab"
-                                                    aria-controls="tab1" aria-selected="false"><img
-                                                        src="assets/img/product/mini-product/product1.png" alt=""></a>
-                                            </li>
-                                            <li>
-                                                <a class="nav-link" data-toggle="tab" href="#tab2" role="tab"
-                                                    aria-controls="tab2" aria-selected="false"><img
-                                                        src="assets/img/product/mini-product/product2.png" alt=""></a>
-                                            </li>
-                                            <li>
-                                                <a class="nav-link button_three" data-toggle="tab" href="#tab3"
-                                                    role="tab" aria-controls="tab3" aria-selected="false"><img
-                                                        src="assets/img/product/mini-product/product3.png" alt=""></a>
-                                            </li>
-                                            <li>
-                                                <a class="nav-link" data-toggle="tab" href="#tab4" role="tab"
-                                                    aria-controls="tab4" aria-selected="false"><img
-                                                        src="assets/img/product/mini-product/product4.png" alt=""></a>
-                                            </li>
-
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-12">
@@ -406,18 +316,6 @@
                                                 
                                             </select>
                                         </div>
-                                        <div class="variants_color">
-                                            <h2>color</h2>
-                                            <select class="select_option">
-                                                <option selected value="1">purple</option>
-                                                <option value="1">violet</option>
-                                                <option value="1">black</option>
-                                                <option value="1">pink</option>
-                                                <option value="1">orange</option>
-                                            </select>
-                                        </div>
-
-
                                         <!-- Thêm vào giỏ hàng -->
 
 

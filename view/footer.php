@@ -185,31 +185,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal_tab_button">
-                                        <ul class="nav product_navactive owl-carousel" role="tablist">
-                                            <li>
-                                                <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab"
-                                                    aria-controls="tab1" aria-selected="false"><img
-                                                        src="assets/img/product/mini-product/product1.png" alt=""></a>
-                                            </li>
-                                            <li>
-                                                <a class="nav-link" data-toggle="tab" href="#tab2" role="tab"
-                                                    aria-controls="tab2" aria-selected="false"><img
-                                                        src="assets/img/product/mini-product/product2.png" alt=""></a>
-                                            </li>
-                                            <li>
-                                                <a class="nav-link button_three" data-toggle="tab" href="#tab3"
-                                                    role="tab" aria-controls="tab3" aria-selected="false"><img
-                                                        src="assets/img/product/mini-product/product3.png" alt=""></a>
-                                            </li>
-                                            <li>
-                                                <a class="nav-link" data-toggle="tab" href="#tab4" role="tab"
-                                                    aria-controls="tab4" aria-selected="false"><img
-                                                        src="assets/img/product/mini-product/product4.png" alt=""></a>
-                                            </li>
-
-                                        </ul>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-12">
@@ -238,17 +214,7 @@
                                                 <option value="1">m</option>
                                                 <option value="1">l</option>
                                                 <option value="1">xl</option>
-                                                <option value="1">xxl</option>
-                                            </select>
-                                        </div>
-                                        <div class="variants_color">
-                                            <h2>color</h2>
-                                            <select class="select_option">
-                                                <option selected value="1">purple</option>
-                                                <option value="1">violet</option>
-                                                <option value="1">black</option>
-                                                <option value="1">pink</option>
-                                                <option value="1">orange</option>
+                                                
                                             </select>
                                         </div>
                                         <div class="modal_add_to_cart">
@@ -309,11 +275,27 @@
                 
                 $.ajax({
                     type: 'POST',
-                    url: './view/loc_sp.php',
+                    url: './view/loc_sp_gia.php',
                     data: { price: selectedPrice },
                     success: function (response) {
                         // console.log(JSON.parse(response));
-                        $('#productList').html(response);
+                        $('#product_page_gallery').html(response);
+                        
+                    }
+                });
+            });
+        });
+        $(document).ready(function () {
+            $('#sizeFilter').change(function () {
+                var selectedSize = $(this).val();
+                
+                $.ajax({
+                    type: 'POST',
+                    url: './view/loc_sp_size.php',
+                    data: { size: selectedSize },
+                    success: function (response) {
+                        // console.log(JSON.parse(response));
+                        $('#product_page_gallery').html(response);
                         
                     }
                 });

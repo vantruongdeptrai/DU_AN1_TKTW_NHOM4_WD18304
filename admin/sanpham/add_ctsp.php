@@ -15,7 +15,7 @@
                             <form action="index.php?act=them_ctsp" class="user" method="post"
                                 enctype="multipart/form-data">
                                 <div class="input-group">
-                                <select class="form-control bg-light border-0 small" name="id_sp">
+                                    <select class="form-control bg-light border-0 small" name="id_sp">
                                         <?php
                                         foreach ($list_sp as $sp) {
                                             extract($sp);
@@ -39,7 +39,11 @@
 
                                 </div>
                                 <br>
-                                
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        placeholder="Số lượng" name="so_luong">
+                                </div>
+                                <br>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" name="them_sp"
                                     value="Thêm mới">
                             </form>
@@ -47,8 +51,8 @@
                     </div>
                 </div>
                 <div class="card-body p-0">
-                
-            </div>
+
+                </div>
             </div>
         </div>
 

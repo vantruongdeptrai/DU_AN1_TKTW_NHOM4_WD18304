@@ -92,8 +92,8 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         // thêm sản phẩm chi tiết
 
         case 'them_ctsp':
-            if (isset($_POST['id_sp']) && $_POST['id_sp'] && isset($_POST['id_size']) && $_POST['id_size']) {
-                insert_ctsp($_POST['id_sp'], $_POST['id_size']);
+            if (isset($_POST['id_sp']) && $_POST['id_sp'] && isset($_POST['id_size']) && $_POST['id_size'] && isset($_POST['so_luong']) && $_POST['so_luong']) {
+                insert_ctsp($_POST['id_sp'], $_POST['id_size'],$_POST['so_luong']);
             }
             $list_sp = loadall_sanpham("", 0);
             $list_size = loadall_size();
@@ -188,12 +188,15 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             include('./sanpham/list_sp.php');
             break;
             
+            // update sản phẩm chi tiết
+
         case 'update_spct':
             if(isset($_POST["cap_nhat_size"])&&$_POST["cap_nhat_size"]){
                 $id_sp = $_POST["id_sp"];
                 $id_size = $_POST["id_size"];
                 $id_ctsp = $_POST["id_ctsp"];
-                update_ctsp($id_ctsp,$id_sp,$id_size);
+                $so_luong = $_POST["so_luong"];
+                update_ctsp($id_ctsp,$id_sp,$id_size,$so_luong);
             }
             //$one_ctsp = load_one_ctsp($id_ctsp);
             $list_ctsp = load_ctsp();

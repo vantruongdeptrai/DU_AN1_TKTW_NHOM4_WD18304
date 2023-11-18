@@ -43,6 +43,11 @@ if (is_array($list_size)) {
                                     </select>
                                 </div>
                                 <br>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        placeholder="Số lượng" name="so_luong">
+                                </div>
+                                <br>
                                 <input type="hidden" name="id_ctsp" value="<?php echo $id_ctsp ?>">
                                 <input type="submit" class="btn btn-primary btn-user btn-block" name="cap_nhat_size"
                                     value="Cập nhật">
