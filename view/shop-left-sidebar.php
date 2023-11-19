@@ -130,9 +130,9 @@
                                                                 </div>
                                                             </div>
                                                             <figcaption class="product_content text-center">
-                                                                <h4><a href="single-product.html">' . $ten_sp . '</a></h4>
+                                                                <h4><a href="single-product.html">Tên sản phẩm : ' . $ten_sp . '</a></h4>
                                                                 <div class="price_box">
-                                                                    <span class="current_price">' . $gia . '</span>
+                                                                    <span class="current_price"> Giá sản phẩm : ' . $gia . '</span>
                                                                 </div>
                                                             </figcaption>
                                                         </figure>

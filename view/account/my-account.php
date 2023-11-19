@@ -94,20 +94,18 @@
                     <div class="tab-pane fade" id="account-address" role="tabpanel"
                         aria-labelledby="account-address-tab">
                         <div class="myaccount-address">
-                            <p>The following addresses will be used on the checkout page by default.</p>
                             <div class="row">
+                            <?php
+                            if (isset($_SESSION["user"]) && is_array($_SESSION["user"])) {
+                                extract($_SESSION["user"]);
+                                ?>
                                 <div class="col">
-                                    <h4 class="small-title">BILLING ADDRESS</h4>
+                                    <h4 class="small-title">Địa chỉ</h4>
                                     <address>
-                                        1234 Heaven Stress, Beverly Hill OldYork UnitedState of Lorem
+                                        <?php echo $dia_chi?>
                                     </address>
                                 </div>
-                                <div class="col">
-                                    <h4 class="small-title">SHIPPING ADDRESS</h4>
-                                    <address>
-                                        1234 Heaven Stress, Beverly Hill OldYork UnitedState of Lorem
-                                    </address>
-                                </div>
+                            <?php }else{?> Vui lòng đăng nhập !!!<?php }?>
                             </div>
                         </div>
                     </div>
@@ -117,36 +115,43 @@
                             <?php
                             if (isset($_SESSION["user"]) && is_array($_SESSION["user"])) {
                                 extract($_SESSION["user"]);
+                                ?>
+                                <form action="index.php?act=capnhat_taikhoan" class="myaccount-form" method="post">
+                                    <div class="myaccount-form-inner">
+                                        <div class="single-input single-input-half">
+                                            <label>Tài khoản (user)</label>
+                                            <input type="text" name="user" value="<?php echo $user ?>">
+                                        </div>
+                                        <div class="single-input single-input-half">
+                                            <label>Số điện thoại</label>
+                                            <input type="text" name="sdt" value="<?php echo $sdt ?>">
+                                        </div>
+                                        <div class="single-input">
+                                            <label>Địa chỉ</label>
+                                            <input type="text" name="diachi" value="<?php echo $dia_chi ?>">
+                                        </div>
+                                        <div class="single-input">
+                                            <label>Email</label>
+                                            <input type="email" name="email" value="<?php echo $email ?>">
+                                        </div>
+                                        <input type="hidden" name="id_user" value="<?php echo $id_user ?>">
+                                        <input type="hidden" name="password" value="<?php echo $password ?>">
+                                        <div class="single-input">
+
+                                            <input style="align-items: center; color:white;" class=" btn custom-btn md-size"
+                                                type="submit" value="Lưu thay đổi" name="capnhat_tk">
+
+                                        </div>
+                                    </div>
+                                </form>
+                                <?php
+                            } else { ?>
+                                Vui lòng đăng nhập !!!
+                                <?php
                             }
                             ?>
-                            <form action="index.php?act=capnhat_taikhoan" class="myaccount-form" method="post">
-                                <div class="myaccount-form-inner">
-                                    <div class="single-input single-input-half">
-                                        <label>Tài khoản (user)</label>
-                                        <input type="text" name="user" value="<?php echo $user ?>">
-                                    </div>
-                                    <div class="single-input single-input-half">
-                                        <label>Số điện thoại</label>
-                                        <input type="text" name="sdt" value="<?php echo $sdt ?>">
-                                    </div>
-                                    <div class="single-input">
-                                        <label>Địa chỉ</label>
-                                        <input type="text" name="diachi" value="<?php echo $dia_chi ?>">
-                                    </div>
-                                    <div class="single-input">
-                                        <label>Email</label>
-                                        <input type="email" name="email" value="<?php echo $email ?>">
-                                    </div>
-                                    <input type="hidden" name="id_user" value="<?php echo $id_user ?>">
-                                    <input type="hidden" name="password" value="<?php echo $password ?>">
-                                    <div class="single-input">
 
-                                        <input style="align-items: center; color:white;" class=" btn custom-btn md-size"
-                                            type="submit" value="Lưu thay đổi" name="capnhat_tk">
 
-                                    </div>
-                                </div>
-                            </form>
                             <?php
                             if (isset($thongbao) && $thongbao != "") {
                                 echo $thongbao;
