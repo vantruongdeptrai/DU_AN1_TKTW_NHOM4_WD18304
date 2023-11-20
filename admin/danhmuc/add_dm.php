@@ -35,5 +35,48 @@
         </div>
 
     </div>
-    
+    <script language="javascript">
+            $('form').submit(function () {
+                //alert("clicked");
+
+                // Xóa trắng thẻ div show lỗi
+                //$('#showerror').html('');
+
+                var ten_dm = $('#ten_dm').val();
+                //var update_ten_dm = $('#update_ten_dm').val();
+                //Kiểm tra dữ liệu có null hay không
+
+                if ($.trim(ten_dm) == '') {
+                    alert('Bạn chưa nhập tên danh mục');
+                    return false;
+                }
+                
+                $.ajax({
+                    type: 'POST',
+                    url: 'danhmuc/validate_add_dm.php',
+                    dataType: 'text',
+                    data: {
+                        ten_dm: ten_dm                       
+                    },
+                    success: function (result) {
+                        $("#showerror").html(result);
+                    }
+                });
+                
+                
+                // $.ajax({
+                //     type: 'POST',
+                //     url: './danhmuc/validate_update_dm.php',
+                //     dataType: 'text',
+                //     data: {
+                //         update_ten_dm: update_ten_dm                       
+                //     },
+                //     success: function (result) {
+                //         $("#showerror").html(result);
+                //     }
+                // });
+                return false;
+            });
+        
+    </script>
 </body>

@@ -56,39 +56,7 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
-    <script language="javascript">
-            $('form').submit(function () {
-                //alert("clicked");
-
-                // Xóa trắng thẻ div show lỗi
-                //$('#showerror').html('');
-
-                var ten_dm = $('#ten_dm').val();
-                
-                //Kiểm tra dữ liệu có null hay không
-
-                if ($.trim(ten_dm) == '') {
-                    alert('Bạn chưa nhập tên danh mục');
-                    return false;
-                }
-                
-                //Xử lí Ajax 
-
-                $.ajax({
-                    type: 'POST',
-                    url: './danhmuc/validate_dm.php',
-                    dataType: 'text',
-                    data: {
-                        ten_dm: ten_dm,
-                    },
-                    success: function (result) {
-                        $("#showerror").html(result);
-                    }
-                });
-                return false;
-            });
-        
-    </script>
+    
 </body>
 
 </html>

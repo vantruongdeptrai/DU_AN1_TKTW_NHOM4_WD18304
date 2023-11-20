@@ -20,14 +20,16 @@
                             <form class="user" action="index.php?act=update_dm" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                           name="ten_dm" placeholder="Tên danh mục mới" required value="<?php echo $ten_dm;?>">
+                                        <input type="text" class="form-control form-control-user" id="update_ten_dm"
+                                           name="ten_dm" placeholder="Tên danh mục mới" value="<?php echo $ten_dm;?>">
                                     </div>
                                 </div>
-                                <input type="hidden" name="id_dm" value="<?php if(isset($id_dm) && $id_dm >0) echo $id_dm;?>">
+                                <input type="hidden" id = "id_dm" name="id_dm" value="<?php if(isset($id_dm) && $id_dm >0) echo $id_dm;?>">
                                 <input type="submit" name="update_dm" class="btn btn-primary btn-user btn-block "
                                     value="Cập nhật">
                             </form>
+                            <br>
+                            <div style="color:red;" id="showerror"></div>
                         </div>
                     </div>
                 </div>
@@ -36,14 +38,32 @@
 
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script language="javascript">
+            $('form').submit(function () {
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
+                var update_ten_dm = $('#update_ten_dm').val();
+                //Kiểm tra dữ liệu có null hay không
+                var id_dm = $('#id_dm').val();
+                if ($.trim(update_ten_dm) == '') {
+                    alert('Bạn chưa nhập tên danh mục');
+                    return false;
+                }
+                
+                
+                $.ajax({
+                    type: 'POST',
+                    url: './danhmuc/validate_update_dm.php',
+                    dataType: 'text',
+                    data: {
+                        update_ten_dm: update_ten_dm,
+                        id_dm : id_dm                       
+                    },
+                    success: function (result) {
+                        $("#showerror").html(result);
+                    }
+                });
+                return false;
+            });
+        
+    </script>
 </body>
