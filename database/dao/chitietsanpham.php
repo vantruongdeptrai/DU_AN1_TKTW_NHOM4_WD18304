@@ -13,20 +13,7 @@ function load_ctsp(){
     //var_dump($list_ctsp);
     return $list_ctsp;
 }
-// function loadall_chitietsp($id)
-// {
-//     $sql = "SELECT * FROM san_pham left join size on size.id_sp = san_pham.id_sp WHERE id_size = ".$id;
-//     $list_chitietsp = pdo_query_one($sql);
-//    // var_dump($list_chitietsp);
-//     return $list_chitietsp;
-// }
-// function loadall_chitietspsz($id)
-// {
-//     $sql = "SELECT s.ten_size, ct.id_chi_tiet_sp, ct.id_sp FROM `chi_tiet_sp` AS ct, size AS s WHERE ct.id_size = s.id_size AND ct.id_sp = ".$id;
-//     $list_chitietsp = pdo_query($sql);
-//    // var_dump($list_chitietsp);
-//     return $list_chitietsp;
-// }
+
 function update_ctsp($id_ctsp,$id_sp,$id_size,$so_luong){
     $sql = "UPDATE chi_tiet_sp SET id_sp = '$id_sp' , id_size = '$id_size' , so_luong = '$so_luong' WHERE id_ctsp = '$id_ctsp'";
     pdo_execute($sql);

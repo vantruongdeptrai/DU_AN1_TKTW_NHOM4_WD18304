@@ -12,11 +12,11 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Thêm danh mục mới</h1>
                             </div>
-                            <form action="index.php?act=add_dm" class="user" method="post">
+                            <form action="index.php?act=add_dm" class="user" id="form" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="Tên danh mục" name="ten_dm" required>
+                                        <input type="text" class="form-control form-control-user" 
+                                            placeholder="Tên danh mục" name="ten_dm" id ="ten_dm">
                                     </div>
                                 </div>
                                 
@@ -26,7 +26,8 @@
                                 <input type="reset" class="btn btn-primary btn-user btn-block"
                                     value="Nhập lại">
                             </form>
-
+                            <br>
+                            <div style="color:red;" id="showerror"></div>
                         </div>
                     </div>
                 </div>
@@ -34,15 +35,5 @@
         </div>
 
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
+    
 </body>
