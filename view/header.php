@@ -87,7 +87,6 @@
                                             </a>
                                             <ul class="dropdown_account_link">
                                                 <li><a href="index.php?act=my-account">Tài khoản của tôi</a></li>
-                                                <li><a href="index.php?act=login-register">Đăng nhập</a></li>
                                                 <li><a href="index.php?act=dang_xuat">Đăng xuất</a></li>
                                                 <li><a href="index.php?act=doi_mk">Đổi mật khẩu</a></li>
                                                 <li><a href="index.php?act=contact">Liên hệ</a></li>

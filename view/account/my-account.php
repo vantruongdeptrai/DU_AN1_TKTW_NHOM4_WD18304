@@ -95,17 +95,18 @@
                         aria-labelledby="account-address-tab">
                         <div class="myaccount-address">
                             <div class="row">
-                            <?php
-                            if (isset($_SESSION["user"]) && is_array($_SESSION["user"])) {
-                                extract($_SESSION["user"]);
-                                ?>
-                                <div class="col">
-                                    <h4 class="small-title">Địa chỉ</h4>
-                                    <address>
-                                        <?php echo $dia_chi?>
-                                    </address>
-                                </div>
-                            <?php }else{?> Vui lòng đăng nhập !!!<?php }?>
+                                <?php
+                                if (isset($_SESSION["user"]) && is_array($_SESSION["user"])) {
+                                    extract($_SESSION["user"]);
+                                    ?>
+                                    <div class="col">
+                                        <h4 class="small-title">Địa chỉ</h4>
+                                        <address>
+                                            <?php echo $dia_chi ?>
+                                        </address>
+                                    </div>
+                                <?php } else { ?> Vui lòng đăng nhập !!!
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -120,21 +121,21 @@
                                     <div class="myaccount-form-inner">
                                         <div class="single-input single-input-half">
                                             <label>Tài khoản (user)</label>
-                                            <input type="text" name="user" value="<?php echo $user ?>">
+                                            <input type="text" name="user" value="<?php echo $user ?>" disabled>
                                         </div>
                                         <div class="single-input single-input-half">
                                             <label>Số điện thoại</label>
-                                            <input type="text" name="sdt" value="<?php echo $sdt ?>">
+                                            <input type="text" name="sdt" value="<?php echo $sdt ?>" id="sdt">
                                         </div>
                                         <div class="single-input">
                                             <label>Địa chỉ</label>
-                                            <input type="text" name="diachi" value="<?php echo $dia_chi ?>">
+                                            <input type="text" name="diachi" value="<?php echo $dia_chi ?>" id="diachi">
                                         </div>
                                         <div class="single-input">
                                             <label>Email</label>
-                                            <input type="email" name="email" value="<?php echo $email ?>">
+                                            <input type="text" name="email" value="<?php echo $email ?>" id="email">
                                         </div>
-                                        <input type="hidden" name="id_user" value="<?php echo $id_user ?>">
+                                        <input type="hidden" name="id_user" value="<?php echo $id_user ?>" id="id_user">
                                         <input type="hidden" name="password" value="<?php echo $password ?>">
                                         <div class="single-input">
 
@@ -142,6 +143,7 @@
                                                 type="submit" value="Lưu thay đổi" name="capnhat_tk">
 
                                         </div>
+                                        <div style="color:red;" id="showerror"></div>
                                     </div>
                                 </form>
                                 <?php
@@ -164,3 +166,46 @@
         </div>
     </div>
 </div>
+<script language="javascript">
+    $('form').submit(function () {
+
+        var diachi = $('#diachi').val();
+        var id_user = $('#id_user').val();
+        var email = $('#email').val();
+        var sdt = $('#sdt').val();
+        //Kiểm tra dữ liệu có null hay không
+        if($.trim(diachi) == ''&&$.trim(sdt) == ''&&$.trim(email) == ''){
+            alert('Vui lòng nhập thông tin!');
+            return false;
+        }
+        if ($.trim(diachi) == '') {
+            alert('Bạn chưa nhập địa chỉ');
+            return false;
+        }
+        
+        if ($.trim(email) == '') {
+            alert('Bạn chưa nhập email');
+            return false;
+        }
+        if ($.trim(sdt) == '') {
+            alert('Bạn chưa nhập số điẹn thoại');
+            return false;
+        }
+        $.ajax({
+            type: 'POST',
+            url: './view/account/validate_my-account.php',
+            dataType: 'text',
+            data: {
+                diachi: diachi,
+                email: email,
+                sdt : sdt,
+                id_user :id_user
+
+            },
+            success: function (result) {
+                $("#showerror").html(result);
+            }
+        });
+        return false;
+    });
+</script>

@@ -67,6 +67,7 @@
                 var ten_sp = $('#ten_sp').val();
                 var gia = $('#gia').val();
                 var hinh_anh = $('#hinh_anh').val();
+                
                 if()
                 var mota = $('#mota').val();
 
