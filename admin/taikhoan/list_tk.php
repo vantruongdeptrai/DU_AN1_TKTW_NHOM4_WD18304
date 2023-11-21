@@ -1,79 +1,49 @@
-
 <div class="container-fluid">
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Quản lí danh mục sản phẩm</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Quản lí tài khoản</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Tên danh mục</th>
-                            <th>Số lượng sản phẩm trong danh mục</th>
+                            <th>ID người dùng</th>
+                            <th>Tên người dùng</th>
+                            <th>Password</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
+                            <!-- <th>Số lượng sản phẩm trong danh mục</th> -->
                             <th>Thao tác</th>
                         </tr>
                     </thead>
-                    <tfoot>
+                    <?php
+                    foreach ($list_tk as $tk) {
+                        extract($tk);
+                        
+                                $sua_tk = "index.php?act=sua_tk&id=" . $id_user;
+                                $xoa_tk = "index.php?act=xoa_tk&id=" . $id_user;
+                                echo '<tbody>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
+                            <td>' . $id_user . '</td>
+                            <td>' . $user . '</td>
+                            <td>' . $password . '</td>
+                            <td>' . $email . '</td>
+                            <td>' . $sdt . '</td>
+                            <td>' . $dia_chi . '</td>
+                            <td style="display : flex ; justify-content:space-evenly;">
+                            <a href="' . $xoa_tk . '" class="btn btn-danger btn-circle "><i class="fas fa-trash"></i></a>
+                            <a href="' . $sua_tk . '" class="btn btn-danger btn-circle "><i class="fas fa-fw fa-wrench"></i></a>
+                            </td>
                         </tr>
-                    </tfoot>
-                    <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
+                    </tbody>';
+                            }
+                        //}
+                    //} ?>
 
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-
-                        </tr>
-
-                    </tbody>
                 </table>
             </div>
         </div>

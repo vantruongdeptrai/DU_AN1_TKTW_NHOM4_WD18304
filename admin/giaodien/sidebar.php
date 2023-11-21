@@ -75,7 +75,7 @@
 
 <!-- Nav Item - Comment -->
 <li class="nav-item">
-    <a class="nav-link" href="charts.html">
+    <a class="nav-link" href="index.php?act=list_bl">
         <span>Bình luận</span></a>
 </li>
 

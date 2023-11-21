@@ -29,36 +29,23 @@
                                 <div class="form-group row">
                                     <!-- Tên -->
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="Tên sản phẩm" name="ten_sp">
+                                        <input type="text" class="form-control form-control-user" 
+                                            placeholder="Tên sản phẩm" name="ten_sp" id="ten_sp">
                                     </div>
                                     <!-- Giá -->
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                        <input type="text" class="form-control form-control-user" id="gia"
                                             placeholder="Giá" name="gia">
                                     </div>
                                 </div>
                                 <!-- Ảnh  -->
-                                <input type="file" class="form-group" id="exampleInputEmail" name="hinh_anh">
+                                <input type="file" class="form-group" id="hinh_anh" name="hinh_anh">
                                 <br>
-                                <label>Size</label>
-                                <!-- <div class="input-group">
-                                    <select class="form-control bg-light border-0 small" name="id_size"> -->
-                                        <?php
-                                        // foreach ($list_size as $size) {
-                                        //     extract($size);
-                                        //     echo "<option class='input-group-append' value=$id_size>$ten_size</option>";
-                                        // }
-                                        ?>
 
-                                    <!-- </select>
-
-                                </div> -->
-                                <br>
                                 <!-- Mô tả -->
                                 <div class="form-group">
 
-                                    <input type="text" class="form-control form-control-user" id="exampleInputPassword"
+                                    <input type="text" class="form-control form-control-user" id="mota"
                                         placeholder="Mô tả sản phẩm" name="mota">
                                 </div>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" name="them_sp"
@@ -74,15 +61,48 @@
         </div>
 
     </div>
+    <script language="javascript">
+            $('form').submit(function () {
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                var ten_sp = $('#ten_sp').val();
+                var gia = $('#gia').val();
+                var hinh_anh = $('#hinh_anh').val();
+                if()
+                var mota = $('#mota').val();
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
+                //Kiểm tra dữ liệu có null hay không
+                
+                if ($.trim(ten_sp) == '') {
+                    alert('Bạn chưa nhập tên sản phẩm');
+                    return false;
+                }
+                if ($.trim(gia) == '') {
+                    alert('Bạn chưa nhập giá');
+                    return false;
+                }
+                if ($.trim(hinh_anh) == '') {
+                    alert('Bạn chưa nhập hình ảnh');
+                    return false;
+                }
+                if ($.trim(mota) == '') {
+                    alert('Bạn chưa nhập mô tả');
+                    return false;
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: './sanpham/validate_add_sp.php',
+                    dataType: 'text',
+                    data: {
+                        ten_sp : ten_sp ,
+                        gia : gia ,
+                        mota : mota                       
+                    },
+                    success: function (result) {
+                        $("#showerror").html(result);
+                    }
+                });
+                return false;
+            });
+        
+    </script>
 </body>

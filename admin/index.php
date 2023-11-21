@@ -5,6 +5,8 @@ include "../database/dao/danhmuc.php";
 include "../database/dao/sanpham.php";
 include "../database/dao/size.php";
 include "../database/dao/chitietsanpham.php";
+include "../database/dao/nguoidung.php";
+include "../database/dao/binhluan.php";
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {
@@ -205,7 +207,17 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             break;
         // TÀI KHOẢN //
         case 'list_tk':
+            $list_tk = loadall_taikhoan();
             include('./taikhoan/list_tk.php');
+            break;
+
+        //BÌNH LUẬN
+
+        case 'list_bl':
+            $list_sp = loadall_sanpham();
+            $list_tk = loadall_taikhoan();
+            $loadbl = loadbl_ngdung_sanpham(0);
+            include('./binhluan/list_bl.php');
             break;
         default:
             include "giaodien/main.php";
