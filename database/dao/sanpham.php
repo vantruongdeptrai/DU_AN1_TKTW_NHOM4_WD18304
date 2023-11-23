@@ -26,7 +26,7 @@ function loadone_sanpham($id_sp)
 }
 function loadall_sanpham_home()
 {
-    $sql = "SELECT * FROM san_pham WHERE 1 ORDER BY id_sp DESC";
+    $sql = "SELECT * FROM san_pham WHERE 1 ORDER BY id_sp DESC LIMIT 0,4";
     $list_sp = pdo_query($sql);
     return $list_sp;
 }

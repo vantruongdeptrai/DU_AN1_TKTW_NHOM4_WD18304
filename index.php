@@ -9,8 +9,11 @@ include "database/dao/nguoidung.php";
 include "database/dao/chitietsanpham.php";
 include "global.php";
 $list_sp_home = loadall_sanpham_home();
-$list_dm_home = loadall_danhmuc();
+$list_dm_home = loadall_danhmuc_home();
 $load_ctsp_home = load_ctsp();
+if(!isset($_SESSION["mycart"])){
+    $_SESSION["mycart"]=[];
+}
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {
@@ -18,19 +21,19 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         //         SẢN PHẨM         //
 
         case 'shop-left-sidebar':
-            
+            $load_ctsp_home = load_ctsp();
             include('view/shop-left-sidebar.php');
             break;
         case 'xem_nhanh':
 
             include('view/xem_nhanh.php');
         case 'single-product':
-            if(isset($_GET['id']) && ($_GET['id'])){
+            if (isset($_GET['id']) && ($_GET['id'])) {
                 $id = $_GET['id'];
                 $load_one_sp = loadone_sanpham($id);
                 //var_dump($load_one_sp);
                 extract($load_one_sp);
-            }else{
+            } else {
                 include("view/home.php");
             }
             include('view/single-product.php');
@@ -80,6 +83,48 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             echo "<meta http-equiv='refresh' content='0;URL=index.php'/>";
             include('view/home.php');
             break;
+        case 'quen_mk':
+            if (isset($_POST["gui_mk"]) && $_POST["gui_mk"]) {
+                
+                $email = $_POST["email"];
+                $check_email = check_email($email);
+                //var_dump($check_email);
+                if (is_array($check_email)) {
+                    $thongbao = "Mật khẩu của bạn là : " . $check_email["password"];
+                } else {
+                    $thongbao = "Email này không tồn tại";
+                }
+            }
+            include "view/account/quen_mk.php";
+            break;
+
+        case 'capnhat_taikhoan':
+            if (isset($_POST["capnhat_tk"]) && $_POST["capnhat_tk"]) {
+                $id = $_POST["id_user"];
+                $user = $_POST["user"];
+                $password = $_POST["password"];
+                $sdt = $_POST["sdt"];
+                $dia_chi = $_POST["diachi"];
+                $email = $_POST["email"];
+                update_taikhoan($id, $user, $email, $dia_chi, $sdt);
+                $_SESSION["user"] = check_user($user, $password);
+                $thongbao = "Cập nhật tài khoản thành công";
+            }
+            include "view/account/my-account.php";
+            break;
+
+        case 'doi_mk':
+            if (isset($_POST['doi_mk']) && $_POST['doi_mk']) {
+                $id = $_POST['id_user'];
+                $user = $_POST['user'];
+                $password = $_POST['password'];
+                $newpass = $_POST['newpassword'];
+                update_mk($id, $user, $newpass);
+                $_SESSION["user"] = check_user($user, $password);
+                $thongbao = "Đổi mật khẩu thành công . Vui lòng đăng nhập lại !";
+            }
+            include "view/account/doi_mk.php";
+            break;
         case 'dang_xuat':
             session_unset();
             session_destroy();
@@ -88,48 +133,36 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             ob_end_clean();
             echo "<meta http-equiv='refresh' content='0;URL=index.php'/>";
             exit();
-            //break;
-        case 'quen_mk':
-            if (isset($_POST["gui_mk"]) && $_POST["gui_mk"]) {
-                $email = $_POST["email"];
-                $check_email = check_email($email);
+        //break;
 
-                if (is_array($check_email)) {
-                    $thongbao = "Mật khẩu của bạn là : " . $check_email["password"];
-                } else {
-                    $thongbao = "Email này không tồn tại";
-                }
+        // GIỎ HÀNG 
 
+        case 'add_to_cart':
+            if(isset($_POST["add_to_cart"]) && $_POST["add_to_cart"]){
+                $id_sp = $_POST["id_sp"];
+                $ten_sp = $_POST["ten_sp"];
+                $hinh = $_POST["hinh"];
+                $gia = $_POST["gia"];
+                $ten_size = $_POST["ten_size"];
+                $soluong = 1 ;
+                $thanhtien= $soluong * $gia;
+                $spadd = [$id_sp,$ten_sp,$hinh,$gia,$soluong,$thanhtien,$ten_size];
+                array_push($_SESSION["mycart"],$spadd);
             }
-            include "view/account/quen_mk.php";
+            include('view/cart/cart.php');
             break;
-
-        case 'capnhat_taikhoan':
-            if(isset($_POST["capnhat_tk"]) && $_POST["capnhat_tk"]){
-                $id = $_POST["id_user"];
-                $user = $_POST["user"];
-                $password = $_POST["password"];
-                $sdt = $_POST["sdt"];
-                $dia_chi = $_POST["diachi"];
-                $email = $_POST["email"];
-                update_taikhoan($id,$user,$email, $dia_chi, $sdt);
-                $_SESSION["user"] = check_user($user,$password);
-                $thongbao = "Cập nhật tài khoản thành công";
+        case 'xoa_sp_gh':
+            if(isset($_GET["id_cart"])){
+                $id_cart = $_GET["id_cart"];
+                array_splice($_SESSION["mycart"],$id_cart,1);
+            }else{
+                $_SESSION["mycart"] = '';
             }
-            include "view/account/my-account.php";
+            include('view/cart/cart.php');
             break;
-        
-        case 'doi_mk':
-            if (isset($_POST['doi_mk']) && $_POST['doi_mk']) {
-                $id = $_POST['id_user'];
-                $user = $_POST['user'];
-                $password = $_POST['password'];
-                $newpass = $_POST['newpassword'];
-                update_mk($id,$user,$newpass);
-                $_SESSION["user"] = check_user($user,$password);
-                $thongbao = "Đổi mật khẩu thành công . Vui lòng đăng nhập lại !";
-            }
-            include "view/account/doi_mk.php";
+        case 'bill':
+            
+            include('view/cart/bill.php');
             break;
         case 'contact':
             include('view/contact.php');

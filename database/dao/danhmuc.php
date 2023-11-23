@@ -12,6 +12,13 @@ function loadall_danhmuc()
     //var_dump($list_dm);
     return $list_dm;
 }
+function loadall_danhmuc_home()
+{
+    $sql = "SELECT * FROM danh_muc LIMIT 0,3";
+    $list_dm = pdo_query($sql);
+    //var_dump($list_dm);
+    return $list_dm;
+}
 function countall_sanpham_danhmuc()
 {
     $sql = "SELECT danh_muc.id_dm as 'iddm', COUNT(*) as 'soluong' FROM san_pham JOIN danh_muc WHERE danh_muc.id_dm = san_pham.id_dm GROUP BY san_pham.id_dm;";

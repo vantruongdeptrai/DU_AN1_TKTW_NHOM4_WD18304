@@ -2,19 +2,36 @@
 include("../database/pdo.php");
 include("../global.php");
 $selectedPrice = $_POST['price'];
-$sql = "SELECT * FROM san_pham WHERE gia ";
+//$sql = "SELECT * FROM san_pham WHERE gia ";
+$sql = "SELECT chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+    FROM san_pham
+    LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
+    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size;
+    WHERE san_pham.gia";
 switch ($selectedPrice) {
     case '0-10000':
-        $sql = "SELECT * FROM san_pham WHERE gia > 0 AND gia <= 10000";
+        $sql = "SELECT chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+        FROM san_pham
+        LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
+        LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size WHERE san_pham.gia > 0 AND san_pham.gia <= 10000";
         break;
     case '10000-20000':
-        $sql = "SELECT * FROM san_pham WHERE gia > 10000 AND gia <= 20000";
+        $sql = "SELECT chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+        FROM san_pham
+        LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
+        LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size WHERE san_pham.gia > 10000 AND san_pham.gia <= 20000";
         break;
     case '20000-30000':
-        $sql = "SELECT * FROM san_pham WHERE gia > 20000 AND gia <= 30000";
+        $sql = "SELECT chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+        FROM san_pham
+        LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
+        LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size WHERE san_pham.gia > 20000 AND san_pham.gia <= 30000";
         break;
     default:
-        $sql = "SELECT * FROM san_pham";
+        $sql = "SELECT chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+        FROM san_pham
+        LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
+        LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size";
         break;
 }
 $result = pdo_query($sql);
@@ -44,6 +61,9 @@ if (is_array($result)) {
                 <h4><a href="single-product.html">' . $ten_sp . '</a></h4>
                 <div class="price_box">
                     <span class="current_price">' . $gia . '</span>
+                </div>
+                <div class="price_box">
+                    <span class="current_price">' . $ten_size . '</span>
                 </div>
             </figcaption>
         </figure>

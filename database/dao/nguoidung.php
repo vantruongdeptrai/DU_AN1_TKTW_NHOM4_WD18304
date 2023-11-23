@@ -26,6 +26,7 @@ function check_email($email)
 {
     $sql = "SELECT * FROM nguoi_dung WHERE email='$email'";
     $check_email = pdo_query_one($sql);
+    //var_dump($check_email);
     return $check_email;
 }
 function update_taikhoan($id,$user,$email, $dia_chi, $sdt)

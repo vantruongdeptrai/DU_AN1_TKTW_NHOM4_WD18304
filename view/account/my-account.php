@@ -57,15 +57,15 @@
                     </div>
                     <div class="tab-pane fade" id="account-orders" role="tabpanel" aria-labelledby="account-orders-tab">
                         <div class="myaccount-orders">
-                            <h4 class="small-title">MY ORDERS</h4>
+                            <h4 class="small-title">Đơn hàng của tôi</h4>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover">
                                     <tbody>
                                         <tr>
-                                            <th>ORDER</th>
-                                            <th>DATE</th>
-                                            <th>STATUS</th>
-                                            <th>TOTAL</th>
+                                            <th>MÃ đơn hàng</th>
+                                            <th>Ngày đặt</th>
+                                            <th>Trạng thái</th>
+                                            <th>Tổng số tiền</th>
                                             <th></th>
                                         </tr>
                                         <tr>

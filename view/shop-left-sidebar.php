@@ -27,11 +27,11 @@
                         <div class="widget_filter_list mb-30">
                             <h4>Lọc sản phẩm theo size</h4>
                             <select id="sizeFilter">
-                                    <option>Mặc định</option>
-                                    <option value="XL">XL</option>
-                                    <option value="L">L</option>
-                                    <option value="M">M</option>
-                                    <option value="S">S</option>
+                                <option>Mặc định</option>
+                                <option value="XL">XL</option>
+                                <option value="L">L</option>
+                                <option value="M">M</option>
+                                <option value="S">S</option>
                             </select>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                             <img src="assets/img/others/product-sidaber-banner.png" alt="">
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
@@ -96,29 +96,36 @@
 
 
                     <!--shop gallery start-->
-            
-                    <div class="product_page_gallery" >
+
+                    <div class="product_page_gallery">
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="grid">
+                                <input type="hidden" name="">
                                 <div class="row grid__product" id="product_page_gallery">
                                     <?php
-                                    if (is_array($list_sp_home)) {
-                                        foreach ($list_sp_home as $sp) {
+                                    if (is_array($load_ctsp_home)) {
+                                        foreach ($load_ctsp_home as $sp) {
                                             extract($sp);
                                             $hinh = $img_path . $hinh_anh;
                                             $link_sp = "index.php?act=single-product&id=" . $id_sp;
-                                            echo '<div class="col-lg-4 col-md-4 col-sm-6">
+                                            echo '
+                                            <div class="col-lg-4 col-md-4 col-sm-6">
                                                     <article class="single_product wow fadeInUp" data-wow-delay="0.1s"
                                                         data-wow-duration="1.1s">
+                                                        <form action="index.php?act=add_to_cart" method="post">
+                                                            <input type="hidden" name="id_sp" value="'.$id_sp.'">
+                                                            <input type="hidden" name="ten_sp" value="'.$ten_sp.'">
+                                                            <input type="hidden" name="gia" value="'.$gia.'">
+                                                            <input type="hidden" name="hinh" value="'.$hinh.'">
+                                                            <input type="hidden" name="ten_size" value="'.$ten_size.'">
                                                         <figure>
                                                             <div class="product_thumb">
                                                                 <a href="' . $link_sp . '"><img style ="widht:200px;height:200px;"
                                                                         src="' . $hinh . '" alt=""></a>
                                                                 <div class="action_links">
                                                                     <ul class="d-flex justify-content-center">
-                                                                        <li class="add_to_cart"><a href="index.php?act=cart"
-                                                                                title="Add to cart">
-                                                                                <span class="pe-7s-shopbag"></span></a></li>
+                                                                        <li class="add_to_cart">
+                                                                        <span class="pe-7s-shopbag"><input type="submit" name="add_to_cart" value="Thêm vào giỏ hàng"></span></li>
                                                                         <li class="wishlist"><a href="#"
                                                                                 title="Add to Wishlist"><span
                                                                                     class="pe-7s-like"></span></a></li>
@@ -134,10 +141,15 @@
                                                                 <div class="price_box">
                                                                     <span class="current_price"> Giá sản phẩm : ' . $gia . '</span>
                                                                 </div>
+                                                                <div class="price_box">
+                                                                    <span class="current_price"> Size : ' . $ten_size . '</span>
+                                                                </div>
                                                             </figcaption>
                                                         </figure>
+                                                        </form>
                                                     </article>
-                                                </div>';
+                                                </div>
+                                                ';
                                         }
                                     }
 
@@ -187,7 +199,7 @@
                                                             <span class="current_price">' . $gia . '</span>
                                                         </div>
                                                         <div class="product__desc">
-                                                            <p>'.$mo_ta.'</p>
+                                                            <p>' . $mo_ta . '</p>
                                                         </div>
                                                         <div class="action_links product_list_action">
                                                             <ul class="d-flex">

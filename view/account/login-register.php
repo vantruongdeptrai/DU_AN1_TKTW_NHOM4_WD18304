@@ -65,7 +65,7 @@
                             </div>
                             <div class="col-md-12">
                                 <label>Email</label>
-                                <input type="email" placeholder="Email" name="email" id="email">
+                                <input type="text" placeholder="Email" name="email" id="email">
                             </div>
                             <div class="col-md-6">
                                 <label>Password</label>

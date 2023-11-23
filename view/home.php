@@ -136,22 +136,22 @@
         <div class="tab-content product_container">
 
             <!-- SẢN PHẨM ĐẶC TRƯNG -->
-            
+
             <div class="tab-pane fade show active" id="features" role="tabpanel">
                 <div class="product_gallery">
                     <div class="row">
-                    <?php
-            if (is_array($list_sp_home)) {
-                foreach ($list_sp_home as $sp) {
-                    extract($sp);
-                    $hinh = $img_path . $hinh_anh;
-                    $link_sp = "index.php?act=single-product&id=" . $id_sp;
-                    echo '<div class="col-lg-3 col-md-4 col-sm-6">
+                        <?php
+                        if (is_array($list_sp_home)) {
+                            foreach ($list_sp_home as $sp) {
+                                extract($sp);
+                                $hinh = $img_path . $hinh_anh;
+                                $link_sp = "index.php?act=single-product&id=" . $id_sp;
+                                echo '<div class="col-lg-3 col-md-4 col-sm-6">
                     <article class="single_product">
                         <figure>
                             <div class="product_thumb">
-                                <a href="'.$link_sp.'"><img style="width:3500px; height:350px;"
-                                        src="'.$hinh.'" alt=""></a>
+                                <a href="' . $link_sp . '"><img style="width:3500px; height:350px;"
+                                        src="' . $hinh . '" alt=""></a>
                                 <div class="action_links">
                                     <ul class="d-flex justify-content-center">
                                         <li class="add_to_cart"><a href="index.php?act=cart"
@@ -167,17 +167,17 @@
                                 </div>
                             </div>
                             <figcaption class="product_content text-center">
-                                <h4><a href="index.php?act=single-product">'.$ten_sp.'</a></h4>
+                                <h4><a href="index.php?act=single-product">' . $ten_sp . '</a></h4>
                                 <div class="price_box">
-                                    <span class="current_price">'.$gia.'</span>
+                                    <span class="current_price">' . $gia . '</span>
                                 </div>
                             </figcaption>
                         </figure>
                     </article>
                 </div>';
-                }
-            }
-            ?>
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -187,37 +187,44 @@
             <div class="tab-pane fade" id="seller" role="tabpanel">
                 <div class="product_gallery">
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <article class="single_product">
-                                <figure>
-                                    <div class="product_thumb">
-                                        <a href="index.php?act=single-product"><img
-                                                src="assets/img/product/product5.png" alt=""></a>
-                                        <div class="action_links">
-                                            <ul class="d-flex justify-content-center">
-                                                <li class="add_to_cart"><a href="cart.html" title="Add to cart">
-                                                        <span class="pe-7s-shopbag"></span></a></li>
-                                                <li class="wishlist"><a href="wishlist.html"
-                                                        title="Add to Wishlist"><span class="pe-7s-like"></span></a>
-                                                </li>
-                                                <li class="quick_button"><a href="#" title="Quick View"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_box"> <span
-                                                            class="pe-7s-look"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <figcaption class="product_content text-center">
-                                        <h4><a href="index.php?act=single-product">Atque earum ullam non.</a>
-                                        </h4>
-                                        <div class="price_box">
-                                            <span class="current_price">$35.00</span>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </article>
-                        </div>
-
-
+                        <?php
+                        if (is_array($list_sp_home)) {
+                            foreach ($list_sp_home as $sp) {
+                                extract($sp);
+                                $hinh = $img_path . $hinh_anh;
+                                $link_sp = "index.php?act=single-product&id=" . $id_sp;
+                                echo '<div class="col-lg-3 col-md-4 col-sm-6">
+                    <article class="single_product">
+                        <figure>
+                            <div class="product_thumb">
+                                <a href="' . $link_sp . '"><img style="width:3500px; height:350px;"
+                                        src="' . $hinh . '" alt=""></a>
+                                <div class="action_links">
+                                    <ul class="d-flex justify-content-center">
+                                        <li class="add_to_cart"><a href="index.php?act=cart"
+                                                title="Add to cart">
+                                                <span class="pe-7s-shopbag"></span></a></li>
+                                        <li class="wishlist"><a href="index.php?act=wishlist"
+                                                title="Add to Wishlist"><span class="pe-7s-like"></span></a>
+                                        </li>
+                                        <li class="quick_button"><a href="#" title="Quick View"
+                                                data-bs-toggle="modal" data-bs-target="#modal_box"> <span
+                                                    class="pe-7s-look"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <figcaption class="product_content text-center">
+                                <h4><a href="index.php?act=single-product">' . $ten_sp . '</a></h4>
+                                <div class="price_box">
+                                    <span class="current_price">' . $gia . '</span>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>';
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -227,36 +234,44 @@
             <div class="tab-pane fade" id="sales" role="tabpanel">
                 <div class="product_gallery">
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <article class="single_product">
-                                <figure>
-                                    <div class="product_thumb">
-                                        <a href="single-product.html"><img src="assets/img/product/product3.png"
-                                                alt=""></a>
-                                        <div class="action_links">
-                                            <ul class="d-flex justify-content-center">
-                                                <li class="add_to_cart"><a href="cart.html" title="Add to cart">
-                                                        <span class="pe-7s-shopbag"></span></a></li>
-                                                <li class="wishlist"><a href="wishlist.html"
-                                                        title="Add to Wishlist"><span class="pe-7s-like"></span></a>
-                                                </li>
-                                                <li class="quick_button"><a href="#" title="Quick View"
-                                                        data-bs-toggle="modal" data-bs-target="#modal_box"> <span
-                                                            class="pe-7s-look"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <figcaption class="product_content text-center">
-                                        <h4><a href="single-product.html">Praesentium vero nesciu.</a>
-                                        </h4>
-                                        <div class="price_box">
-                                            <span class="current_price">$28.00</span>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </article>
-                        </div>
-
+                        <?php
+                        if (is_array($list_sp_home)) {
+                            foreach ($list_sp_home as $sp) {
+                                extract($sp);
+                                $hinh = $img_path . $hinh_anh;
+                                $link_sp = "index.php?act=single-product&id=" . $id_sp;
+                                echo '<div class="col-lg-3 col-md-4 col-sm-6">
+                    <article class="single_product">
+                        <figure>
+                            <div class="product_thumb">
+                                <a href="' . $link_sp . '"><img style="width:3500px; height:350px;"
+                                        src="' . $hinh . '" alt=""></a>
+                                <div class="action_links">
+                                    <ul class="d-flex justify-content-center">
+                                        <li class="add_to_cart"><a href="index.php?act=cart"
+                                                title="Add to cart">
+                                                <span class="pe-7s-shopbag"></span></a></li>
+                                        <li class="wishlist"><a href="index.php?act=wishlist"
+                                                title="Add to Wishlist"><span class="pe-7s-like"></span></a>
+                                        </li>
+                                        <li class="quick_button"><a href="#" title="Quick View"
+                                                data-bs-toggle="modal" data-bs-target="#modal_box"> <span
+                                                    class="pe-7s-look"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <figcaption class="product_content text-center">
+                                <h4><a href="index.php?act=single-product">' . $ten_sp . '</a></h4>
+                                <div class="price_box">
+                                    <span class="current_price">' . $gia . '</span>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>';
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

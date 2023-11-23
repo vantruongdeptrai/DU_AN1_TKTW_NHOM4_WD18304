@@ -25,21 +25,42 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label>Email</label>
-                                <input type="email" placeholder="Email" name="email">
+                                <input type="text" placeholder="Email" name="email" id="email">
                             </div>
                             <div class="col-12">
-                                <input style="align-items: center; color:black;" class="btn custom-btn md-size"
-                                    type="submit" value="Gửi mật khẩu" name="gui_mk">
+                                <div class="btn custom-btn">
+                                    <input style="align-items: center; border:none; color:white;" class="md-size"
+                                        type="submit" value="Gửi mật khẩu" name="gui_mk">
+                                </div>
                             </div>
-                            <?php
-                            if (isset($thongbao) && $thongbao != "") {
-                                echo "<br>".$thongbao;
-                            }
-                            ?>
                         </div>
+                    </div>
+                    <div style="color:red;" id="showerror">
+                        <?php echo $thongbao ?>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script language="javascript">
+    $("form").submit(function(){
+        var email = $("#email").val();
+        if($.trim(email) == ''){
+            alert("Bạn chưa nhập email");
+        }
+        $.ajax({
+            type: 'POST',
+            url: './view/account/validate_quenmk.php',
+            dataType: 'text',
+            data: {
+                email: email
+            },
+            success: function (result) {
+                $("#showerror").html(result);
+                //alert("ok");
+            }
+        });
+        return false;
+    });
+</script>
