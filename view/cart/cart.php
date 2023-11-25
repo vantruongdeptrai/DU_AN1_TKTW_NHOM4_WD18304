@@ -26,6 +26,7 @@
                                 <tr>
                                     <th></th>
                                     <th class="product_remove">Thao tác</th>
+                                    <th>STT</th>
                                     <th class="product-thumbnail">Ảnh</th>
                                     <th class="cart-product-name">Tên sản phẩm</th>
                                     <th class="product-price">Giá</th>
@@ -38,11 +39,12 @@
                                 <?php
                                 $tongtien =0;
                                 global $img_path;
-                                $i=0;
-                                $xoa_sp_gh = "index.php?act=xoa_sp_gh&id_cart=".$i;
-                                foreach ($_SESSION["mycart"] as $cart) {
-                                    //$spadd = [$id_sp,$ten_sp,$hinh,$gia,$soluong,$thanhtien];
-                                    $anhsp = $img_path . $cart[2];
+                                
+                                
+                                foreach ($loadall_gio_hang as $cart) {
+                                    extract($cart);
+                                    $xoa_sp_gh = "index.php?act=xoa_sp_gh&id_cart=".$id_gio_hang;
+                                    $anhsp = $img_path . $hinh_anh;
                                     $thanhtien = (int)$cart[3] * (int)$cart[4];
                                     $tongtien += $thanhtien;
                                     echo '<tr>
@@ -52,23 +54,24 @@
                                                     <i class="pe-7s-close" title="Remove"></i>
                                                 </a>
                                             </td>
+                                            
                                             <td class="product-thumbnail">
                                                 <a href="#">
-                                                    <img style="width:100px;height:100px" src="' . $cart[2] . '"
+                                                    <img style="width:100px;height:100px" src="' . $anhsp . '"
                                                         alt="Cart Thumbnail">
                                                 </a>
                                             </td>
-                                            <td class="product-name"><a href="#">' . $cart[1] . '</a>
+                                            <td class="product-name"><a href="#">' . $ten_sp . '</a>
                                             </td>
-                                            <td class="product-price"><span class="amount">' . $cart[3] . '</span></td>
-                                            <td>'.$cart[6].'</td>
+                                            <td class="product-price"><span class="amount">' . $gia . '</span></td>
+                                            <td>'.$ten_size.'</td>
                                             <td class="product_pro_button quantity">
-                                                '.$cart[4].'
+                                                
                                             </td>
                                             <td class="product-subtotal"><span class="amount">'.$thanhtien.'</span></td>
                                         </tr>';
-                                    $i+=1;
                                 }
+                            
                                 ?>
                             </tbody>
                         </table>
@@ -76,12 +79,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="coupon-all">
-                                <div class="coupon">
-                                    <input id="coupon_code" class="input-text" name="coupon_code" value=""
-                                        placeholder="Coupon code" type="text">
-                                    <input class="button mt-xxs-30" name="apply_coupon" value="Apply coupon"
-                                        type="submit">
-                                </div>
+                                
                                 <div class="coupon2" style="margin-top:7px;">
                                     <a class="button" href="index.php?act=mua_them" value="Mua thêm hàng" 
                                     style="background-color:#333333;color:white;padding:13px 20px; border-radius:3px;">Mua thêm hàng</a>
@@ -102,7 +100,7 @@
                         </div>
                     </div>
                 </div>';
-                    
+            
                     ?>
                 </form>
             </div>

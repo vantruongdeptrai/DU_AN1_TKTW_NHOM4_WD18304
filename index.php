@@ -7,14 +7,12 @@ include "database/dao/sanpham.php";
 include "database/dao/size.php";
 include "database/dao/nguoidung.php";
 include "database/dao/chitietsanpham.php";
-include "database/dao/donhang.php";
+include "database/dao/giohang.php";
 include "global.php";
 $list_sp_home = loadall_sanpham_home();
 $list_dm_home = loadall_danhmuc_home();
 $load_ctsp_home = load_ctsp();
-if (!isset($_SESSION["mycart"])) {
-    $_SESSION["mycart"] = [];
-}
+
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {
@@ -139,80 +137,34 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
         // GIỎ HÀNG 
         case 'mua_them':
+            $loadall_gio_hang = loadall_gio_hang();
+
             include("view/shop-left-sidebar.php");
             break;
         case 'add_to_cart':
             if (isset($_POST["add_to_cart"]) && $_POST["add_to_cart"]) {
                 $id_ctsp = $_POST["id_ctsp"];
-                $ten_sp = $_POST["ten_sp"];
-                $hinh = $_POST["hinh"];
-                $gia = $_POST["gia"];
-                $ten_size = $_POST["ten_size"];
-                $soluong = 1;
-                $thanhtien = $soluong *(int)$gia;
-                $tmp = 0;
-                $i =0;
                 if(isset($_POST["so_luong"])){
-                    $soluong=$_POST["so_luong"];
+                    $so_luong = $_POST["so_luong"];
                 }else{
-                    $soluong=1;
+                    $so_luong = 1; 
                 }
-                //kiểm tra sản phẩm có tồn tại trong giỏ hàng hay không
-                foreach ($_SESSION["mycart"] as $cart) {
-                    if($cart[1]===$ten_sp &&$cart[6]===$ten_size){
-                        $slnew= $soluong+$cart[4];
-                        $_SESSION["mycart"][$i][4]=$slnew;
-                        $tmp=1;
-                        break;
-                    }
-                    $i++;
-                }
-                if($tmp==0){
-                    $spadd = [$id_ctsp, $ten_sp, $hinh, $gia, $soluong, $thanhtien, $ten_size];
-                    array_push($_SESSION["mycart"], $spadd);
-                }
+                insert_giohang($id_ctsp,$so_luong);
             }
+            $loadall_gio_hang = loadall_gio_hang();
+            include('view/cart/cart.php');
+            break;
+        case 'load_all_giohang':
+            $loadall_gio_hang = loadall_gio_hang();
             include('view/cart/cart.php');
             break;
         case 'xoa_sp_gh':
-            if (isset($_GET["id_cart"])) {
-                $id_cart = $_GET["id_cart"];
-                array_splice($_SESSION["mycart"], $id_cart, 1);
-            } else {
-                $_SESSION["mycart"] = '';
+            if (isset($_GET["id_cart"])&&$_GET["id_cart"]>0) {
+                $id = $_GET["id_cart"];
+                xoa_sp_giohang($id);
             }
+            $loadall_gio_hang = loadall_gio_hang();
             include('view/cart/cart.php');
-            break;
-
-        // ĐƠN HÀNG 
-
-        case 'bill':
-            include('view/cart/bill.php');
-            break;
-        case 'xac_nhan_dh':
-            if (isset($_POST["xac_nhan_dh"]) && $_POST["xac_nhan_dh"]) {
-                if (isset($_SESSION["user"])) {
-                    $id_user = $_SESSION["user"]["id_user"];
-                    $ngay_dat_hang = date('Y-m-d H:i:s');
-                    $phuong_thuc_tt = $_POST["pttt"];
-                    $tongtien = tongtien();
-                    $id_don_hang = insert_donhang($id_user, $ngay_dat_hang, $phuong_thuc_tt, $tongtien);
-                }
-                $thongbao = "Khởi tạo đơn hàng thành công";
-                $load_donhang = load_donhang();
-                foreach ($_SESSION["mycart"] as $cart) {
-                    insert_gio_hang($_SESSION["user"]["id_user"], $cart["0"], $cart["4"], $cart["5"], $id_don_hang);
-                }
-                $_SESSION['mycart'] = [];
-            }
-            $loadall_gio_hang = loadall_gio_hang($id_don_hang);
-            $load_one_donhang = load_one_donhang($id_don_hang);
-            include('view/cart/bill.php');
-            break;
-        case 'xem_dh':
-
-            $load_donhang = load_donhang();
-            include("view/account/my-account.php");
             break;
         case 'contact':
             include('view/contact.php');
