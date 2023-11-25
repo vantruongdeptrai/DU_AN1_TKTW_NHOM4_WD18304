@@ -1,8 +1,7 @@
 <?php
-if (is_array($load_one_sp)) {
-    extract($load_one_sp);
+if (is_array($load_one_ctsp)) {
+    extract($load_one_ctsp);
     $hinh = $img_path . $hinh_anh;
-
 }
 ?>
 <!-- breadcrumbs area start -->
@@ -22,60 +21,82 @@ if (is_array($load_one_sp)) {
     </div>
 </div>
 <!-- breadcrumbs area end -->
+<?php if(is_array($load_one_ctsp)){
+        extract($load_one_ctsp);
+        $hinh = $img_path . $hinh_anh;
+        $link_sp = "index.php?act=single-product&id=" . $id_sp;
+        echo '<form action="index.php?act=add_to_cart" method="post">
 
-<!-- single product section start-->
-<div class="single_product_section mb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="single_product_gallery">
-                    <div class="product_gallery_main_img">
-                        <?php echo '<img style=" margin-left:50px;"
-                                        src="' . $hinh . '" alt="">' ?>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="product_details_sidebar">
-                    <h2 class="product__title">
-                        <?php echo $ten_sp ?>
-                    </h2>
-                    <div class="price_box">
-                        <span class="current_price">
-                            <?php echo $gia ?>
-                        </span>
-                    </div>
-                    <div class="quickview__info mb-0">
-                        <p class="product_review d-flex align-items-center">
-                            <span class="review_icon d-flex">
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                                <i class="ion-ios-star"></i>
-                            </span>
-                            <span class="review__text"> (5 reviews)</span>
-                        </p>
-                    </div>
-                    <p class="product_details_desc">
-                        <?php echo $mo_ta ?>
-                    </p>
-                    <div class="product_pro_button quantity d-flex align-items-center">
-                        <div class="pro-qty border">
-                            <input type="text" value="1">
+        <input type="hidden" name="id_ctsp" value="'.$id_ctsp.'">
+        <input type="hidden" name="ten_sp" value="'.$ten_sp.'">
+        <input type="hidden" name="gia" value="'.$gia.'">
+        <input type="hidden" name="hinh" value="'.$hinh.'">
+        <input type="hidden" name="ten_size" value="'.$ten_size.'">
+    
+        <!-- single product section start-->
+        <div class="single_product_section mb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="single_product_gallery">
+                            <div class="product_gallery_main_img">
+                                <img style=" margin-left:50px;"
+                                            src="' . $hinh . '" alt="">
+                            </div>
                         </div>
-                        <a class="add_to_cart " href="#">Thêm vào giỏ hàng</a>
-                        <a class="wishlist__btn" href="#"><i class="pe-7s-like"></i></a>
-                        <a class="serch_btn" href="#"><i class="pe-7s-search"></i></a>
                     </div>
-                    <div class="product_paypal">
-                        <img src="assets/img/others/paypal.png" alt="payments">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="product_details_sidebar">
+                            <h2 class="product__title">
+                                '.$ten_sp.'
+                            </h2>
+                            <div class="price_box">
+                                <span class="current_price">
+                                    '.$gia.'
+                                </span>
+                            </div>
+                            <div class="price_box">
+                                <span class="current_price">
+                                    '.$ten_size.'
+                                </span>
+                            </div>
+                            <div class="quickview__info mb-0">
+                                <p class="product_review d-flex align-items-center">
+                                    <span class="review_icon d-flex">
+                                        <i class="ion-ios-star"></i>
+                                        <i class="ion-ios-star"></i>
+                                        <i class="ion-ios-star"></i>
+                                        <i class="ion-ios-star"></i>
+                                        <i class="ion-ios-star"></i>
+                                    </span>
+                                    <span class="review__text"> (5 reviews)</span>
+                                </p>
+                            </div>
+                            <p class="product_details_desc">
+                                '.$mo_ta.'
+                            </p>
+    
+                            <div class="product_pro_button quantity d-flex align-items-center">
+                                <div class="pro-qty border">
+                                    <input type="text" value="1" name="so_luong">
+                                </div>
+                                <!-- <a  href="#"></a> -->
+                                <input class="add_to_cart" type="submit" name="add_to_cart" value="Thêm vào giỏ hàng">
+                                <a class="wishlist__btn" href="#"><i class="pe-7s-like"></i></a>
+                                <a class="serch_btn" href="#"><i class="pe-7s-search"></i></a>
+                            </div>
+                            <div class="product_paypal">
+                                <img src="assets/img/others/paypal.png" alt="payments">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </form>';
+    }
+?>
+
 <!-- product details section end-->
 
 <!-- product tab section start -->
@@ -143,12 +164,11 @@ if (is_array($load_one_sp)) {
                                     });
                                 });
                             </script>
-                            <div id="binhluan"
-                                >
+                            <div id="binhluan">
 
                             </div>
 
-                            
+
                         </div>
                     </div>
                 </div>

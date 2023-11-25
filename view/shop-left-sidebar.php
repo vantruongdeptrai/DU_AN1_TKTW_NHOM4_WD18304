@@ -107,13 +107,13 @@
                                         foreach ($load_ctsp_home as $sp) {
                                             extract($sp);
                                             $hinh = $img_path . $hinh_anh;
-                                            $link_sp = "index.php?act=single-product&id=" . $id_sp;
+                                            $link_sp = "index.php?act=single-product&id=" . $id_ctsp;
                                             echo '
                                             <div class="col-lg-4 col-md-4 col-sm-6">
                                                     <article class="single_product wow fadeInUp" data-wow-delay="0.1s"
                                                         data-wow-duration="1.1s">
                                                         <form action="index.php?act=add_to_cart" method="post">
-                                                            <input type="hidden" name="id_sp" value="'.$id_sp.'">
+                                                            <input type="hidden" name="id_ctsp" value="'.$id_ctsp.'">
                                                             <input type="hidden" name="ten_sp" value="'.$ten_sp.'">
                                                             <input type="hidden" name="gia" value="'.$gia.'">
                                                             <input type="hidden" name="hinh" value="'.$hinh.'">

@@ -117,6 +117,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div style="color:green;"></div><?php if(isset($thongbao)){echo $thongbao;}?></div>
                     </div>
                 <?php } else { ?>
                     <div class="card-body">Vui lòng đăng nhập</div>

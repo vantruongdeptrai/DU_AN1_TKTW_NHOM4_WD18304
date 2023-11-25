@@ -26,9 +26,10 @@ function load_one_ctsp($id){
     LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size WHERE chi_tiet_sp.id_ctsp = '$id';
     ";
     $one_ctsp = pdo_query_one($sql);
-    //var_dump($list_ctsp);
+    //var_dump($one_ctsp);
     return $one_ctsp;
 }
+
 function delete_ctsp($id_ctsp){
     $sql = "DELETE FROM chi_tiet_sp WHERE id_ctsp =".$id_ctsp;
     pdo_execute($sql);

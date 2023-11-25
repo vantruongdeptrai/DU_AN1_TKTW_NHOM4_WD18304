@@ -58,37 +58,41 @@
                     <div class="tab-pane fade" id="account-orders" role="tabpanel" aria-labelledby="account-orders-tab">
                         <div class="myaccount-orders">
                             <h4 class="small-title">Đơn hàng của tôi</h4>
+                            <?php if(isset($_SESSION["user"])){?>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover">
                                     <tbody>
                                         <tr>
-                                            <th>MÃ đơn hàng</th>
+                                            <th>Mã đơn hàng</th>
                                             <th>Ngày đặt</th>
                                             <th>Trạng thái</th>
                                             <th>Tổng số tiền</th>
                                             <th></th>
                                         </tr>
-                                        <tr>
-                                            <td><a class="account-order-id" href="javascript:void(0)">#5364</a></td>
-                                            <td>Mar 27, 2019</td>
-                                            <td>On Hold</td>
-                                            <td>$162.00 for 2 items</td>
-                                            <td><a href="javascript:void(0)"
-                                                    class="btn btn-secondary btn-primary-hover"><span>View</span></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a class="account-order-id" href="javascript:void(0)">#5356</a></td>
-                                            <td>Mar 27, 2019</td>
-                                            <td>On Hold</td>
-                                            <td>$162.00 for 2 items</td>
-                                            <td><a href="javascript:void(0)"
-                                                    class="btn btn-secondary btn-primary-hover"><span>View</span></a>
-                                            </td>
-                                        </tr>
+                                        <?php 
+                                            if(isset($load_one_donhang)){
+                                                foreach($load_one_donhang as $dh){
+                                                    extract($dh);
+                                                    echo '<tr>
+                                                    <td><a class="account-order-id" href="javascript:void(0)">#'.$id_don_hang.'</a></td>
+                                                    <td>'.$ngay_dat_hang.'</td>
+                                                    <td>'.$trang_thai.'</td>
+                                                    <td>'.$tongtien.'</td>
+                                                    <td><a href="javascript:void(0)"
+                                                            class="btn btn-secondary btn-primary-hover"><span>View</span></a>
+                                                    </td>
+                                                </tr>
+                                                ';
+                                                }
+                                            }
+                                        ?>
+                                        
                                     </tbody>
                                 </table>
                             </div>
+                            <?php }else{?>
+                                <div class="table-responsive">Vui lòng đăng nhập</div>
+                                <?php }?>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="account-address" role="tabpanel"

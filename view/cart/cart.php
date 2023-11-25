@@ -43,7 +43,7 @@
                                 foreach ($_SESSION["mycart"] as $cart) {
                                     //$spadd = [$id_sp,$ten_sp,$hinh,$gia,$soluong,$thanhtien];
                                     $anhsp = $img_path . $cart[2];
-                                    $thanhtien = $cart[3] * $cart[4];
+                                    $thanhtien = (int)$cart[3] * (int)$cart[4];
                                     $tongtien += $thanhtien;
                                     echo '<tr>
                                             <td><input type="checkbox" name="" id=""></td>
@@ -63,9 +63,7 @@
                                             <td class="product-price"><span class="amount">' . $cart[3] . '</span></td>
                                             <td>'.$cart[6].'</td>
                                             <td class="product_pro_button quantity">
-                                                <div class="pro-qty border">
-                                                    <input type="text" value="1">
-                                                </div>
+                                                '.$cart[4].'
                                             </td>
                                             <td class="product-subtotal"><span class="amount">'.$thanhtien.'</span></td>
                                         </tr>';
@@ -84,8 +82,9 @@
                                     <input class="button mt-xxs-30" name="apply_coupon" value="Apply coupon"
                                         type="submit">
                                 </div>
-                                <div class="coupon2">
-                                    <input class="button" name="update_cart" value="Cập nhật giỏ hàng" type="submit">
+                                <div class="coupon2" style="margin-top:7px;">
+                                    <a class="button" href="index.php?act=mua_them" value="Mua thêm hàng" 
+                                    style="background-color:#333333;color:white;padding:13px 20px; border-radius:3px;">Mua thêm hàng</a>
                                 </div>
                             </div>
                         </div>
