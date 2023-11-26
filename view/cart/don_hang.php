@@ -1,4 +1,4 @@
-<form action="index.php?act=xac_nhan_dh" method="post">
+<form action="index.php?act=xac_nhan_don_hang" method="post">
     <br>
     <br>
     <div class="container-fluid">
@@ -82,21 +82,22 @@
                                 <?php
                                 $tongtien = 0;
                                 global $img_path;
-                                foreach ($_SESSION["mycart"] as $cart) {
-                                    $anhsp = $img_path . $cart[2];
-                                    $thanhtien = $cart[3] * $cart[4];
+                                foreach ($loadall_gio_hang as $cart) {
+                                    extract($cart);
+                                    $anhsp = $img_path . $hinh_anh;
+                                    $thanhtien = (int)$so_luong * (int)$gia;
                                     $tongtien += $thanhtien;
                                     echo '<tr>
-                                    <td>' . $cart[1] . '</td>
+                                    <td>' . $ten_sp . '</td>
                                     <td>
                                     <a href="#">
-                                    <img style="width:100px;height:100px" src="' . $cart[2] . '"
+                                    <img style="width:100px;height:100px" src="' . $anhsp . '"
                                         alt="Cart Thumbnail">
                                     </a>
                                     </td>
-                                    <td>' . $cart[6] . '</td>
+                                    <td>' . $ten_size . '</td>
                                     <td>
-                                        <span class="amount">' . $cart[3] . '</span>
+                                        <span class="amount">' . $gia . '</span>
                                     </td>
                                     <td>' . $thanhtien . '</td>
                                 </tr>';
@@ -112,6 +113,8 @@
                         <div >
                             <div class="col-md-5 ml-auto">
                                 <div class="cart-page-total">
+                                    <input type="hidden" name="id_gio_hang" value= "<?php echo $id_gio_hang ; ?>">
+                                    <input type="hidden" name="tong_tien" value= "<?php echo $tongtien ;?>">
                                     <input style=" width:170px;height:50px;border:none; border-radius:5px;background-color:#fc7c7c; color:white;" 
                                     type="submit" value="Xác nhận thanh toán" name="xac_nhan_dh">
                                 </div>

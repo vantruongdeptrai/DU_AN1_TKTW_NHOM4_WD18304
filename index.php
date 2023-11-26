@@ -8,6 +8,7 @@ include "database/dao/size.php";
 include "database/dao/nguoidung.php";
 include "database/dao/chitietsanpham.php";
 include "database/dao/giohang.php";
+include "database/dao/donhang.php";
 include "global.php";
 $list_sp_home = loadall_sanpham_home();
 $list_dm_home = loadall_danhmuc_home();
@@ -49,7 +50,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
         // ĐĂNG KÍ - ĐĂNG NHẬP 
         case 'my-account':
-            //$load_donhang = load_donhang();
+            $loadall_donhang = loadall_donhang();
             include('view/account/my-account.php');
             break;
         case 'login-register':
@@ -143,13 +144,17 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             break;
         case 'add_to_cart':
             if (isset($_POST["add_to_cart"]) && $_POST["add_to_cart"]) {
-                $id_ctsp = $_POST["id_ctsp"];
-                if(isset($_POST["so_luong"])){
-                    $so_luong = $_POST["so_luong"];
+                if(isset($_SESSION["user"])){
+                    $id_ctsp = $_POST["id_ctsp"];
+                    if(isset($_POST["so_luong"])){
+                        $so_luong = $_POST["so_luong"];
+                    }else{
+                        $so_luong = 1; 
+                    }
+                    insert_giohang($id_ctsp,$so_luong);
                 }else{
-                    $so_luong = 1; 
+                    $thongbao = "Vui lòng đăng nhập";
                 }
-                insert_giohang($id_ctsp,$so_luong);
             }
             $loadall_gio_hang = loadall_gio_hang();
             include('view/cart/cart.php');
@@ -165,6 +170,26 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             }
             $loadall_gio_hang = loadall_gio_hang();
             include('view/cart/cart.php');
+            break;
+        
+            // ĐƠN HÀNG
+
+        case 'don_hang':
+            $loadall_gio_hang = loadall_gio_hang();
+            include("view/cart/don_hang.php");
+            break;
+        case 'xac_nhan_don_hang':
+            if(isset($_POST["xac_nhan_dh"])&&$_POST["xac_nhan_dh"]){
+                $id_gio_hang = $_POST["id_gio_hang"];
+                $tong_tien = $_POST["tong_tien"];
+                $phuong_thuc_tt = $_POST["pttt"];
+                $id_user = $_SESSION["user"]["id_user"];
+                $ngay_dat_hang = date("Y-m-d H:i:s");
+                insert_donhang($id_gio_hang, $id_user ,$tong_tien,$phuong_thuc_tt,$ngay_dat_hang);
+                $thongbao = "Khởi tạo đơn hàng thành công";
+            }
+            $loadall_gio_hang = loadall_gio_hang();
+            include("view/cart/don_hang.php");
             break;
         case 'contact':
             include('view/contact.php');

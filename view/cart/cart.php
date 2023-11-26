@@ -26,7 +26,6 @@
                                 <tr>
                                     <th></th>
                                     <th class="product_remove">Thao tác</th>
-                                    <th>STT</th>
                                     <th class="product-thumbnail">Ảnh</th>
                                     <th class="cart-product-name">Tên sản phẩm</th>
                                     <th class="product-price">Giá</th>
@@ -39,13 +38,12 @@
                                 <?php
                                 $tongtien =0;
                                 global $img_path;
-                                
-                                
+                                if(isset($loadall_gio_hang)){
                                 foreach ($loadall_gio_hang as $cart) {
                                     extract($cart);
                                     $xoa_sp_gh = "index.php?act=xoa_sp_gh&id_cart=".$id_gio_hang;
                                     $anhsp = $img_path . $hinh_anh;
-                                    $thanhtien = (int)$cart[3] * (int)$cart[4];
+                                    $thanhtien = (int)$so_luong * (int)$gia;
                                     $tongtien += $thanhtien;
                                     echo '<tr>
                                             <td><input type="checkbox" name="" id=""></td>
@@ -66,15 +64,17 @@
                                             <td class="product-price"><span class="amount">' . $gia . '</span></td>
                                             <td>'.$ten_size.'</td>
                                             <td class="product_pro_button quantity">
-                                                
+                                                '.$so_luong.'
                                             </td>
                                             <td class="product-subtotal"><span class="amount">'.$thanhtien.'</span></td>
                                         </tr>';
                                 }
-                            
+                                }
                                 ?>
                             </tbody>
                         </table>
+                        <br>
+                        <div style="color:red;"></div><?php if(isset($thongbao)){echo $thongbao;} ?></div>
                     </div>
                     <div class="row">
                         <div class="col-12">
@@ -96,7 +96,7 @@
                                 <li>Subtotal <span>'.$tongtien.' VNĐ</span></li>
                                 
                             </ul>
-                            <a href="index.php?act=bill">Thanh toán</a>
+                            <a href="index.php?act=don_hang">Thanh toán</a>
                         </div>
                     </div>
                 </div>';

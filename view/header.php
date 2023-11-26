@@ -289,7 +289,7 @@
         </div>
         <div class="mini_cart_footer">
             <div class="cart_button">
-                <a href="index.php?act=cart">View cart</a>
+                <a href="index.php?act=add_to_cart">View cart</a>
             </div>
             <div class="cart_button">
                 <a href="index.php?act=checkout"><i class="fa fa-sign-in"></i> Checkout</a>

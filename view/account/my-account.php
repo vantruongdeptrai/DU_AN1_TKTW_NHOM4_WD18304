@@ -70,14 +70,14 @@
                                             <th></th>
                                         </tr>
                                         <?php 
-                                            if(isset($load_one_donhang)){
-                                                foreach($load_one_donhang as $dh){
+                                            if(isset($loadall_donhang)){
+                                                foreach($loadall_donhang as $dh){
                                                     extract($dh);
                                                     echo '<tr>
                                                     <td><a class="account-order-id" href="javascript:void(0)">#'.$id_don_hang.'</a></td>
                                                     <td>'.$ngay_dat_hang.'</td>
                                                     <td>'.$trang_thai.'</td>
-                                                    <td>'.$tongtien.'</td>
+                                                    <td>'.$tong_tien.'</td>
                                                     <td><a href="javascript:void(0)"
                                                             class="btn btn-secondary btn-primary-hover"><span>View</span></a>
                                                     </td>
