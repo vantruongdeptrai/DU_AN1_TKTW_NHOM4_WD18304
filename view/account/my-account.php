@@ -27,15 +27,15 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="account-orders-tab" data-bs-toggle="tab" href="#account-orders"
-                            role="tab" aria-controls="account-orders" aria-selected="false">Orders</a>
+                            role="tab" aria-controls="account-orders" aria-selected="false">Đơn hàng</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="account-address-tab" data-bs-toggle="tab" href="#account-address"
-                            role="tab" aria-controls="account-address" aria-selected="false">Addresses</a>
+                            role="tab" aria-controls="account-address" aria-selected="false">Địa chỉ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="account-details-tab" data-bs-toggle="tab" href="#account-details"
-                            role="tab" aria-controls="account-details" aria-selected="false">Account Details</a>
+                            role="tab" aria-controls="account-details" aria-selected="false">Chi tiết tài khoản</a>
                     </li>
                     <!-- <li class="nav-item">
                             <a class="nav-link" id="account-logout-tab" href="index.php?act=dang_xuat" role="tab"
@@ -73,12 +73,13 @@
                                             if(isset($loadall_donhang)){
                                                 foreach($loadall_donhang as $dh){
                                                     extract($dh);
+                                                    $xem_chitiet = "index.php?act=xem_chitiet_dh&id_don_hang=".$id_don_hang;
                                                     echo '<tr>
                                                     <td><a class="account-order-id" href="javascript:void(0)">#'.$id_don_hang.'</a></td>
                                                     <td>'.$ngay_dat_hang.'</td>
-                                                    <td>'.$trang_thai.'</td>
-                                                    <td>'.$tong_tien.'</td>
-                                                    <td><a href="javascript:void(0)"
+                                                    <td>'.$ten_trangthai.'</td>
+                                                    <td>'.$tong_tien.' VNĐ</td>
+                                                    <td><a href="'.$xem_chitiet.'"
                                                             class="btn btn-secondary btn-primary-hover"><span>View</span></a>
                                                     </td>
                                                 </tr>

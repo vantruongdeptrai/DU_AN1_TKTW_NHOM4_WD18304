@@ -32,18 +32,17 @@
                                         <?php echo $_SESSION["user"]["sdt"]; ?>
                                     </td>
                                     <td>
-                                        <div>
-                                            <input class="form-check-input" type="radio" name="pttt" id="inlineRadio1"
-                                                value="1" checked>
-                                            <label class="form-check-label" for="inlineRadio1">Thanh toán khi nhận
-                                                hàng</label>
-                                        </div>
+                                        <?php
+                                        foreach ($load_pttt as $pttt) {
+                                            extract($pttt);
+                                            echo '<div>
+                                        <input class="form-check-input" type="radio" name="id_pttt" id="inlineRadio1"
+                                            value="'.$id_pttt.'" checked>
+                                        <label class="form-check-label" for="inlineRadio1">'.$ten_pttt.'</label>
+                                    </div>';
+                                        }
 
-                                        <div>
-                                            <input class="form-check-input" type="radio" name="pttt" id="inlineRadio3"
-                                                value="2">
-                                            <label class="form-check-label" for="inlineRadio3">Thanh toán Online</label>
-                                        </div>
+                                        ?>
                                     </td>
                                 </tr>
                             </tbody>
@@ -74,6 +73,7 @@
                                     <th>Hình ảnh</th>
                                     <th>Size</th>
                                     <th>Giá</th>
+                                    <th>Số lượng</th>
                                     <th>Thành tiền</th>
                                 </tr>
                             </thead>
@@ -85,7 +85,7 @@
                                 foreach ($loadall_gio_hang as $cart) {
                                     extract($cart);
                                     $anhsp = $img_path . $hinh_anh;
-                                    $thanhtien = (int)$so_luong * (int)$gia;
+                                    $thanhtien = (int) $so_luong * (int) $gia;
                                     $tongtien += $thanhtien;
                                     echo '<tr>
                                     <td>' . $ten_sp . '</td>
@@ -99,6 +99,7 @@
                                     <td>
                                         <span class="amount">' . $gia . '</span>
                                     </td>
+                                    <td>' . $so_luong .'</td>
                                     <td>' . $thanhtien . '</td>
                                 </tr>';
                                 }
@@ -110,22 +111,27 @@
                         <div>Tổng tiền :
                             <?php echo $tongtien ?> VNĐ
                         </div>
-                        <div >
+                        <div>
                             <div class="col-md-5 ml-auto">
                                 <div class="cart-page-total">
-                                    <input type="hidden" name="id_gio_hang" value= "<?php echo $id_gio_hang ; ?>">
-                                    <input type="hidden" name="tong_tien" value= "<?php echo $tongtien ;?>">
-                                    <input style=" width:170px;height:50px;border:none; border-radius:5px;background-color:#fc7c7c; color:white;" 
-                                    type="submit" value="Xác nhận thanh toán" name="xac_nhan_dh">
+                                    <input type="hidden" name="id_gio_hang" value="<?php echo $id_gio_hang; ?>">
+                                    <input type="hidden" name="tong_tien" value="<?php echo $tongtien; ?>">
+                                    <input
+                                        style=" width:170px;height:50px;border:none; border-radius:5px;background-color:#fc7c7c; color:white;"
+                                        type="submit" value="Xác nhận thanh toán" name="xac_nhan_dh">
                                 </div>
                             </div>
                         </div>
-                        <div style="color:green;"></div><?php if(isset($thongbao)){echo $thongbao;}?></div>
+                        <div style="color:green;"></div>
+                        <?php if (isset($thongbao)) {
+                            echo $thongbao;
+                        } ?>
                     </div>
-                <?php } else { ?>
-                    <div class="card-body">Vui lòng đăng nhập</div>
-                <?php } ?>
-            </div>
+                </div>
+            <?php } else { ?>
+                <div class="card-body">Vui lòng đăng nhập</div>
+            <?php } ?>
         </div>
+    </div>
     </div>
 </form>

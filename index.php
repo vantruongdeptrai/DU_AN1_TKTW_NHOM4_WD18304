@@ -9,6 +9,8 @@ include "database/dao/nguoidung.php";
 include "database/dao/chitietsanpham.php";
 include "database/dao/giohang.php";
 include "database/dao/donhang.php";
+include "database/dao/phuongthuctt.php";
+include "database/dao/trangthai.php";
 include "global.php";
 $list_sp_home = loadall_sanpham_home();
 $list_dm_home = loadall_danhmuc_home();
@@ -51,6 +53,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         // ĐĂNG KÍ - ĐĂNG NHẬP 
         case 'my-account':
             $loadall_donhang = loadall_donhang();
+            $load_trangthai = load_trangthai();
             include('view/account/my-account.php');
             break;
         case 'login-register':
@@ -176,20 +179,32 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
         case 'don_hang':
             $loadall_gio_hang = loadall_gio_hang();
+            $load_trangthai = load_trangthai();
+            $load_pttt = load_pttt();
             include("view/cart/don_hang.php");
             break;
         case 'xac_nhan_don_hang':
             if(isset($_POST["xac_nhan_dh"])&&$_POST["xac_nhan_dh"]){
                 $id_gio_hang = $_POST["id_gio_hang"];
                 $tong_tien = $_POST["tong_tien"];
-                $phuong_thuc_tt = $_POST["pttt"];
                 $id_user = $_SESSION["user"]["id_user"];
                 $ngay_dat_hang = date("Y-m-d H:i:s");
-                insert_donhang($id_gio_hang, $id_user ,$tong_tien,$phuong_thuc_tt,$ngay_dat_hang);
+                $id_pttt = $_POST["id_pttt"];
+                $id_trangthai = 1;
+                insert_donhang($id_gio_hang,$id_user,$tong_tien,$ngay_dat_hang,$id_pttt,$id_trangthai);
                 $thongbao = "Khởi tạo đơn hàng thành công";
             }
             $loadall_gio_hang = loadall_gio_hang();
+            $load_trangthai = load_trangthai();
+            $load_pttt = load_pttt();
             include("view/cart/don_hang.php");
+            break;
+        case 'xem_chitiet_dh':
+            if(isset($_GET["id_don_hang"])&&$_GET["id_don_hang"]){
+                $id_don_hang = $_GET["id_don_hang"];
+                $loadone_donhang = loadone_donhang($id_don_hang);
+            }
+            include("view/cart/xem_chitiet_dh.php");
             break;
         case 'contact':
             include('view/contact.php');

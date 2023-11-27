@@ -79,6 +79,12 @@
         <span>Bình luận</span></a>
 </li>
 
+<!-- Nav Item - Đơn hàng -->
+<li class="nav-item">
+    <a class="nav-link" href="index.php?act=list_bl">
+        <span>Quản lí đơn hàng</span></a>
+</li>
+
 <!-- Nav Item - Charts -->
 <li class="nav-item">
     <a class="nav-link" href="charts.html">
