@@ -116,6 +116,12 @@
                                 <div class="cart-page-total">
                                     <input type="hidden" name="id_gio_hang" value="<?php echo $id_gio_hang; ?>">
                                     <input type="hidden" name="tong_tien" value="<?php echo $tongtien; ?>">
+                                    <?php foreach($loadall_donhang as $dh){
+                                        extract($dh);
+                                        //var_dump($dh);
+                                        echo '<input type="hidden" name="id_don_hang" value="'.$id_don_hang.'">';
+                                    }?>
+                                    <input type="hidden" name="tong_tien" value="<?php echo $tongtien; ?>">
                                     <input
                                         style=" width:170px;height:50px;border:none; border-radius:5px;background-color:#fc7c7c; color:white;"
                                         type="submit" value="Xác nhận thanh toán" name="xac_nhan_dh">
@@ -127,6 +133,7 @@
                             echo $thongbao;
                         } ?>
                     </div>
+                    
                 </div>
             <?php } else { ?>
                 <div class="card-body">Vui lòng đăng nhập</div>

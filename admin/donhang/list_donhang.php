@@ -1,5 +1,7 @@
 <?php
-
+    if(is_array($load_thongtin_donhang)){
+        extract($load_thongtin_donhang);
+    }
 ?>
 <div class="container-fluid">
 
@@ -12,6 +14,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    
                     <thead>
                         <tr>
                             <th>ID đơn hàng</th>
@@ -20,26 +23,26 @@
                             <th>Tổng tiền</th>
                             <th>Phương thức thanh toán</th>
                             <th>Trạng thái</th>
-                            <th>Thao tác</th>
+                            <th>Cập nhật trạng thái</th>
                         </tr>
                     </thead>
-                    <?php
-                            echo '<tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="display : flex ; justify-content:space-evenly;">
-                            <a href="" class="btn btn-danger btn-circle "><i class="fas fa-trash"></i></a>
-                            <a href="" class="btn btn-danger btn-circle "><i class="fas fa-fw fa-wrench"></i></a>
-                            </td>
-                        </tr>
-                    </tbody>';
-                      
+                    <?php 
+                    foreach($load_thongtin_donhang as $tt){
+                        extract($tt);
+                        $cap_nhat = "index.php?act=cap_nhat_trangthai&id_don_hang=".$id_don_hang;
+                        echo '<tbody>
+                    <tr>
+                        <td>'.$id_don_hang.'</td>
+                        <td>'.$user.'</td>
+                        <td>'.$ngay_dat_hang.'</td>
+                        <td>'.$tong_tien.'</td>
+                        <td>'.$ten_pttt.'</td> 
+                        <td><select><option>'.$ten_trangthai.'</option></select></td>
+                        <td style="text-align:center;"><a href="' . $cap_nhat . '" class="btn btn-danger btn-circle "><i class="fas fa-fw fa-wrench"></i></a></td>
+                    </tr>
+                </tbody>';
+                    }
                     ?>
-
                 </table>
             </div>
         </div>

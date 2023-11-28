@@ -2,7 +2,7 @@
     if(is_array($loadone_donhang)){
         extract($loadone_donhang);
     }
-    if(is_array($load))
+    //if(is_array($load))
 ?>
 <br>
 <br>
@@ -30,6 +30,27 @@
                                                 <td><?php echo $ngay_dat_hang;?></td>
                                                 <td><?php echo $ten_trangthai;?></td>
                                                 <td><?php echo $tong_tien;?>VNĐ</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <br>
+                                    <br>
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Hình ảnh</th>
+                                                <th>Size</th>
+                                                <th>Số lượng</th>
+                                                <th>Giá</th>
+                                            </tr>
+                                            <tr>
+                                                <td><?php echo $id_don_hang; ?></td>
+                                                <td><?php echo $ngay_dat_hang;?></td>
+                                                <td><?php echo $ten_trangthai;?></td>
+                                                <td><?php echo $tong_tien;?>VNĐ</td>
+                                                <td></td>
                                             </tr>
 
                                         </tbody>

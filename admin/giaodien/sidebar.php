@@ -81,7 +81,7 @@
 
 <!-- Nav Item - Đơn hàng -->
 <li class="nav-item">
-    <a class="nav-link" href="index.php?act=list_bl">
+    <a class="nav-link" href="index.php?act=list_donhang">
         <span>Quản lí đơn hàng</span></a>
 </li>
 

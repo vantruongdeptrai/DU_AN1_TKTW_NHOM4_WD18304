@@ -11,6 +11,7 @@ include "database/dao/giohang.php";
 include "database/dao/donhang.php";
 include "database/dao/phuongthuctt.php";
 include "database/dao/trangthai.php";
+include "database/dao/chitietdonhang.php";
 include "global.php";
 $list_sp_home = loadall_sanpham_home();
 $list_dm_home = loadall_danhmuc_home();
@@ -52,7 +53,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
         // ĐĂNG KÍ - ĐĂNG NHẬP 
         case 'my-account':
-            $loadall_donhang = loadall_donhang();
+            $loadall_chitiet_donhang = loadall_chitiet_donhang();
             $load_trangthai = load_trangthai();
             include('view/account/my-account.php');
             break;
@@ -178,32 +179,39 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             // ĐƠN HÀNG
 
         case 'don_hang':
+            $id_user = $_SESSION["user"]["id_user"];
+            insert_donhang($id_user);
             $loadall_gio_hang = loadall_gio_hang();
             $load_trangthai = load_trangthai();
             $load_pttt = load_pttt();
+            $loadall_donhang = loadall_donhang();
             include("view/cart/don_hang.php");
             break;
         case 'xac_nhan_don_hang':
             if(isset($_POST["xac_nhan_dh"])&&$_POST["xac_nhan_dh"]){
+                $id_don_hang = $_POST["id_don_hang"];
                 $id_gio_hang = $_POST["id_gio_hang"];
                 $tong_tien = $_POST["tong_tien"];
                 $id_user = $_SESSION["user"]["id_user"];
                 $ngay_dat_hang = date("Y-m-d H:i:s");
                 $id_pttt = $_POST["id_pttt"];
                 $id_trangthai = 1;
-                insert_donhang($id_gio_hang,$id_user,$tong_tien,$ngay_dat_hang,$id_pttt,$id_trangthai);
+                insert_chitiet_donhang($id_gio_hang,$id_don_hang,$tong_tien,$id_pttt,$id_trangthai,$ngay_dat_hang);
                 $thongbao = "Khởi tạo đơn hàng thành công";
             }
             $loadall_gio_hang = loadall_gio_hang();
+            $loadall_donhang = loadall_donhang();
             $load_trangthai = load_trangthai();
             $load_pttt = load_pttt();
+            $loadall_chitiet_donhang = loadall_chitiet_donhang();
             include("view/cart/don_hang.php");
             break;
         case 'xem_chitiet_dh':
             if(isset($_GET["id_don_hang"])&&$_GET["id_don_hang"]){
                 $id_don_hang = $_GET["id_don_hang"];
-                $loadone_donhang = loadone_donhang($id_don_hang);
+                
             }
+            //$loadone_giohang = loadone_giohang($id_don_hang);
             include("view/cart/xem_chitiet_dh.php");
             break;
         case 'contact':

@@ -26,7 +26,5 @@
         $sql = "DELETE FROM gio_hang WHERE id_gio_hang = '$id_gio_hang'";
         pdo_execute($sql);
     }
-    function check_giohang(){
-
-    }
+    
 ?>

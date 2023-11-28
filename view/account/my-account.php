@@ -67,21 +67,17 @@
                                             <th>Ngày đặt</th>
                                             <th>Trạng thái</th>
                                             <th>Tổng số tiền</th>
-                                            <th></th>
+                                            
                                         </tr>
                                         <?php 
-                                            if(isset($loadall_donhang)){
-                                                foreach($loadall_donhang as $dh){
+                                            if(isset($loadall_chitiet_donhang)){
+                                                foreach($loadall_chitiet_donhang as $dh){
                                                     extract($dh);
-                                                    $xem_chitiet = "index.php?act=xem_chitiet_dh&id_don_hang=".$id_don_hang;
                                                     echo '<tr>
                                                     <td><a class="account-order-id" href="javascript:void(0)">#'.$id_don_hang.'</a></td>
                                                     <td>'.$ngay_dat_hang.'</td>
                                                     <td>'.$ten_trangthai.'</td>
                                                     <td>'.$tong_tien.' VNĐ</td>
-                                                    <td><a href="'.$xem_chitiet.'"
-                                                            class="btn btn-secondary btn-primary-hover"><span>View</span></a>
-                                                    </td>
                                                 </tr>
                                                 ';
                                                 }

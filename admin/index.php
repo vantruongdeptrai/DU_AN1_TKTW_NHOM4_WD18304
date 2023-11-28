@@ -7,6 +7,7 @@ include "../database/dao/size.php";
 include "../database/dao/chitietsanpham.php";
 include "../database/dao/nguoidung.php";
 include "../database/dao/binhluan.php";
+include "../database/dao/chitietdonhang.php";
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {
@@ -219,6 +220,21 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             $loadbl = loadbl_ngdung_sanpham(0);
             include('./binhluan/list_bl.php');
             break;
+        
+        // ĐƠN HÀNG
+
+        case 'list_donhang':
+            $load_thongtin_donhang = load_thongtin_donhang();
+            include("./donhang/list_donhang.php");
+            break;
+        case 'cap_nhat_trangthai':
+            if(isset($_GET["id_don_hang"])&&$_GET["id_don_hang"]){
+                $id_don_hang = $_GET["id_don_hang"];
+                update_chitiet_donhang($id_don_hang);
+            }
+            $loadone_thongtin_donhang = loadone_thongtin_donhang($id_don_hang);
+            $loadall_trangthai = load_trangthai();
+        break;
         default:
             include "giaodien/main.php";
             break;
