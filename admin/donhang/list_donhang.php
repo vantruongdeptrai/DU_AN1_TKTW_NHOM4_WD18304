@@ -29,7 +29,7 @@
                     <?php 
                     foreach($load_thongtin_donhang as $tt){
                         extract($tt);
-                        $cap_nhat = "index.php?act=cap_nhat_trangthai&id_don_hang=".$id_don_hang;
+                        $cap_nhat = "index.php?act=sua_trangthai&id_don_hang=".$id_don_hang;
                         echo '<tbody>
                     <tr>
                         <td>'.$id_don_hang.'</td>
@@ -37,7 +37,7 @@
                         <td>'.$ngay_dat_hang.'</td>
                         <td>'.$tong_tien.'</td>
                         <td>'.$ten_pttt.'</td> 
-                        <td><select><option>'.$ten_trangthai.'</option></select></td>
+                        <td>'.$ten_trangthai.'</td>
                         <td style="text-align:center;"><a href="' . $cap_nhat . '" class="btn btn-danger btn-circle "><i class="fas fa-fw fa-wrench"></i></a></td>
                     </tr>
                 </tbody>';

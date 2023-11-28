@@ -8,6 +8,7 @@ include "../database/dao/chitietsanpham.php";
 include "../database/dao/nguoidung.php";
 include "../database/dao/binhluan.php";
 include "../database/dao/chitietdonhang.php";
+include "../database/dao/trangthai.php";
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {
@@ -227,13 +228,24 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             $load_thongtin_donhang = load_thongtin_donhang();
             include("./donhang/list_donhang.php");
             break;
-        case 'cap_nhat_trangthai':
+    
+        case 'sua_trangthai':
             if(isset($_GET["id_don_hang"])&&$_GET["id_don_hang"]){
                 $id_don_hang = $_GET["id_don_hang"];
-                update_chitiet_donhang($id_don_hang);
+                $loadone_thongtin_donhang = loadone_thongtin_donhang($id_don_hang);
             }
-            $loadone_thongtin_donhang = loadone_thongtin_donhang($id_don_hang);
             $loadall_trangthai = load_trangthai();
+            include "./donhang/capnhat_trangthai.php";
+        break;
+        case 'capnhat_trangthai':
+            if(isset($_POST["capnhat_trangthai"])&&$_POST["capnhat_trangthai"]){
+                $id_don_hang = $_POST["id_don_hang"];
+                $id_trangthai = $_POST["id_trangthai"];
+                update_chitiet_donhang($id_don_hang,$id_trangthai);
+            }
+            $loadall_trangthai = load_trangthai();
+            $load_thongtin_donhang = load_thongtin_donhang();
+            include("./donhang/list_donhang.php");
         break;
         default:
             include "giaodien/main.php";

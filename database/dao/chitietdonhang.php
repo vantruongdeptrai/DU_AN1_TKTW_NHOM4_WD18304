@@ -12,8 +12,8 @@
         $loadall_ctdh = pdo_query($sql);
         return $loadall_ctdh;
     }
-    function update_chitiet_donhang($id_trangthai){
-        $sql = "UPDATE chi_tiet_donhang SET id_trangthai =".$id_trangthai;
+    function update_chitiet_donhang($id_don_hang,$id_trangthai){
+        $sql = "UPDATE chi_tiet_donhang SET id_trangthai = '$id_trangthai' WHERE id_don_hang='$id_don_hang'";
         pdo_execute($sql);
     }
     function load_thongtin_donhang(){
@@ -31,7 +31,7 @@
         LEFT JOIN nguoi_dung ON nguoi_dung.id_user = don_hang.id_user
         LEFT JOIN trang_thai ON trang_thai.id_trangthai = chi_tiet_donhang.id_trangthai
         LEFT JOIN phuong_thuc_tt ON phuong_thuc_tt.id_pttt = chi_tiet_donhang.id_pttt WHERE don_hang.id_don_hang =".$id_don_hang;
-        $loadone_thongtin_donhang = pdo_query($sql);
+        $loadone_thongtin_donhang = pdo_query_one($sql);
         return $loadone_thongtin_donhang;
     }
 ?>
