@@ -42,33 +42,38 @@ if (is_array($result)) {
         $hinh = $img_path . $hinh_anh;
         $link_sp = "index.php?act=single-product&id=" . $id_sp;
         echo '<div class="col-lg-4 col-md-4 col-sm-6">
-    <article class="single_product wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="1.1s">
-        <figure>
-            <div class="product_thumb">
-                <a href="' . $link_sp . '"><img style="widht:200px;height:200px;" src="' . $hinh . '" alt=""></a>
-                <div class="action_links">
-                    <ul class="d-flex justify-content-center">
-                        <li class="add_to_cart"><a href="index.php?act=cart" title="Add to cart">
-                                <span class="pe-7s-shopbag"></span></a></li>
-                        <li class="wishlist"><a href="#" title="Add to Wishlist"><span class="pe-7s-like"></span></a>
-                        </li>
-                        <li class="quick_button"><a href="#" title="Xem nhanh" data-bs-toggle="modal"
-                                data-bs-target="#modal_box"> <span class="pe-7s-look"></span></a></li>
-                    </ul>
+        <article class="single_product wow fadeInUp" data-wow-delay="0.1s"
+            data-wow-duration="1.1s">
+            <form action="index.php?act=add_to_cart" method="post">
+                <input type="hidden" name="id_ctsp" value="'.$id_ctsp.'">
+                <input type="hidden" name="ten_sp" value="'.$ten_sp.'">
+                <input type="hidden" name="gia" value="'.$gia.'">
+                <input type="hidden" name="hinh" value="'.$hinh.'">
+                <input type="hidden" name="ten_size" value="'.$ten_size.'">
+            <figure>
+                <div class="product_thumb">
+                    <a href="' . $link_sp . '"><img style ="widht:200px;height:200px;"
+                            src="' . $hinh . '" alt=""></a>
+                    <div class="action_links">
+                        <ul class="d-flex justify-content-center">
+                            <li class="add_to_cart">
+                            <span><input style="height:50px;background-color:#2b4174;color:#FFF; border:none;" class="pe-7s-shopbag" type="submit" name="add_to_cart" value="Thêm vào giỏ hàng"></span></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <figcaption class="product_content text-center">
-                <h4><a href="single-product.html">' . $ten_sp . '</a></h4>
-                <div class="price_box">
-                    <span class="current_price">' . $gia . '</span>
-                </div>
-                <div class="price_box">
-                    <span class="current_price">' . $ten_size . '</span>
-                </div>
-            </figcaption>
-        </figure>
-    </article>
-</div>';
+                <figcaption class="product_content text-center">
+                    <h4><a href="single-product.html">Tên sản phẩm : ' . $ten_sp . '</a></h4>
+                    <div>
+                        <span> Giá : ' . $gia . ' VNĐ</span>
+                    </div>
+                    <div>
+                        <span> Size : ' . $ten_size . '</span>
+                    </div>
+                </figcaption>
+            </figure>
+            </form>
+        </article>
+    </div>';
     }
 }
 // $data = json_encode($result);

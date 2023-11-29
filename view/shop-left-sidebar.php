@@ -125,24 +125,17 @@
                                                                 <div class="action_links">
                                                                     <ul class="d-flex justify-content-center">
                                                                         <li class="add_to_cart">
-                                                                        <span class="pe-7s-shopbag"><input type="submit" name="add_to_cart" value="Thêm vào giỏ hàng"></span></li>
-                                                                        <li class="wishlist"><a href="#"
-                                                                                title="Add to Wishlist"><span
-                                                                                    class="pe-7s-like"></span></a></li>
-                                                                        <li class="quick_button"><a href="#" title="Xem nhanh"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#modal_box"> <span
-                                                                                    class="pe-7s-look"></span></a></li>
+                                                                        <span><input style="height:50px;background-color:#2b4174;color:#FFF; border:none;" class="pe-7s-shopbag" type="submit" name="add_to_cart" value="Thêm vào giỏ hàng"></span></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
                                                             <figcaption class="product_content text-center">
                                                                 <h4><a href="single-product.html">Tên sản phẩm : ' . $ten_sp . '</a></h4>
-                                                                <div class="price_box">
-                                                                    <span class="current_price"> Giá sản phẩm : ' . $gia . '</span>
+                                                                <div>
+                                                                    <span> Giá : ' . $gia . ' VNĐ</span>
                                                                 </div>
-                                                                <div class="price_box">
-                                                                    <span class="current_price"> Size : ' . $ten_size . '</span>
+                                                                <div>
+                                                                    <span> Size : ' . $ten_size . '</span>
                                                                 </div>
                                                             </figcaption>
                                                         </figure>

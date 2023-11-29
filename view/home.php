@@ -150,7 +150,7 @@
                     <article class="single_product">
                         <figure>
                             <div class="product_thumb">
-                                <a href="' . $link_sp . '"><img style="width:3500px; height:350px;"
+                                <a href="' . $link_sp . '"><img style="width:280px; height:280px;"
                                         src="' . $hinh . '" alt=""></a>
                                 <div class="action_links">
                                     <ul class="d-flex justify-content-center">
@@ -167,9 +167,9 @@
                                 </div>
                             </div>
                             <figcaption class="product_content text-center">
-                                <h4><a href="index.php?act=single-product">' . $ten_sp . '</a></h4>
-                                <div class="price_box">
-                                    <span class="current_price">' . $gia . '</span>
+                                <h4><a href="index.php?act=single-product">Tên sản phẩm : ' . $ten_sp . '</a></h4>
+                                <div >
+                                    <span>Giá : ' . $gia . ' VNĐ</span>
                                 </div>
                             </figcaption>
                         </figure>
