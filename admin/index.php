@@ -9,6 +9,9 @@ include "../database/dao/nguoidung.php";
 include "../database/dao/binhluan.php";
 include "../database/dao/chitietdonhang.php";
 include "../database/dao/trangthai.php";
+include "../database/dao/thongke.php";
+$thongke_tien_ngay = thongke_tien_ngay();
+$thongke_tien_thang = thongke_tien_thang();
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {
@@ -247,6 +250,14 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             $load_thongtin_donhang = load_thongtin_donhang();
             include("./donhang/list_donhang.php");
         break;
+        
+
+        //THỐNG KÊ
+
+        case 'thongke_tien_ngay':
+            
+            include "giaodien/main.php";
+            break;
         default:
             include "giaodien/main.php";
             break;

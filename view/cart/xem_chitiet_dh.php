@@ -1,6 +1,6 @@
 <?php 
-    if(is_array($loadone_donhang)){
-        extract($loadone_donhang);
+    if(is_array($loadone_thongtin_donhang)){
+        extract($loadone_thongtin_donhang);
     }
     //if(is_array($load))
 ?>

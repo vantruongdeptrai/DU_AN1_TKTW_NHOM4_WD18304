@@ -33,7 +33,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         case 'single-product':
             if (isset($_GET['id']) && ($_GET['id'])) {
                 $id = $_GET['id'];
-                
+
                 $load_one_ctsp = load_one_ctsp($id);
                 extract($load_one_ctsp);
             } else {
@@ -52,11 +52,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             break;
 
         // ĐĂNG KÍ - ĐĂNG NHẬP 
-        case 'my-account':
-            $loadall_chitiet_donhang = loadall_chitiet_donhang();
-            $load_trangthai = load_trangthai();
-            include('view/account/my-account.php');
-            break;
+
         case 'login-register':
             include('view/account/login-register.php');
             break;
@@ -130,6 +126,13 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             }
             include "view/account/doi_mk.php";
             break;
+        case 'my-account':
+            $loadall_chitiet_donhang = loadall_chitiet_donhang();
+            $load_trangthai = load_trangthai();
+            $id_user = $_SESSION["user"]["id_user"];
+            $load_donhang_iduser = load_donhang_iduser($id_user);
+            include('view/account/my-account.php');
+            break;
         case 'dang_xuat':
             session_unset();
             session_destroy();
@@ -148,15 +151,15 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             break;
         case 'add_to_cart':
             if (isset($_POST["add_to_cart"]) && $_POST["add_to_cart"]) {
-                if(isset($_SESSION["user"])){
+                if (isset($_SESSION["user"])) {
                     $id_ctsp = $_POST["id_ctsp"];
-                    if(isset($_POST["so_luong"])){
+                    if (isset($_POST["so_luong"])) {
                         $so_luong = $_POST["so_luong"];
-                    }else{
-                        $so_luong = 1; 
+                    } else {
+                        $so_luong = 1;
                     }
-                    insert_giohang($id_ctsp,$so_luong);
-                }else{
+                    insert_giohang($id_ctsp, $so_luong);
+                } else {
                     $thongbao = "Vui lòng đăng nhập";
                 }
             }
@@ -168,15 +171,15 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             include('view/cart/cart.php');
             break;
         case 'xoa_sp_gh':
-            if (isset($_GET["id_cart"])&&$_GET["id_cart"]>0) {
+            if (isset($_GET["id_cart"]) && $_GET["id_cart"] > 0) {
                 $id = $_GET["id_cart"];
                 xoa_sp_giohang($id);
             }
             $loadall_gio_hang = loadall_gio_hang();
             include('view/cart/cart.php');
             break;
-        
-            // ĐƠN HÀNG
+
+        // ĐƠN HÀNG
 
         case 'don_hang':
             $id_user = $_SESSION["user"]["id_user"];
@@ -188,7 +191,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             include("view/cart/don_hang.php");
             break;
         case 'xac_nhan_don_hang':
-            if(isset($_POST["xac_nhan_dh"])&&$_POST["xac_nhan_dh"]){
+            if (isset($_POST["xac_nhan_dh"]) && $_POST["xac_nhan_dh"]) {
                 $id_don_hang = $_POST["id_don_hang"];
                 $id_gio_hang = $_POST["id_gio_hang"];
                 $tong_tien = $_POST["tong_tien"];
@@ -196,7 +199,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 $ngay_dat_hang = date("Y-m-d H:i:s");
                 $id_pttt = $_POST["id_pttt"];
                 $id_trangthai = 1;
-                insert_chitiet_donhang($id_gio_hang,$id_don_hang,$tong_tien,$id_pttt,$id_trangthai,$ngay_dat_hang);
+                insert_chitiet_donhang($id_gio_hang, $id_don_hang, $tong_tien, $id_pttt, $id_trangthai, $ngay_dat_hang);
                 $thongbao = "Khởi tạo đơn hàng thành công";
             }
             $loadall_gio_hang = loadall_gio_hang();
@@ -207,9 +210,9 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             include("view/cart/don_hang.php");
             break;
         case 'xem_chitiet_dh':
-            if(isset($_GET["id_don_hang"])&&$_GET["id_don_hang"]){
+            if (isset($_GET["id_don_hang"]) && $_GET["id_don_hang"]) {
                 $id_don_hang = $_GET["id_don_hang"];
-                
+                $loadone_thongtin_donhang = loadone_thongtin_donhang($id_don_hang);
             }
             //$loadone_giohang = loadone_giohang($id_don_hang);
             include("view/cart/xem_chitiet_dh.php");

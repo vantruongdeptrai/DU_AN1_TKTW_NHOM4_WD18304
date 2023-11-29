@@ -20,19 +20,12 @@
         <div class="row">
             <div class="col-lg-3">
                 <ul class="nav myaccount-tab-trigger" id="account-page-tab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="account-dashboard-tab" data-bs-toggle="tab"
-                            href="#account-dashboard" role="tab" aria-controls="account-dashboard"
-                            aria-selected="true">Dashboard</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" id="account-orders-tab" data-bs-toggle="tab" href="#account-orders"
                             role="tab" aria-controls="account-orders" aria-selected="false">Đơn hàng</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="account-address-tab" data-bs-toggle="tab" href="#account-address"
-                            role="tab" aria-controls="account-address" aria-selected="false">Địa chỉ</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" id="account-details-tab" data-bs-toggle="tab" href="#account-details"
                             role="tab" aria-controls="account-details" aria-selected="false">Chi tiết tài khoản</a>
@@ -45,16 +38,7 @@
             </div>
             <div class="col-lg-9">
                 <div class="tab-content myaccount-tab-content" id="account-page-tab-content">
-                    <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel"
-                        aria-labelledby="account-dashboard-tab">
-                        <div class="myaccount-dashboard">
-                            <p>Hello <b>Bucker</b> (not Bucker? <a href="login-register.html">Sign
-                                    out</a>)</p>
-                            <p>From your account dashboard you can view your recent orders, manage your shipping and
-                                billing addresses and <a href="javascript:void(0)">edit your password and account
-                                    details</a>.</p>
-                        </div>
-                    </div>
+                    
                     <div class="tab-pane fade" id="account-orders" role="tabpanel" aria-labelledby="account-orders-tab">
                         <div class="myaccount-orders">
                             <h4 class="small-title">Đơn hàng của tôi</h4>
@@ -67,19 +51,24 @@
                                             <th>Ngày đặt</th>
                                             <th>Trạng thái</th>
                                             <th>Tổng số tiền</th>
-                                            
+                                            <th></th>
                                         </tr>
                                         <?php 
-                                            if(isset($loadall_chitiet_donhang)){
-                                                foreach($loadall_chitiet_donhang as $dh){
+                                            if(isset($load_donhang_iduser)){
+                                                foreach($load_donhang_iduser as $dh){
                                                     extract($dh);
                                                     echo '<tr>
                                                     <td><a class="account-order-id" href="javascript:void(0)">#'.$id_don_hang.'</a></td>
                                                     <td>'.$ngay_dat_hang.'</td>
                                                     <td>'.$ten_trangthai.'</td>
                                                     <td>'.$tong_tien.' VNĐ</td>
-                                                </tr>
                                                 ';
+                                                if($id_trangthai==4){
+                                                    echo '<td><a href="index.php?act=xem_chitiet_dh&id_don_hang='.$id_don_hang.'">View</a></td></tr>';
+                                                }
+                                                if($id_trangthai==1){
+                                                    echo '<td><a href="index.php?act=xem_chitiet_dh&id_don_hang='.$id_don_hang.'">Hủy đơn</a></td></tr>';
+                                                }
                                                 }
                                             }
                                         ?>
@@ -90,25 +79,6 @@
                             <?php }else{?>
                                 <div class="table-responsive">Vui lòng đăng nhập</div>
                                 <?php }?>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="account-address" role="tabpanel"
-                        aria-labelledby="account-address-tab">
-                        <div class="myaccount-address">
-                            <div class="row">
-                                <?php
-                                if (isset($_SESSION["user"]) && is_array($_SESSION["user"])) {
-                                    extract($_SESSION["user"]);
-                                    ?>
-                                    <div class="col">
-                                        <h4 class="small-title">Địa chỉ</h4>
-                                        <address>
-                                            <?php echo $dia_chi ?>
-                                        </address>
-                                    </div>
-                                <?php } else { ?> Vui lòng đăng nhập !!!
-                                <?php } ?>
-                            </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="account-details" role="tabpanel"
