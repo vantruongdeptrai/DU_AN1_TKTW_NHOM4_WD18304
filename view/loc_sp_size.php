@@ -2,45 +2,52 @@
 include("../database/pdo.php");
 include("../global.php");
 $selectedSize = $_POST['size'];
-$sql = "SELECT chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+$sql = "SELECT danh_muc.id_dm,chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
     FROM san_pham
     LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
-    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size;
+    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size
+    LEFT JOIN danh_muc ON danh_muc.id_dm = san_pham.id_dm
     ";
 switch ($selectedSize) {
     case 'XL':
-        $sql = "SELECT chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+        $sql = "SELECT danh_muc.id_dm,chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
     FROM san_pham
     LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
-    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size WHERE size.ten_size = 'XL';
+    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size 
+    LEFT JOIN danh_muc ON danh_muc.id_dm = san_pham.id_dm
+    WHERE size.ten_size = 'XL'
     ";
         break;
     case 'L':
-        $sql = "SELECT chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+        $sql = "SELECT danh_muc.id_dm,chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
     FROM san_pham
     LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
-    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size WHERE size.ten_size = 'L';
+    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size
+    LEFT JOIN danh_muc ON danh_muc.id_dm = san_pham.id_dm WHERE size.ten_size = 'L'
     ";
         break;
     case 'M':
-        $sql = "SELECT chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+        $sql = "SELECT danh_muc.id_dm,chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
     FROM san_pham
     LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
-    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size WHERE size.ten_size = 'M';
+    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size
+    LEFT JOIN danh_muc ON danh_muc.id_dm = san_pham.id_dm WHERE size.ten_size = 'M';
     ";
         break;
     case 'S':
-        $sql = "SELECT chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+        $sql = "SELECT danh_muc.id_dm,chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
     FROM san_pham
     LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
-    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size WHERE size.ten_size = 'S';
+    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size
+    LEFT JOIN danh_muc ON danh_muc.id_dm = san_pham.id_dm WHERE size.ten_size = 'S';
     ";
         break;
     default:
-    $sql = "SELECT chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+    $sql = "SELECT danh_muc.id_dm,chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
     FROM san_pham
     LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
-    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size ;
+    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size
+    LEFT JOIN danh_muc ON danh_muc.id_dm = san_pham.id_dm
     ";
         break;
 }

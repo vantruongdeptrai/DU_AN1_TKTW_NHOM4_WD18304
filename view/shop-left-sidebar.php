@@ -43,13 +43,13 @@
                                 foreach ($list_dm_home as $dm) {
                                     extract($dm);
                                     echo '<ul>
-                                            <li><a href="index.php?act=shop-left-sidebar&id_dm='.$id_dm.'">- ' . $ten_dm . '</span></a></li>
+                                            <li><a href="index.php?act=shop-left-sidebar&id_dm=' . $id_dm . '">- ' . $ten_dm . '</span></a></li>
                                         </ul>';
                                 }
                             }
                             ?>
-
                         </div>
+                    
                     </div>
                     <div class="widget__list wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="1.3s">
                         <div class="widget_banner">
@@ -63,7 +63,7 @@
                 <div class="product_page_wrapper">
                     <!--shop toolbar area start-->
                     <div class="product_sidebar_header mb-60 d-flex justify-content-between align-items-center">
-                        
+
                         <div class="product_header_right d-flex align-items-center">
                             <div class="sorting__by d-flex align-items-center">
                                 <span>Sắp xếp theo</span>
@@ -101,8 +101,8 @@
                                 <input type="hidden" name="">
                                 <div class="row grid__product" id="product_page_gallery">
                                     <?php
-                                    if (is_array($load_ctsp_home)) {
-                                        foreach ($load_ctsp_home as $sp) {
+                                    if (is_array($load_ctsp_danhmuc)) {
+                                        foreach ($load_ctsp_danhmuc as $sp) {
                                             extract($sp);
                                             $hinh = $img_path . $hinh_anh;
                                             $link_sp = "index.php?act=single-product&id=" . $id_ctsp;
@@ -111,11 +111,11 @@
                                                     <article class="single_product wow fadeInUp" data-wow-delay="0.1s"
                                                         data-wow-duration="1.1s">
                                                         <form action="index.php?act=add_to_cart" method="post">
-                                                            <input type="hidden" name="id_ctsp" value="'.$id_ctsp.'">
-                                                            <input type="hidden" name="ten_sp" value="'.$ten_sp.'">
-                                                            <input type="hidden" name="gia" value="'.$gia.'">
-                                                            <input type="hidden" name="hinh" value="'.$hinh.'">
-                                                            <input type="hidden" name="ten_size" value="'.$ten_size.'">
+                                                            <input type="hidden" name="id_ctsp" value="' . $id_ctsp . '">
+                                                            <input type="hidden" name="ten_sp" value="' . $ten_sp . '">
+                                                            <input type="hidden" name="gia" value="' . $gia . '">
+                                                            <input type="hidden" name="hinh" value="' . $hinh . '">
+                                                            <input type="hidden" name="ten_size" value="' . $ten_size . '">
                                                         <figure>
                                                             <div class="product_thumb">
                                                                 <a href="' . $link_sp . '"><img style ="widht:200px;height:200px;"

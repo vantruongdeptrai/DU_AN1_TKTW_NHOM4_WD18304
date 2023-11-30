@@ -27,8 +27,9 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             $load_ctsp_home = load_ctsp();
             if(isset($_GET["id_dm"])&&$_GET["id_dm"]){
                 $id_dm = $_GET["id_dm"];
-                $load_ctsp_danhmuc = load_ctsp_danhmuc($id_dm);
+                //$load_ctsp_danhmuc = load_ctsp_danhmuc($id_dm);
             }
+            $load_ctsp_danhmuc = load_ctsp_danhmuc($id_dm);
             include('view/shop-left-sidebar.php');
             break;
         case 'xem_nhanh':
