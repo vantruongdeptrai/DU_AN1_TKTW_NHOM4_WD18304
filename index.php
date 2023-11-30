@@ -25,6 +25,10 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
         case 'shop-left-sidebar':
             $load_ctsp_home = load_ctsp();
+            if(isset($_GET["id_dm"])&&$_GET["id_dm"]){
+                $id_dm = $_GET["id_dm"];
+                $load_ctsp_danhmuc = load_ctsp_danhmuc($id_dm);
+            }
             include('view/shop-left-sidebar.php');
             break;
         case 'xem_nhanh':
@@ -53,9 +57,12 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
         // ĐĂNG KÍ - ĐĂNG NHẬP 
 
-        case 'login-register':
-            include('view/account/login-register.php');
+        case 'login':
+            include('view/account/login.php');
             break;
+        case 'register':
+            include('view/account/register.php');
+            break;  
         case 'dang_ki':
             if (isset($_POST["dang_ki"]) && $_POST["dang_ki"]) {
                 $email = $_POST["email"];
@@ -64,7 +71,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 insert_taikhoan($user, $pass, $email);
                 echo "Đăng kí thành công ";
             }
-            include('view/account/login-register.php');
+            include('view/account/register.php');
             break;
         case "dang_nhap":
             if (isset($_POST["dang_nhap"]) && $_POST["dang_nhap"]) {
@@ -131,6 +138,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             $load_trangthai = load_trangthai();
             $id_user = $_SESSION["user"]["id_user"];
             $load_donhang_iduser = load_donhang_iduser($id_user);
+            $loadall_gio_hang = loadall_gio_hang();
             include('view/account/my-account.php');
             break;
         case 'dang_xuat':
@@ -146,7 +154,6 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         // GIỎ HÀNG 
         case 'mua_them':
             $loadall_gio_hang = loadall_gio_hang();
-
             include("view/shop-left-sidebar.php");
             break;
         case 'add_to_cart':
@@ -214,7 +221,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 $id_don_hang = $_GET["id_don_hang"];
                 $loadone_thongtin_donhang = loadone_thongtin_donhang($id_don_hang);
             }
-            //$loadone_giohang = loadone_giohang($id_don_hang);
+            $loadall_gio_hang = loadall_gio_hang();
             include("view/cart/xem_chitiet_dh.php");
             break;
         case 'contact':

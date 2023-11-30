@@ -123,7 +123,8 @@
                                             </a>
                                             <ul class="dropdown_account_link">
                                                 <li><a href="index.php?act=my-account">Tài khoản của tôi</a></li>
-                                                <li><a href="index.php?act=login-register">Đăng nhập</a></li>
+                                                <li><a href="index.php?act=login">Đăng nhập</a></li>
+                                                <li><a href="index.php?act=register">Đăng kí</a></li>
                                                 <li><a href="index.php?act=contact">Liên hệ</a></li>
                                                 <li>
                                                     <a href="index.php?act=quen_mk">Quên mật khẩu</a>
@@ -149,85 +150,20 @@
                         <div class="main_menu d-none d-lg-block">
                             <nav>
                                 <ul class="d-flex">
-                                    <li><a class="active" href="index.php">Home</a>
-
+                                    <li><a class="active" href="index.php">Trang chủ</a>
                                     </li>
-                                    <li><a href="index.php?act=about">About</a></li>
-                                    <li><a href="#">Pages</a>
+                                    <li><a href="#">Bài viết</a>
                                         <ul class="bucker-dropdown">
                                             <li><a href="index.php?act=faq">FAQ</a></li>
                                             <li><a href="index.php?act=404">Error 404</a></li>
                                         </ul>
                                     </li>
                                     <li class="megamenu-holder">
-                                        <a href="index.php?act=shop-left-sidebar">Shop</a>
-                                        <ul class="megamenu grid-container">
-                                            <li class="grid-item">
-                                                <span class="title">Shop Layout</span>
-                                                <ul>
-                                                    <li>
-                                                        <a href="shop-fullwidth.html">Shop Fullwidth</a>
-                                                    </li>
-
-                                                </ul>
-                                            </li>
-                                            <li class="grid-item">
-                                                <span class="title">Product Style</span>
-                                                <ul>
-                                                    <li>
-                                                        <a href="single-product.html">Single Product Default</a>
-                                                    </li>
-
-                                                </ul>
-                                            </li>
-                                            <li class="grid-item">
-                                                <span class="title">Popular Products</span>
-                                                <ul>
-                                                    <li>
-                                                        <a href="shop-left-sidebar.html">Classic Carrot Cake</a>
-                                                    </li>
-
-                                                </ul>
-                                            </li>
-                                            <li class="grid-item">
-                                                <span class="title">Product Related</span>
-                                                <ul>
-                                                    <li>
-                                                        <a href="index.php?act=my-account">My Account</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index.php?act=login-register">Login | Register</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index.php?act=cart">Shopping Cart</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index.php?act=wishlist">Wishlist</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index.php?act=compare">Compare</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index.php?act=checkout">Checkout</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                        <a href="index.php?act=shop-left-sidebar">Sản phẩm</a>
                                     </li>
                                     <li><a href="index.php?act=blog-left-sidebar">Blog</a>
-                                        <ul class="bucker-dropdown">
-                                            <li class="submenu-holder"><a href="index.php?act=blog-left-sidebar">Blog
-                                                    Holder</a>
-                                                <ul class="submenu">
-                                                    <li><a href="index.php?act=blog-left-sidebar">Blog Left Sidebar</a>
-                                                    </li>
-
-                                                </ul>
-                                            </li>
-
-                                        </ul>
                                     </li>
-                                    <li><a href="index.php?act=contact">Contact</a></li>
+                                    <li><a href="index.php?act=contact">Liên hệ</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -237,13 +173,11 @@
                                 <li class="header_search"><a href="javascript:void(0)"><i class="pe-7s-search"></i></a>
                                 </li>
                                 <li class="header_wishlist"><a href="wishlist.html"><i class="pe-7s-like"></i></a></li>
-                                <li class="shopping_cart"><a href="javascript:void(0)"><i class="pe-7s-shopbag"></i></a>
+                                <li class="shopping_cart"><a href="index.php?act=add_to_cart"><i class="pe-7s-shopbag"></i></a>
                                     <span class="item_count">2</span>
                                 </li>
                             </ul>
-                            <div class="canvas_open">
-                                <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -252,50 +186,7 @@
     </header>
 
     <!--mini cart-->
-    <div class="mini_cart">
-        <div class="cart_gallery">
-            <div class="cart_close">
-                <div class="cart_text">
-                    <h3>cart</h3>
-                </div>
-                <div class="mini_cart_close">
-                    <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
-                </div>
-            </div>
-            <div class="cart_item">
-                <div class="cart_img">
-                    <a href="single-product.html"><img src="assets/img/product/product1.png" alt=""></a>
-                </div>
-                <div class="cart_info">
-                    <a href="single-product.html">Primis In Faucibus</a>
-                    <p>1 x <span> $65.00 </span></p>
-                </div>
-                <div class="cart_remove">
-                    <a href="#"><i class="ion-android-close"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="mini_cart_table">
-            <div class="cart_table_border">
-                <div class="cart_total">
-                    <span>Sub total:</span>
-                    <span class="price">$125.00</span>
-                </div>
-                <div class="cart_total mt-10">
-                    <span>total:</span>
-                    <span class="price">$125.00</span>
-                </div>
-            </div>
-        </div>
-        <div class="mini_cart_footer">
-            <div class="cart_button">
-                <a href="index.php?act=add_to_cart">View cart</a>
-            </div>
-            <div class="cart_button">
-                <a href="index.php?act=checkout"><i class="fa fa-sign-in"></i> Checkout</a>
-            </div>
-        </div>
-    </div>
+    
     <!-- mini cart end -->
     <!-- page search box -->
     <div class="page_search_box">

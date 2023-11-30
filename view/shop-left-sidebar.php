@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumbs_text">
-                    <h1>Products</h1>
+                    <h1>Sản phẩm</h1>
                     <ul>
-                        <li><a href="index.html">Home </a></li>
-                        <li> // Shop Left Sidebar</li>
+                        <li><a href="index.html">Trang chủ </a></li>
+                        <li> // Sản phẩm</li>
                     </ul>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                                 foreach ($list_dm_home as $dm) {
                                     extract($dm);
                                     echo '<ul>
-                                            <li><a href="#">- ' . $ten_dm . '</span></a></li>
+                                            <li><a href="index.php?act=shop-left-sidebar&id_dm='.$id_dm.'">- ' . $ten_dm . '</span></a></li>
                                         </ul>';
                                 }
                             }
@@ -63,9 +63,7 @@
                 <div class="product_page_wrapper">
                     <!--shop toolbar area start-->
                     <div class="product_sidebar_header mb-60 d-flex justify-content-between align-items-center">
-                        <div class="page__amount border">
-                            <p><span>12</span> Product Found of <span>30</span></p>
-                        </div>
+                        
                         <div class="product_header_right d-flex align-items-center">
                             <div class="sorting__by d-flex align-items-center">
                                 <span>Sắp xếp theo</span>

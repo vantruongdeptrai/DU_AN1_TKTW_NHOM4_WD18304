@@ -64,7 +64,7 @@ $listbl = loadbl_ngdung_sanpham($id_sp);
             <table>
                 <thead>
                     <th>Nội dung</th>
-                    <th>ID người dùng</th>
+                    <th>Người dùng</th>
                     <th>Ngày bình luận</th>
                 </thead>
                 <tbody>
@@ -73,7 +73,7 @@ $listbl = loadbl_ngdung_sanpham($id_sp);
                     //var_dump($listbl); 
                     extract($bl);
                     echo '<tr><td>' . $noi_dung . '</td>';
-                    echo '<td>' . $id_user . '</td>';
+                    echo '<td>' . $user . '</td>';
                     echo '<td>' . $ngay_binh_luan . '</td></tr>';
 
                 }

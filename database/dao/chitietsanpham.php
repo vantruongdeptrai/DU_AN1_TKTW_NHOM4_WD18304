@@ -13,7 +13,16 @@ function load_ctsp(){
     //var_dump($list_ctsp);
     return $list_ctsp;
 }
-
+function load_ctsp_danhmuc($id_dm){
+    $sql = "SELECT danh_muc.id_dm , chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+    FROM san_pham
+    LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
+    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size
+    LEFT JOIN danh_muc ON danh_muc.id_dm = san_pham.id_dm WHERE danh_muc.id_dm = '$id_dm'";
+    $list_ctsp_danhmuc = pdo_query_one($sql);
+    
+    return $list_ctsp_danhmuc;
+}
 function update_ctsp($id_ctsp,$id_sp,$id_size,$so_luong){
     $sql = "UPDATE chi_tiet_sp SET id_sp = '$id_sp' , id_size = '$id_size' , so_luong = '$so_luong' WHERE id_ctsp = '$id_ctsp'";
     pdo_execute($sql);

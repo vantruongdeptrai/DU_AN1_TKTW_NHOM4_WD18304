@@ -26,11 +26,12 @@
         return $load_thongtin_donhang;
     }
     function loadone_thongtin_donhang($id_don_hang){
-        $sql = "SELECT nguoi_dung.user , chi_tiet_donhang.tong_tien , chi_tiet_donhang.ngay_dat_hang , trang_thai.ten_trangthai , phuong_thuc_tt.ten_pttt , don_hang.id_don_hang FROM chi_tiet_donhang
+        $sql = "SELECT gio_hang.so_luong,nguoi_dung.user , chi_tiet_donhang.tong_tien , chi_tiet_donhang.ngay_dat_hang , trang_thai.ten_trangthai , phuong_thuc_tt.ten_pttt , don_hang.id_don_hang FROM chi_tiet_donhang
         LEFT JOIN don_hang ON don_hang.id_don_hang = chi_tiet_donhang.id_don_hang 
         LEFT JOIN nguoi_dung ON nguoi_dung.id_user = don_hang.id_user
         LEFT JOIN trang_thai ON trang_thai.id_trangthai = chi_tiet_donhang.id_trangthai
-        LEFT JOIN phuong_thuc_tt ON phuong_thuc_tt.id_pttt = chi_tiet_donhang.id_pttt WHERE don_hang.id_don_hang =".$id_don_hang;
+        LEFT JOIN phuong_thuc_tt ON phuong_thuc_tt.id_pttt = chi_tiet_donhang.id_pttt
+        LEFT JOIN gio_hang ON gio_hang.id_gio_hang = chi_tiet_donhang.id_gio_hang WHERE don_hang.id_don_hang =".$id_don_hang;
         $loadone_thongtin_donhang = pdo_query_one($sql);
         return $loadone_thongtin_donhang;
     }

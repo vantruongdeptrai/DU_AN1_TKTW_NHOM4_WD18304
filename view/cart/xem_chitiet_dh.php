@@ -2,7 +2,7 @@
     if(is_array($loadone_thongtin_donhang)){
         extract($loadone_thongtin_donhang);
     }
-    //if(is_array($load))
+    
 ?>
 <br>
 <br>
@@ -12,7 +12,7 @@
             <div class="col-lg-9">
                 <div>
                     <div>
-                        <div class="myaccount-orders">
+                        <div class="" style="width:1200px;">
                             <h4 class="small-title">Đơn hàng của tôi</h4>
                             <?php if (isset($_SESSION["user"])) { ?>
                                 <div>
@@ -20,37 +20,24 @@
                                         <tbody>
                                             <tr>
                                                 <th>Mã đơn hàng</th>
+                                                <th>Người đặt hàng</th>
                                                 <th>Ngày đặt</th>
-                                                <th>Trạng thái</th>
+                                                <th>Địa chỉ</th>
+                                                <th>Số điện thoại</th>
+                                                
                                                 <th>Tổng số tiền</th>
+                                                <th>Trạng thái</th>
                                                 
                                             </tr>
                                             <tr>
                                                 <td><?php echo $id_don_hang; ?></td>
+                                                <td><?php echo $user; ?></td>
                                                 <td><?php echo $ngay_dat_hang;?></td>
-                                                <td><?php echo $ten_trangthai;?></td>
+                                                <td><?php echo $dia_chi;?></td>
+                                                <td><?php echo $sdt;?></td>
+                                                
                                                 <td><?php echo $tong_tien;?>VNĐ</td>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <br>
-                                    <table class="table table-bordered">
-                                        <tbody>
-                                            <tr>
-                                                <th>Tên sản phẩm</th>
-                                                <th>Hình ảnh</th>
-                                                <th>Size</th>
-                                                <th>Số lượng</th>
-                                                <th>Giá</th>
-                                            </tr>
-                                            <tr>
-                                                <td><?php echo $id_don_hang; ?></td>
-                                                <td><?php echo $ngay_dat_hang;?></td>
                                                 <td><?php echo $ten_trangthai;?></td>
-                                                <td><?php echo $tong_tien;?>VNĐ</td>
-                                                <td></td>
                                             </tr>
 
                                         </tbody>
