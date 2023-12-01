@@ -1,14 +1,16 @@
 <?php 
-    function insert_chitiet_donhang($id_gio_hang,$id_don_hang,$tong_tien,$id_pttt,$id_trangthai,$ngay_dat_hang){
-        $sql = "INSERT INTO chi_tiet_donhang(id_gio_hang,id_don_hang,tong_tien,id_trangthai,id_pttt,ngay_dat_hang)
-         VALUES ('$id_gio_hang','$id_don_hang','$tong_tien','$id_pttt','$id_trangthai','$ngay_dat_hang')";
+    function insert_chitiet_donhang($id_chitiet_gh,$id_don_hang,$tong_tien,$id_pttt,$id_trangthai){
+        $sql = "INSERT INTO chi_tiet_donhang(id_chitiet_gh,id_don_hang,tong_tien,id_trangthai,id_pttt)
+         VALUES ('$id_chitiet_gh','$id_don_hang','$tong_tien','$id_pttt','$id_trangthai')";
          pdo_execute($sql);
     }
     function loadall_chitiet_donhang(){
-        $sql = "SELECT don_hang.id_user , gio_hang.so_luong , chi_tiet_donhang.tong_tien , trang_thai.ten_trangthai,trang_thai.id_trangthai,chi_tiet_donhang.id_pttt, chi_tiet_donhang.ngay_dat_hang , chi_tiet_donhang.id_don_hang ,chi_tiet_donhang.id_gio_hang
-        FROM don_hang LEFT JOIN chi_tiet_donhang ON don_hang.id_don_hang = chi_tiet_donhang.id_don_hang
-        LEFT JOIN gio_hang ON gio_hang.id_gio_hang = chi_tiet_donhang.id_gio_hang
-        LEFT JOIN trang_thai ON trang_thai.id_trangthai = chi_tiet_donhang.id_trangthai";
+        $sql = "SELECT don_hang.id_user , chi_tiet_giohang.so_luong , chi_tiet_donhang.tong_tien , trang_thai.ten_trangthai,trang_thai.id_trangthai,chi_tiet_donhang.id_pttt, don_hang.ngay_dat_hang , don_hang.id_don_hang ,chi_tiet_giohang.id_chitiet_gh
+        FROM chi_tiet_donhang
+        LEFT JOIN don_hang ON don_hang.id_don_hang = chi_tiet_donhang.id_don_hang
+        LEFT JOIN chi_tiet_giohang ON chi_tiet_giohang.id_chitiet_gh = chi_tiet_donhang.id_chitiet_gh
+        LEFT JOIN trang_thai ON trang_thai.id_trangthai = chi_tiet_donhang.id_trangthai
+        LEFT JOIN phuong_thuc_tt ON phuong_thuc_tt.id_pttt = chi_tiet_donhang.id_pttt";
         $loadall_ctdh = pdo_query($sql);
         return $loadall_ctdh;
     }

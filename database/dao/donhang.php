@@ -1,7 +1,7 @@
 <?php
-    function insert_donhang($id_user){
-        $sql = "INSERT INTO don_hang(id_user)
-         VALUES ('$id_user')";
+    function insert_donhang($id_user,$ngay_dat_hang){
+        $sql = "INSERT INTO don_hang(id_user,ngay_dat_hang)
+         VALUES ('$id_user','$ngay_dat_hang')";
         pdo_execute($sql);
     }
     function loadall_donhang(){

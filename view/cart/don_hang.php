@@ -82,7 +82,7 @@
                                 <?php
                                 $tongtien = 0;
                                 global $img_path;
-                                foreach ($loadall_gio_hang as $cart) {
+                                foreach ($load_chitiet_giohang as $cart) {
                                     extract($cart);
                                     $anhsp = $img_path . $hinh_anh;
                                     $thanhtien = (int) $so_luong * (int) $gia;
@@ -114,7 +114,7 @@
                         <div>
                             <div class="col-md-5 ml-auto">
                                 <div class="cart-page-total">
-                                    <input type="hidden" name="id_gio_hang" value="<?php echo $id_gio_hang; ?>">
+                                    <input type="hidden" name="id_chitiet_gh" value="<?php echo $id_chitiet_gh; ?>">
                                     <input type="hidden" name="tong_tien" value="<?php echo $tongtien; ?>">
                                     <?php foreach($loadall_donhang as $dh){
                                         extract($dh);
