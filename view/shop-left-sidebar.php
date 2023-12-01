@@ -101,8 +101,8 @@
                                 <input type="hidden" name="">
                                 <div class="row grid__product" id="product_page_gallery">
                                     <?php
-                                    if (is_array($load_ctsp_danhmuc)) {
-                                        foreach ($load_ctsp_danhmuc as $sp) {
+                                    if (is_array($load_ctsp_home)) {
+                                        foreach ($load_ctsp_home as $sp) {
                                             extract($sp);
                                             $hinh = $img_path . $hinh_anh;
                                             $link_sp = "index.php?act=single-product&id=" . $id_ctsp;
