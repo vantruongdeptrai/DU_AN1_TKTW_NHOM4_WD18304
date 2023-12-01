@@ -38,10 +38,10 @@
                                 <?php
                                 $tongtien =0;
                                 global $img_path;
-                                if(isset($loadall_gio_hang)){
-                                foreach ($loadall_gio_hang as $cart) {
+                                if(isset($load_chitiet_giohang)){
+                                foreach ($load_chitiet_giohang as $cart) {
                                     extract($cart);
-                                    $xoa_sp_gh = "index.php?act=xoa_sp_gh&id_cart=".$id_gio_hang;
+                                    $xoa_sp_gh = "index.php?act=xoa_sp_gh&id_chitiet_gh=".$id_chitiet_gh;
                                     $anhsp = $img_path . $hinh_anh;
                                     $thanhtien = (int)$so_luong * (int)$gia;
                                     $tongtien += $thanhtien;
@@ -74,33 +74,43 @@
                             </tbody>
                         </table>
                         <br>
-                        <div style="color:red;"></div><?php if(isset($thongbao)){echo $thongbao;} ?></div>
+                        
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <div class="coupon-all">
+                                <?php if(empty($load_chitiet_giohang)){
+                                    echo '<div class="coupon2" style="margin-top:7px;">
+                                    <a class="button" style="background-color:#333333;color:white;padding:13px 20px; border-radius:3px;" href="index.php?act=xoa_giohang" >Xóa giỏ hàng</a>
+                                </div>';
+                                }
+                                ?>
                                 
                                 <div class="coupon2" style="margin-top:7px;">
                                     <a class="button" href="index.php?act=mua_them" value="Mua thêm hàng" 
-                                    style="background-color:#333333;color:white;padding:13px 20px; border-radius:3px;">Mua thêm hàng</a>
+                                    style="background-color:#333333;color:white;padding:13px 20px; border-radius:3px;margin-right:15px;">Mua thêm hàng</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <?php 
+                    if(!empty($load_chitiet_giohang)){
                     echo '<div class="row">
                     <div class="col-md-5 ml-auto">
                         <div class="cart-page-total">
                             <h2>Tổng số tiền</h2>
                             <ul>
-                                <li>Subtotal <span>'.$tongtien.' VNĐ</span></li>
+                                <li>Tổng : <span>'.$tongtien.' VNĐ</span></li>
                                 
                             </ul>
                             <a href="index.php?act=don_hang">Thanh toán</a>
                         </div>
                     </div>
                 </div>';
-            
+            }else{
+                echo '<div style="color:red;">'.$thongbao.'</div><br>';
+                echo "Vui lòng mua hàng để thanh toán !";
+            }
                     ?>
                 </form>
             </div>
