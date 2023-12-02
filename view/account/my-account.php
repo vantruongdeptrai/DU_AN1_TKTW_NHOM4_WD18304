@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumbs_text">
-                    <h1>My Account</h1>
+                    <h1>Tài khoản của tôi</h1>
                     <ul>
-                        <li><a href="index.html">Home </a></li>
-                        <li> // My Account</li>
+                        <li><a href="index.html">Trang chủ </a></li>
+                        <li> // Tài khoản của tôi</li>
                     </ul>
                 </div>
             </div>

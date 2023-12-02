@@ -10,8 +10,9 @@ include "../database/dao/binhluan.php";
 include "../database/dao/chitietdonhang.php";
 include "../database/dao/trangthai.php";
 include "../database/dao/thongke.php";
-$thongke_tien_ngay = thongke_tien_ngay();
-$thongke_tien_thang = thongke_tien_thang();
+include "../database/dao/chitietgiohang.php";
+//$thongke_tien_ngay = thongke_tien_ngay();
+//$thongke_tien_thang = thongke_tien_thang();
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {
@@ -228,26 +229,27 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         // ĐƠN HÀNG
 
         case 'list_donhang':
-            $load_thongtin_donhang = load_thongtin_donhang();
+            $loadall_chitiet_donhang = loadall_chitiet_donhang();
             include("./donhang/list_donhang.php");
             break;
     
         case 'sua_trangthai':
-            if(isset($_GET["id_don_hang"])&&$_GET["id_don_hang"]){
-                $id_don_hang = $_GET["id_don_hang"];
-                $loadone_thongtin_donhang = loadone_thongtin_donhang($id_don_hang);
+            if(isset($_GET["id_chitiet_donhang"])&&$_GET["id_chitiet_donhang"]){
+                $id_chitiet_donhang = $_GET["id_chitiet_donhang"];
+                $loadone_thongtin_donhang = loadone_thongtin_donhang($id_chitiet_donhang);
             }
             $loadall_trangthai = load_trangthai();
             include "./donhang/capnhat_trangthai.php";
         break;
         case 'capnhat_trangthai':
             if(isset($_POST["capnhat_trangthai"])&&$_POST["capnhat_trangthai"]){
-                $id_don_hang = $_POST["id_don_hang"];
+                $id_chitiet_donhang = $_POST["id_chitiet_donhang"];
                 $id_trangthai = $_POST["id_trangthai"];
                 update_chitiet_donhang($id_don_hang,$id_trangthai);
             }
             $loadall_trangthai = load_trangthai();
-            $load_thongtin_donhang = load_thongtin_donhang();
+            $loadall_chitiet_donhang = loadall_chitiet_donhang();
+            
             include("./donhang/list_donhang.php");
         break;
         

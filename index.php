@@ -251,6 +251,19 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             $loadall_chitiet_donhang = loadall_chitiet_donhang();
             include("view/cart/don_hang.php");
             break;
+        case 'huy_don_hang':
+            if(isset($_GET["id_don_hang"])&&$_GET["id_don_hang"]>0){
+                
+            }
+            $loadall_donhang = loadall_donhang();
+            $load_trangthai = load_trangthai();
+            $load_pttt = load_pttt();
+            $load_chitiet_giohang = load_chitiet_giohang();
+            $loadall_chitiet_donhang = loadall_chitiet_donhang();
+            $id_user = $_SESSION["user"]["id_user"];
+            $load_donhang_iduser = load_donhang_iduser($id_user);
+            include('view/account/my-account.php');
+            break;
         case 'xem_chitiet_dh':
             if (isset($_GET["id_don_hang"]) && $_GET["id_don_hang"]) {
                 $id_don_hang = $_GET["id_don_hang"];

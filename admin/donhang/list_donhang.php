@@ -1,6 +1,6 @@
 <?php
-    if(is_array($load_thongtin_donhang)){
-        extract($load_thongtin_donhang);
+    if(is_array($loadall_chitiet_donhang)){
+        extract($loadall_chitiet_donhang);
     }
 ?>
 <div class="container-fluid">
@@ -27,9 +27,9 @@
                         </tr>
                     </thead>
                     <?php 
-                    foreach($load_thongtin_donhang as $tt){
+                    foreach($loadall_chitiet_donhang as $tt){
                         extract($tt);
-                        $cap_nhat = "index.php?act=sua_trangthai&id_don_hang=".$id_don_hang;
+                        $cap_nhat = "index.php?act=sua_trangthai&id_chitiet_donhang=".$id_chitiet_donhang;
                         echo '<tbody>
                     <tr>
                         <td>'.$id_don_hang.'</td>
