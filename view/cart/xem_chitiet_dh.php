@@ -2,7 +2,6 @@
     if(is_array($loadone_thongtin_donhang)){
         extract($loadone_thongtin_donhang);
     }
-    
 ?>
 <br>
 <br>
@@ -38,6 +37,39 @@
                                                 
                                                 <td><?php echo $tong_tien;?>VNĐ</td>
                                                 <td><?php echo $ten_trangthai;?></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                    <br>
+                                    <br>
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <th>Mã giỏ hàng</th>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Giá</th>
+                                                <th>Hình ảnh</th>
+                                                <th>Size</th>
+                                                <th>Số lượng</th>
+                                                <th>Tổng số tiền</th>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <?php 
+                                                    global $img_path;
+                                                    foreach($load_ctgiohang_id_ctdh as $ctgh){
+                                                        extract($ctgh);
+                                                        $anhsp = $img_path . $hinh_anh;
+                                                        echo '<td>'.$id_gio_hang.'</td>
+                                                        <td>'.$ten_sp.'</td>
+                                                        <td>'.$gia.'</td>
+                                                        <td>'.$anhsp.'</td>
+                                                        <td>'.$ten_size.'</td>
+                                                        <td>'.$so_luong.'</td>
+                                                        <td>'.$tong_tien.'</td>';
+                                                    }
+                                                ?>
                                             </tr>
 
                                         </tbody>

@@ -28,7 +28,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <input type="hidden" id ="" name="id_don_hang" value="<?php echo $id_don_hang;?>">
+                                <input type="hidden" id ="" name="id_chitiet_donhang" value="<?php echo $id_chitiet_donhang;?>">
                                 <input type="submit" name="capnhat_trangthai" class="btn btn-primary btn-user btn-block "
                                     value="Cập nhật">
                             </form>

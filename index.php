@@ -265,11 +265,11 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             include('view/account/my-account.php');
             break;
         case 'xem_chitiet_dh':
-            if (isset($_GET["id_don_hang"]) && $_GET["id_don_hang"]) {
-                $id_don_hang = $_GET["id_don_hang"];
-                $loadone_thongtin_donhang = loadone_thongtin_donhang($id_don_hang);
+            if (isset($_GET["id_chitiet_donhang"]) && $_GET["id_chitiet_donhang"]) {
+                $id_chitiet_donhang = $_GET["id_chitiet_donhang"];
+                $loadone_thongtin_donhang = loadone_thongtin_donhang($id_chitiet_donhang);
+                $load_ctgiohang_id_ctdh =load_chitiet_giohang_id_ctdh($id_chitiet_donhang) ;
             }
-            $load_chitiet_giohang = load_chitiet_giohang();
             include("view/cart/xem_chitiet_dh.php");
             break;
         case 'contact':

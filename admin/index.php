@@ -245,7 +245,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             if(isset($_POST["capnhat_trangthai"])&&$_POST["capnhat_trangthai"]){
                 $id_chitiet_donhang = $_POST["id_chitiet_donhang"];
                 $id_trangthai = $_POST["id_trangthai"];
-                update_chitiet_donhang($id_don_hang,$id_trangthai);
+                update_chitiet_donhang($id_chitiet_donhang,$id_trangthai);
             }
             $loadall_trangthai = load_trangthai();
             $loadall_chitiet_donhang = loadall_chitiet_donhang();

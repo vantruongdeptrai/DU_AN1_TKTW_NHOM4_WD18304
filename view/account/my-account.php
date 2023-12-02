@@ -52,6 +52,7 @@
                                             <th>Trạng thái</th>
                                             <th>Tổng số tiền</th>
                                             <th></th>
+                                            <th></th>
                                         </tr>
                                         <?php 
                                             if(isset($load_donhang_iduser)){
@@ -62,12 +63,10 @@
                                                     <td>'.$ngay_dat_hang.'</td>
                                                     <td>'.$ten_trangthai.'</td>
                                                     <td>'.$tong_tien.' VNĐ</td>
+                                                    <td><a href="index.php?act=xem_chitiet_dh&id_chitiet_donhang='.$id_chitiet_donhang.'">View</a></td>
                                                 ';
-                                                if($id_trangthai==4){
-                                                    echo '<td><a href="index.php?act=xem_chitiet_dh&id_don_hang='.$id_don_hang.'">View</a></td></tr>';
-                                                }
                                                 if($id_trangthai==1){
-                                                    echo '<td><a href="index.php?act=xem_chitiet_dh&id_don_hang='.$id_don_hang.'">Hủy đơn</a></td></tr>';
+                                                    echo '<td><a href="index.php?act=xem_chitiet_dh&id_chitiet_donhang='.$id_chitiet_donhang.'">Hủy đơn</a></td></tr>';
                                                 }
                                                 }
                                             }
