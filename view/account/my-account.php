@@ -66,7 +66,7 @@
                                                     <td><a href="index.php?act=xem_chitiet_dh&id_chitiet_donhang='.$id_chitiet_donhang.'&id_don_hang='.$id_don_hang.'&id_chitiet_gh='.$id_chitiet_gh.'">View</a></td>
                                                 ';
                                                 if($id_trangthai==1){
-                                                    echo '<td><a href="index.php?act=xem_chitiet_dh&id_chitiet_donhang='.$id_chitiet_donhang.'">Hủy đơn</a></td></tr>';
+                                                    echo '<td><a href="index.php?act=huy_don&id_chitiet_donhang='.$id_chitiet_donhang.'">Hủy đơn</a></td></tr>';
                                                 }
                                                 }
                                             }

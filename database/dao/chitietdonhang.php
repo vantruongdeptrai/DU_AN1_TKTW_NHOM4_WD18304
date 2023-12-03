@@ -41,17 +41,8 @@
         $load_donhang_iduser = pdo_query($sql);
         return $load_donhang_iduser;
     }
-    function load_lichsu_muahang($id_chitiet_gh){
-        $sql = "SELECT chi_tiet_donhang.id_chitiet_donhang,chi_tiet_giohang.id_chitiet_gh ,chi_tiet_giohang.so_luong,san_pham.ten_sp , san_pham.gia , san_pham.hinh_anh , chi_tiet_sp.id_ctsp , size.ten_size , gio_hang.id_gio_hang
-        FROM chi_tiet_donhang 
-        LEFT JOIN chi_tiet_giohang ON chi_tiet_donhang.id_chitiet_gh = chi_tiet_giohang.id_chitiet_gh
-        LEFT JOIN chi_tiet_sp ON chi_tiet_sp.id_ctsp = chi_tiet_giohang.id_ctsp
-        LEFT JOIN san_pham ON san_pham.id_sp = chi_tiet_sp.id_sp
-        LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size
-        LEFT JOIN gio_hang ON gio_hang.id_gio_hang = chi_tiet_giohang.id_gio_hang
-        LEFT JOIN don_hang ON don_hang.id_don_hang = chi_tiet_donhang.id_don_hang 
-        WHERE chi_tiet_giohang.id_chitiet_gh = '$id_chitiet_gh'";
-        $load_lichsu_muahang = pdo_query($sql);
-        return $load_lichsu_muahang;
+    function huy_don($id_chitiet_donhang){
+        $sql = "DELETE FROM chi_tiet_donhang WHERE id_chitiet_donhang ='$id_chitiet_donhang'";
+        pdo_execute($sql);
     }
 ?>

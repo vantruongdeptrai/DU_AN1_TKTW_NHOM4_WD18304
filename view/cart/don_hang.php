@@ -120,6 +120,7 @@
                                         extract($dh);
                                         //var_dump($dh);
                                         echo '<input type="hidden" name="id_don_hang" value="'.$id_don_hang.'">';
+                                        echo '<input type="hidden" name="id_ctsp" value="'.$id_ctsp.'">';
                                     }?>
                                     <input type="hidden" name="tong_tien" value="<?php echo $tongtien; ?>">
                                     <input

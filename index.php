@@ -204,8 +204,8 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             if(isset($_SESSION["user"])){
                 $id_user = $_SESSION["user"]["id_user"];
                 $ngay_tao_gh = date("Y-m-d H:i:s");
-                $gio_hang = gio_hang();
                 xoa_giohang();
+                $gio_hang = gio_hang();
                 if(empty($gio_hang)){
                     $thongbao = "Giỏ hàng trống !";
                     //sau khi xóa tạo giỏ hàng mới để người dùng thêm sản phẩm vào
@@ -236,14 +236,16 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         case 'xac_nhan_don_hang':
             if (isset($_POST["xac_nhan_dh"]) && $_POST["xac_nhan_dh"]) {
                 $id_don_hang = $_POST["id_don_hang"];
+                $id_ctsp = $_POST["id_ctsp"];
+                $id_user = $_SESSION["user"]["id_user"];
                 $id_chitiet_gh = $_POST["id_chitiet_gh"];
                 $tong_tien = $_POST["tong_tien"];
                 $id_pttt = $_POST["id_pttt"];
                 $id_trangthai = 1;
                 insert_chitiet_donhang($id_chitiet_gh,$id_don_hang,$tong_tien,$id_pttt,$id_trangthai);
+                insert_lichsu_mua($id_ctsp,$id_user);
                 $thongbao = "Khởi tạo đơn hàng thành công";
             }
-            //v$loadall_gio_hang = loadall_gio_hang();
             $loadall_donhang = loadall_donhang();
             $load_trangthai = load_trangthai();
             $load_pttt = load_pttt();
@@ -251,29 +253,22 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             $loadall_chitiet_donhang = loadall_chitiet_donhang();
             include("view/cart/don_hang.php");
             break;
-        case 'huy_don_hang':
-            if(isset($_GET["id_don_hang"])&&$_GET["id_don_hang"]>0){
-                
-            }
-            $loadall_donhang = loadall_donhang();
-            $load_trangthai = load_trangthai();
-            $load_pttt = load_pttt();
-            $load_chitiet_giohang = load_chitiet_giohang();
-            $loadall_chitiet_donhang = loadall_chitiet_donhang();
-            $id_user = $_SESSION["user"]["id_user"];
-            $load_donhang_iduser = load_donhang_iduser($id_user);
-            include('view/account/my-account.php');
-            break;
+        
         case 'xem_chitiet_dh':
-            if (isset($_GET["id_chitiet_donhang"]) && isset($_GET["id_don_hang"]) && isset($_GET["id_chitiet_gh"])) {
+            if (isset($_GET["id_chitiet_donhang"])) {
                 $id_chitiet_donhang = $_GET["id_chitiet_donhang"];
-                $id_don_hang = $_GET["id_don_hang"];
-                $id_chitiet_gh = $_GET["id_chitiet_gh"];
                 $loadone_thongtin_donhang = loadone_thongtin_donhang($id_chitiet_donhang);
-                $load_lichsu_muahang = load_lichsu_muahang($id_chitiet_gh);
-                $load_chitiet_giohang = load_chitiet_giohang();
+                $load_lichsu_mua = load_lichsu_mua(); 
             }
             include("view/cart/xem_chitiet_dh.php");
+            break;
+        case 'huy_don':
+            if(isset($_GET["id_chitiet_donhang"])){
+                $id_chitiet_donhang = $_GET["id_chitiet_donhang"];
+                huy_don($id_chitiet_donhang);
+                xoa_lichsu_mua();
+            }
+            include('view/account/my-account.php');
             break;
         case 'contact':
             include('view/contact.php');

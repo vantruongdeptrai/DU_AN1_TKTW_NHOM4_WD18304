@@ -46,26 +46,24 @@
                                     <table class="table table-bordered">
                                         <tbody>
                                             <tr>
-                                                <th>Mã giỏ hàng</th>
+                                                
                                                 <th>Tên sản phẩm</th>
                                                 <th>Giá</th>
                                                 <th>Hình ảnh</th>
                                                 <th>Size</th>
                                                 <th>Số lượng</th>
-                                                
-                                                
+                                                <th>Thành tiền</th>
                                             </tr>
                                             <tr>
                                                 <?php 
                                                     $tongtien = 0;
                                                     global $img_path;
-                                                    foreach ($load_chitiet_giohang as $cart) {
-                                                        extract($cart);
+                                                    foreach ($load_lichsu_mua as $ls) {
+                                                        extract($ls);
                                                         $anhsp = $img_path . $hinh_anh;
                                                         $thanhtien = (int) $so_luong * (int) $gia;
                                                         $tongtien += $thanhtien;
                                                         echo '<tr>
-                                                        <td>' . $id_gio_hang . '</td>
                                                         <td>' . $ten_sp . '</td>
                                                         <td>
                                                             <span class="amount">' . $gia . '</span>
@@ -76,11 +74,9 @@
                                                             alt="Cart Thumbnail">
                                                         </a>
                                                         </td>
-                                                        
-                                                        
                                                         <td>' . $ten_size . '</td>
                                                         <td>' . $so_luong .'</td>
-                                                        
+                                                        <td>' . $thanhtien .'</td>
                                                     </tr>';
                                                     }
                                                     ?>

@@ -24,7 +24,6 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th></th>
                                     <th class="product_remove">Thao tác</th>
                                     <th class="product-thumbnail">Ảnh</th>
                                     <th class="cart-product-name">Tên sản phẩm</th>
@@ -46,7 +45,7 @@
                                     $thanhtien = (int)$so_luong * (int)$gia;
                                     $tongtien += $thanhtien;
                                     echo '<tr>
-                                            <td><input type="checkbox" name="" id=""></td>
+                                            
                                             <td class="product_remove">
                                                 <a href="'.$xoa_sp_gh.'">
                                                     <i class="pe-7s-close" title="Remove"></i>
