@@ -52,26 +52,39 @@
                                                 <th>Hình ảnh</th>
                                                 <th>Size</th>
                                                 <th>Số lượng</th>
-                                                <th>Tổng số tiền</th>
+                                                
                                                 
                                             </tr>
                                             <tr>
                                                 <?php 
+                                                    $tongtien = 0;
                                                     global $img_path;
-                                                    foreach($load_ctgiohang_id_ctdh as $ctgh){
-                                                        extract($ctgh);
+                                                    foreach ($load_chitiet_giohang as $cart) {
+                                                        extract($cart);
                                                         $anhsp = $img_path . $hinh_anh;
-                                                        echo '<td>'.$id_gio_hang.'</td>
-                                                        <td>'.$ten_sp.'</td>
-                                                        <td>'.$gia.'</td>
-                                                        <td>'.$anhsp.'</td>
-                                                        <td>'.$ten_size.'</td>
-                                                        <td>'.$so_luong.'</td>
-                                                        <td>'.$tong_tien.'</td>';
+                                                        $thanhtien = (int) $so_luong * (int) $gia;
+                                                        $tongtien += $thanhtien;
+                                                        echo '<tr>
+                                                        <td>' . $id_gio_hang . '</td>
+                                                        <td>' . $ten_sp . '</td>
+                                                        <td>
+                                                            <span class="amount">' . $gia . '</span>
+                                                        </td>
+                                                        <td>
+                                                        <a href="#">
+                                                        <img style="width:100px;height:100px" src="' . $anhsp . '"
+                                                            alt="Cart Thumbnail">
+                                                        </a>
+                                                        </td>
+                                                        
+                                                        
+                                                        <td>' . $ten_size . '</td>
+                                                        <td>' . $so_luong .'</td>
+                                                        
+                                                    </tr>';
                                                     }
-                                                ?>
+                                                    ?>
                                             </tr>
-
                                         </tbody>
                                     </table>
                                 </div>
