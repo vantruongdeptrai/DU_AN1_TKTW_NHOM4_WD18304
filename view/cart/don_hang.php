@@ -84,10 +84,13 @@
                                 global $img_path;
                                 foreach ($load_chitiet_giohang as $cart) {
                                     extract($cart);
+                                    echo '<input type="hidden" name="id_ctsp" value="'.$id_ctsp.'">
+                                    <input type="hidden" name="so_luong" value="'.$so_luong.'">';
                                     $anhsp = $img_path . $hinh_anh;
                                     $thanhtien = (int) $so_luong * (int) $gia;
                                     $tongtien += $thanhtien;
                                     echo '<tr>
+                                    
                                     <td>' . $ten_sp . '</td>
                                     <td>
                                     <a href="#">
@@ -122,7 +125,9 @@
                                         echo '<input type="hidden" name="id_don_hang" value="'.$id_don_hang.'">';
                                         echo '<input type="hidden" name="id_ctsp" value="'.$id_ctsp.'">';
                                     }?>
+                                    
                                     <input type="hidden" name="tong_tien" value="<?php echo $tongtien; ?>">
+                                    
                                     <input
                                         style=" width:170px;height:50px;border:none; border-radius:5px;background-color:#fc7c7c; color:white;"
                                         type="submit" value="Xác nhận thanh toán" name="xac_nhan_dh">
