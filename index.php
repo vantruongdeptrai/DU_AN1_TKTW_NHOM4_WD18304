@@ -249,10 +249,17 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                     $id_ctsp = $ctgh["id_ctsp"]; // Sử dụng $ctgh để truy cập dữ liệu từ mảng
                     $id_user = $_SESSION["user"]["id_user"];
                     $so_luong = $ctgh["so_luong"]; // Sử dụng $ctgh để truy cập dữ liệu từ mảng
-                    insert_lichsu_mua($id_ctsp, $id_user, $so_luong);
+                    $id_chitiet_gh = $ctgh["id_chitiet_gh"];
+                    $loadall_chitiet_donhang = loadall_chitiet_donhang();
+                    foreach($loadall_chitiet_donhang as $ctdh){
+                        $id_chitiet_donhang= $ctdh["id_don_hang"];
+                        insert_lichsu_mua($id_ctsp, $id_user,$id_chitiet_donhang, $so_luong);
+                    }
+                    
                 }
                 
                 $thongbao = "Khởi tạo đơn hàng thành công";
+                xoa_ctgh();
 
             }
             $loadall_donhang = loadall_donhang();
@@ -264,10 +271,12 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             break;
         
         case 'xem_chitiet_dh':
-            if (isset($_GET["id_chitiet_donhang"])) {
+            if (isset($_GET["id_chitiet_donhang"]) && isset($_GET["id_don_hang"])) {
+                $id_user = $_SESSION["user"]["id_user"];
                 $id_chitiet_donhang = $_GET["id_chitiet_donhang"];
                 $loadone_thongtin_donhang = loadone_thongtin_donhang($id_chitiet_donhang);
-                $load_lichsu_mua = load_lichsu_mua(); 
+                $id_don_hang = $_GET["id_don_hang"];
+                $load_lichsu_mua = load_lichsu_mua($id_user,$id_don_hang); 
             }
             include("view/cart/xem_chitiet_dh.php");
             break;
@@ -277,7 +286,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 huy_don($id_chitiet_donhang);
                 xoa_lichsu_mua();
             }
-            $id_user = $_SESSION["user"];
+            $id_user = $_SESSION["user"]["id_user"];
             $load_donhang_iduser = load_donhang_iduser($id_user);
             include('view/account/my-account.php');
             break;

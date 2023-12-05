@@ -17,5 +17,9 @@
         $sql = "DELETE FROM chi_tiet_giohang WHERE id_chitiet_gh = '$id_chitiet_gh'";
         pdo_execute($sql);
     }
+    function xoa_ctgh(){
+        $sql = "DELETE FROM chi_tiet_giohang";
+        pdo_execute($sql);
+    }
 
 ?>
