@@ -1,7 +1,7 @@
 <?php
 function loadall_taikhoan()
 {
-    $sql = "SELECT * FROM nguoi_dung";
+    $sql = "SELECT * FROM nguoi_dung WHERE trang_thai = 0 ";
     $tk = pdo_query($sql);
     return $tk;
 }
@@ -41,5 +41,8 @@ function update_mk($id,$user,$newpass)
     //var_dump($sql);
     pdo_execute($sql);
 }
-
+function xoa_tk($id_user){
+    $sql = "UPDATE nguoi_dung SET trang_thai = 1 WHERE id_user = ".$id_user;
+    pdo_execute($sql);
+}
 ?>

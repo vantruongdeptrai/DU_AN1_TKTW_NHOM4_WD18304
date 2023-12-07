@@ -7,7 +7,7 @@ function insert_sanpham($tensp, $giasp, $hinh, $mota, $id_dm)
 
 function loadall_sanpham($kewword = " ", $id_dm = 0)
 {
-    $sql = "SELECT * FROM san_pham WHERE 1";
+    $sql = "SELECT * FROM san_pham WHERE trang_thai = 0";
     if ($kewword != "") {
         $sql .= " and ten_sp like '%" . $kewword . "%'";
     }
@@ -71,7 +71,7 @@ function load_sanpham_cungloai($id_sp,$id_dm)
 }
 function delete_sanpham($id_sp)
 {
-    $sql = "DELETE FROM san_pham WHERE id_sp=" . $id_sp;
+    $sql = "UPDATE san_pham SET trang_thai = 1 WHERE id_sp=" . $id_sp;
     pdo_execute($sql);
 }
 function update_sp($id_sp,$id_dm, $ten_sp, $gia_sp, $mota, $filename)

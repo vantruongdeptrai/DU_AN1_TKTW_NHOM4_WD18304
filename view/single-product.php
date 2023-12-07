@@ -47,16 +47,16 @@ if (is_array($load_one_ctsp)) {
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="product_details_sidebar">
-                            <h2 class="product__title">
+                            <h2 class="product__title"> Tên sản phẩm : 
                                 '.$ten_sp.'
                             </h2>
                             <div class="price_box">
-                                <span class="current_price">
+                                <span class="current_price"> Giá : 
                                     '.$gia.'
                                 </span>
                             </div>
                             <div class="price_box">
-                                <span class="current_price">
+                                <span class="current_price"> Size :
                                     '.$ten_size.'
                                 </span>
                             </div>
@@ -72,18 +72,12 @@ if (is_array($load_one_ctsp)) {
                                     <span class="review__text"> (5 reviews)</span>
                                 </p>
                             </div>
-                            <p class="product_details_desc">
-                                '.$mo_ta.'
-                            </p>
-    
                             <div class="product_pro_button quantity d-flex align-items-center">
                                 <div class="pro-qty border">
                                     <input type="text" value="1" name="so_luong">
                                 </div>
                                 <!-- <a  href="#"></a> -->
-                                <input class="add_to_cart" type="submit" name="add_to_cart" value="Thêm vào giỏ hàng">
-                                <a class="wishlist__btn" href="#"><i class="pe-7s-like"></i></a>
-                                <a class="serch_btn" href="#"><i class="pe-7s-search"></i></a>
+                                <input style="margin-left:10px; background-color:#243a6e; color:white; border:none; padding:10px; border-radius:5px;" class="add_to_cart" type="submit" name="add_to_cart" value="Thêm vào giỏ hàng">
                             </div>
                             <div class="product_paypal">
                                 <img src="assets/img/others/paypal.png" alt="payments">
@@ -110,9 +104,7 @@ if (is_array($load_one_ctsp)) {
                             <a class="active" data-bs-toggle="tab" href="#description" aria-controls="description">Mô
                                 tả</a>
                         </li>
-                        <li>
-                            <a data-bs-toggle="tab" href="#aditional" aria-controls="aditional">Thông tin</a>
-                        </li>
+                        
                         <li>
                             <a data-bs-toggle="tab" href="#reviews" aria-controls="reviews">Nhận xét</a>
                         </li>
@@ -126,33 +118,7 @@ if (is_array($load_one_ctsp)) {
                             </p>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="aditional" role="tabpanel">
-                        <div class="product_d_information">
-                            <form action="#">
-                                <table class="border-top">
-                                    <tbody>
-                                        <tr>
-                                            <td class="first_child">Compositions</td>
-                                            <td>Polyester</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="first_child">Styles</td>
-                                            <td>Girly</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="first_child">Properties</td>
-                                            <td>Short Dress</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </form>
-                        </div>
-                        <div class="product_info_desc">
-                            <p class="mb-0">
-                                <?php echo $mo_ta ?>
-                            </p>
-                        </div>
-                    </div>
+    
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="reviews__wrapper">
                             <h2>Bình luận về sản phẩm của khách hàng </h2>

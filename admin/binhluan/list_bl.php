@@ -19,14 +19,15 @@ $loadbl = loadbl_ngdung_sanpham(0);
                             <th>Nội dung</th>
                             <th>Người bình luận</th>
                             <th>Sản phẩm</th>
-                            
                             <th>Ngày bình luận</th>
+                            <th>Thao tác</th>
                         </tr>
                     </thead>
                     <?php
                     
                         foreach ($loadbl as $bl) {
                             extract($bl);
+                            $xoabl = "index.php?act=xoa_bl&id_bl=".$id_bl;
                             echo '<tbody>
                         <tr>
                             
@@ -34,7 +35,9 @@ $loadbl = loadbl_ngdung_sanpham(0);
                             <td>' . $user . '</td>
                             <td>' . $ten_sp . '</td>
                             <td>' . $ngay_binh_luan . '</td>
-                            
+                            <td>
+                                <a href="' . $xoabl . '" class="btn btn-danger btn-circle "><i class="fas fa-trash"></i></a>
+                            </td>
                         </tr>
                     </tbody>';
                         }

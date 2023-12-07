@@ -34,9 +34,7 @@
                             <th>Tên sản phẩm</th>
                             <th>Hình ảnh</th>
                             <th>Giá</th>
-                            
                             <th>Mô tả sản phẩm</th>
-                            <th>Lượt xem</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
@@ -44,9 +42,6 @@
 
                     foreach ($list_sp as $sp) {
                         extract($sp);
-                        //foreach ($list_size as $size) {
-                            //extract($size);
-                            //if($id_size == $id_size) {
                                 $sua_sp = "index.php?act=sua_sp&id=" . $id_sp;
                                 $xoa_sp = "index.php?act=xoa_sp&id=" . $id_sp;
                                 $chitiet_sp = "index.php?act=xem_chitiet&id=". $id_sp;
@@ -63,7 +58,6 @@
                                         <td>' . $hinh_anh . '</td>
                                         <td>' . $gia . '</td>
                                         <td>' . $mo_ta . '</td>
-                                        <td>' . $luot_xem . '</td>
                                         <td style="display : flex ; justify-content:space-evenly;">
                                             <a href="' . $xoa_sp . '" class="btn btn-danger btn-circle "><i class="fas fa-trash"></i></a>
                                             <a href="' . $sua_sp . '" class="btn btn-danger btn-circle "><i class="fas fa-fw fa-wrench"></i></a>

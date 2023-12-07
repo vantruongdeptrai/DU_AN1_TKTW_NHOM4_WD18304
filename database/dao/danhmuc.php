@@ -3,11 +3,10 @@ function insert_dm($tendm)
 {
     $sql = " INSERT INTO danh_muc(ten_dm) VALUES('$tendm')";
     pdo_execute($sql);
-    //echo $sql;
 }
 function loadall_danhmuc()
 {
-    $sql = "SELECT * FROM danh_muc";
+    $sql = "SELECT * FROM danh_muc WHERE trang_thai = 0";
     $list_dm = pdo_query($sql);
     //var_dump($list_dm);
     return $list_dm;
@@ -33,8 +32,9 @@ function loadone_danhmuc($id)
 }
 function delete_danhmuc($id)
 {
-    $sql = "DELETE FROM danh_muc WHERE id_dm=" . $id;
+    $sql = "UPDATE danh_muc SET trang_thai = '1' WHERE id_dm=". $id;
     pdo_execute($sql);
+    //echo $sql;
 }
 function update_dm($id_dm, $ten_dm)
 {

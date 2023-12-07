@@ -172,9 +172,9 @@
                             <ul class="d-flex">
                                 <li class="header_search"><a href="javascript:void(0)"><i class="pe-7s-search"></i></a>
                                 </li>
-                                <li class="header_wishlist"><a href="wishlist.html"><i class="pe-7s-like"></i></a></li>
+                                
                                 <li class="shopping_cart"><a href="index.php?act=add_to_cart"><i class="pe-7s-shopbag"></i></a>
-                                    <span class="item_count">2</span>
+                                    <!-- <span class="item_count">2</span> -->
                                 </li>
                             </ul>
                             

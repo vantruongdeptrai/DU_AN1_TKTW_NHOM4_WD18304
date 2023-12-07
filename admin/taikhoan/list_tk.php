@@ -23,9 +23,7 @@
                     <?php
                     foreach ($list_tk as $tk) {
                         extract($tk);
-                        
-                                $sua_tk = "index.php?act=sua_tk&id=" . $id_user;
-                                $xoa_tk = "index.php?act=xoa_tk&id=" . $id_user;
+                                $xoa_tk = "index.php?act=xoa_tk&id_user=" . $id_user;
                                 echo '<tbody>
                         <tr>
                             <td>' . $id_user . '</td>
@@ -36,7 +34,6 @@
                             <td>' . $dia_chi . '</td>
                             <td style="display : flex ; justify-content:space-evenly;">
                             <a href="' . $xoa_tk . '" class="btn btn-danger btn-circle "><i class="fas fa-trash"></i></a>
-                            <a href="' . $sua_tk . '" class="btn btn-danger btn-circle "><i class="fas fa-fw fa-wrench"></i></a>
                             </td>
                         </tr>
                     </tbody>';

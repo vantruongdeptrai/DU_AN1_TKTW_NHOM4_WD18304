@@ -101,7 +101,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
         case 'them_ctsp':
             if (isset($_POST['id_sp']) && $_POST['id_sp'] && isset($_POST['id_size']) && $_POST['id_size'] && isset($_POST['so_luong']) && $_POST['so_luong']) {
-                insert_ctsp($_POST['id_sp'], $_POST['id_size'],$_POST['so_luong']);
+                insert_ctsp($_POST['id_sp'], $_POST['id_size'], $_POST['so_luong']);
             }
             $list_sp = loadall_sanpham("", 0);
             $list_size = loadall_size();
@@ -152,7 +152,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         case 'sua_sp':
             if (isset($_GET["id"]) && $_GET["id"] > 0) {
                 $one_sp = loadone_sanpham($_GET["id"]);
-                
+
             }
             $list_size = loadall_size();
             $list_dm = loadall_danhmuc();
@@ -195,16 +195,16 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             $list_dm = loadall_danhmuc();
             include('./sanpham/list_sp.php');
             break;
-            
-            // update sản phẩm chi tiết
+
+        // update sản phẩm chi tiết
 
         case 'update_spct':
-            if(isset($_POST["cap_nhat_size"])&&$_POST["cap_nhat_size"]){
+            if (isset($_POST["cap_nhat_size"]) && $_POST["cap_nhat_size"]) {
                 $id_sp = $_POST["id_sp"];
                 $id_size = $_POST["id_size"];
                 $id_ctsp = $_POST["id_ctsp"];
                 $so_luong = $_POST["so_luong"];
-                update_ctsp($id_ctsp,$id_sp,$id_size,$so_luong);
+                update_ctsp($id_ctsp, $id_sp, $id_size, $so_luong);
             }
             //$one_ctsp = load_one_ctsp($id_ctsp);
             $list_ctsp = load_ctsp();
@@ -216,7 +216,13 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             $list_tk = loadall_taikhoan();
             include('./taikhoan/list_tk.php');
             break;
-
+        case 'xoa_tk':
+            if (isset($_GET["id_user"]) && $_GET["id_user"]) {
+                xoa_tk($_GET["id_user"]);
+            }
+            $list_tk = loadall_taikhoan();
+            include('./taikhoan/list_tk.php');
+            break;
         //BÌNH LUẬN
 
         case 'list_bl':
@@ -225,39 +231,46 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             $loadbl = loadbl_ngdung_sanpham(0);
             include('./binhluan/list_bl.php');
             break;
-        
+
+        case 'xoa_bl':
+            if (isset($_GET["id_bl"]) && $_GET["id_bl"]) {
+                xoa_bl($_GET["id_bl"]);
+            }
+            $loadbl = loadbl_ngdung_sanpham(0);
+            include('./binhluan/list_bl.php');
+            break;
         // ĐƠN HÀNG
 
         case 'list_donhang':
             $loadall_chitiet_donhang = loadall_chitiet_donhang();
             include("./donhang/list_donhang.php");
             break;
-    
+
         case 'sua_trangthai':
-            if(isset($_GET["id_chitiet_donhang"])&&$_GET["id_chitiet_donhang"]){
+            if (isset($_GET["id_chitiet_donhang"]) && $_GET["id_chitiet_donhang"]) {
                 $id_chitiet_donhang = $_GET["id_chitiet_donhang"];
                 $loadone_thongtin_donhang = loadone_thongtin_donhang($id_chitiet_donhang);
             }
             $loadall_trangthai = load_trangthai();
             include "./donhang/capnhat_trangthai.php";
-        break;
+            break;
         case 'capnhat_trangthai':
-            if(isset($_POST["capnhat_trangthai"])&&$_POST["capnhat_trangthai"]){
+            if (isset($_POST["capnhat_trangthai"]) && $_POST["capnhat_trangthai"]) {
                 $id_chitiet_donhang = $_POST["id_chitiet_donhang"];
                 $id_trangthai = $_POST["id_trangthai"];
-                update_chitiet_donhang($id_chitiet_donhang,$id_trangthai);
+                update_chitiet_donhang($id_chitiet_donhang, $id_trangthai);
             }
             $loadall_trangthai = load_trangthai();
             $loadall_chitiet_donhang = loadall_chitiet_donhang();
-            
+
             include("./donhang/list_donhang.php");
-        break;
-        
+            break;
+
 
         //THỐNG KÊ
 
         case 'thongke_tien_ngay':
-            
+
             include "giaodien/main.php";
             break;
         default:
