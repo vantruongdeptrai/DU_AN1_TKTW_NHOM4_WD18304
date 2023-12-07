@@ -11,8 +11,8 @@ include "../database/dao/chitietdonhang.php";
 include "../database/dao/trangthai.php";
 include "../database/dao/thongke.php";
 include "../database/dao/chitietgiohang.php";
-//$thongke_tien_ngay = thongke_tien_ngay();
-//$thongke_tien_thang = thongke_tien_thang();
+$thongke_tien_ngay = thongke_tien_ngay();
+$thongke_tien_thang = thongke_tien_thang();
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {

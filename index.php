@@ -259,7 +259,6 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 }
                 
                 $thongbao = "Khởi tạo đơn hàng thành công";
-                xoa_ctgh();
 
             }
             $loadall_donhang = loadall_donhang();
