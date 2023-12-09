@@ -15,7 +15,7 @@
                             <form action="index.php?act=add_sp" class="user" method="post"
                                 enctype="multipart/form-data">
                                 <div class="input-group">
-                                    <select class="form-control bg-light border-0 small" name="id_dm">
+                                    <select class="form-control bg-light border-0 small" name="id_dm" id="id_dm">
                                         <?php
                                         foreach ($list_dm as $dm) {
                                             extract($dm);
@@ -67,12 +67,16 @@
                 var ten_sp = $('#ten_sp').val();
                 var gia = $('#gia').val();
                 var hinh_anh = $('#hinh_anh').val();
+                var id_dm = $('#id_dm').val();
                 
-                if()
                 var mota = $('#mota').val();
 
                 //Kiểm tra dữ liệu có null hay không
-                
+                if($.trim(id_dm) == ''){
+                    alert('Chưa có danh mục sản phẩm');
+                    return false;
+                }
+
                 if ($.trim(ten_sp) == '') {
                     alert('Bạn chưa nhập tên sản phẩm');
                     return false;

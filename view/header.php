@@ -170,7 +170,7 @@
                         <!--main menu end-->
                         <div class="header_account">
                             <ul class="d-flex">
-                                <li class="header_search"><a href="javascript:void(0)"><i class="pe-7s-search"></i></a>
+                                <li class="header_search"><a><i class="pe-7s-search"></i></a>
                                 </li>
                                 
                                 <li class="shopping_cart"><a href="index.php?act=add_to_cart"><i class="pe-7s-shopbag"></i></a>
@@ -193,8 +193,8 @@
         <div class="search_close">
             <i class="ion-close-round"></i>
         </div>
-        <form class="border-bottom" action="#">
-            <input class="border-0" placeholder="Search products..." type="text">
-            <button type="submit"><span class="pe-7s-search"></span></button>
+        <form class="border-bottom" action="index.php?act=shop-left-sidebar" method="post">
+            <input class="border-0" placeholder="Search products..." type="text" name="keyword">
+            <input type="submit" class="pe-7s-search"><span ></span></input>
         </form>
     </div>

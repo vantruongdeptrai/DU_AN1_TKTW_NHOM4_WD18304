@@ -17,7 +17,7 @@ include "database/dao/lichsumuahang.php";
 include "global.php";
 $list_sp_home = loadall_sanpham_home();
 $list_dm_home = loadall_danhmuc_home();
-$load_ctsp_home = load_ctsp(0);
+$load_ctsp_home = load_ctsp(" ",0);
 
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
@@ -26,17 +26,21 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         //         SẢN PHẨM         //
 
         case 'shop-left-sidebar':
-
+            if (isset($_POST["keyword"]) && $_POST["keyword"] != "") {
+                $keyword = $_POST["keyword"];
+            } else {
+                $keyword = "";
+            }
             if (isset($_GET["id_dm"]) && $_GET["id_dm"] > 0) {
                 $id_dm = $_GET["id_dm"];
                 $load_ctsp_home = load_ctsp($id_dm);
+            }else{
+                $id_dm = 0; 
             }
-            //$load_ctsp_home = load_ctsp(0);
+            $load_ctsp_home = load_ctsp($keyword,$id_dm);
             include('view/shop-left-sidebar.php');
             break;
-        case 'xem_nhanh':
 
-            include('view/xem_nhanh.php');
         case 'single-product':
             if (isset($_GET['id']) && ($_GET['id'])) {
                 $id = $_GET['id'];

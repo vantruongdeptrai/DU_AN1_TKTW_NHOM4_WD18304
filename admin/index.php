@@ -117,8 +117,8 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         case 'xem_chitiet':
             if (isset($_GET["id"]) && $_GET["id"] > 0) {
                 $id = $_GET["id"];
-                $list_ctsp = load_ctsp();
-                //$list_chitietsp = load_spct($id);
+                $list_ctsp = load_ctsp_sp($id);
+                //$list_chitietsp = load_ctsp("",0);
             }
             include('./sanpham/list_sp_chitiet.php');
             break;
@@ -204,8 +204,9 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 $id_size = $_POST["id_size"];
                 $id_ctsp = $_POST["id_ctsp"];
                 $so_luong = $_POST["so_luong"];
-                update_ctsp($id_ctsp, $id_sp, $id_size, $so_luong);
+                update_ctsp($id_ctsp, $id_sp, $id_size, $so_luong);  
             }
+
             //$one_ctsp = load_one_ctsp($id_ctsp);
             $list_ctsp = load_ctsp();
             $list_size = loadall_size();
