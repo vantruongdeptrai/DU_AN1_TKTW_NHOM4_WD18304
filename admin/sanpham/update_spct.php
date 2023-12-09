@@ -49,11 +49,12 @@ if (is_array($list_size)) {
                                 </div>
                                 <br>
                                 <input type="hidden" name="id_ctsp" id="id_ctsp" value="<?php echo $id_ctsp ?>">
-                                <div style="color:red;font-size:20px;"><?php echo $thongbao ?></div>
+                                
                                 <input type="submit" class="btn btn-primary btn-user btn-block" name="cap_nhat_size"
                                     value="Cập nhật">
                             </form>
                         </div>
+                        <div style="color:red;" id="showerror"></div>
                     </div>
                 </div>
             </div>

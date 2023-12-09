@@ -15,7 +15,7 @@
                             <form action="index.php?act=them_ctsp" class="user" method="post"
                                 enctype="multipart/form-data">
                                 <div class="input-group">
-                                    <select class="form-control bg-light border-0 small" name="id_sp">
+                                    <select class="form-control bg-light border-0 small" name="id_sp" id="id_sp" >
                                         <?php
                                         foreach ($list_sp as $sp) {
                                             extract($sp);
@@ -27,7 +27,7 @@
                                 <br>
                                 <label>Size</label>
                                 <div class="input-group">
-                                    <select class="form-control bg-light border-0 small" name="id_size">
+                                    <select class="form-control bg-light border-0 small" name="id_size" id="id_size" >
                                         <?php
                                         foreach ($list_size as $size) {
                                             extract($size);
@@ -40,13 +40,14 @@
                                 </div>
                                 <br>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                    <input type="text" class="form-control form-control-user" id="so_luong"
                                         placeholder="Số lượng" name="so_luong">
                                 </div>
                                 <br>
                                 <input type="submit" class="btn btn-primary btn-user btn-block" name="them_sp"
                                     value="Thêm mới">
                             </form>
+                            <div style="color:red;" id="showerror"></div>
                         </div>
                     </div>
                 </div>
@@ -57,15 +58,43 @@
         </div>
 
     </div>
+    <script language="javascript">
+            $('form').submit(function () {
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                var so_luong = $('#so_luong').val();
+                var id_size = $('#id_size').val();
+                var id_sp = $('#id_sp').val();
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+                //Kiểm tra dữ liệu có null hay không
+                if($.trim(so_luong) == ''){
+                    alert('Chưa nhập số lượng !');
+                    return false;
+                }
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
+                if ($.trim(id_size) == '') {
+                    alert('Bạn chưa chọn size');
+                    return false;
+                }
+                if ($.trim(id_sp) == '') {
+                    alert('Bạn chưa chọn sản phẩm');
+                    return false;
+                }
+                
+                $.ajax({
+                    type: 'POST',
+                    url: './sanpham/validate_add_ctsp.php',
+                    dataType: 'text',
+                    data: {
+                        so_luong : so_luong ,
+                        id_size : id_size ,
+                        id_sp : id_sp                      
+                    },
+                    success: function (result) {
+                        $("#showerror").html(result);
+                    }
+                });
+                return false;
+            });
+        
+    </script>
 </body>
