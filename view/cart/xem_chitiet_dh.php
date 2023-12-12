@@ -69,10 +69,10 @@
                                                             <span class="amount">' . $gia . '</span>
                                                         </td>
                                                         <td>
-                                                        <a href="#">
+                                                        
                                                         <img style="width:100px;height:100px" src="' . $anhsp . '"
                                                             alt="Cart Thumbnail">
-                                                        </a>
+                                                        
                                                         </td>
                                                         <td>' . $ten_size . '</td>
                                                         <td>' . $so_luong .'</td>

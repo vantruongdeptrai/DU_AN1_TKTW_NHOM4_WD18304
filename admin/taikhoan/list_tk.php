@@ -16,6 +16,7 @@
                             <th>Email</th>
                             <th>Số điện thoại</th>
                             <th>Địa chỉ</th>
+                            <th>Trạng thái ( 0 : còn hoạt động , 1 : tắt hoạt động)</th>
                             <!-- <th>Số lượng sản phẩm trong danh mục</th> -->
                             <th>Thao tác</th>
                         </tr>
@@ -24,6 +25,7 @@
                     foreach ($list_tk as $tk) {
                         extract($tk);
                                 $xoa_tk = "index.php?act=xoa_tk&id_user=" . $id_user;
+                                
                                 echo '<tbody>
                         <tr>
                             <td>' . $id_user . '</td>
@@ -32,8 +34,10 @@
                             <td>' . $email . '</td>
                             <td>' . $sdt . '</td>
                             <td>' . $dia_chi . '</td>
+                            <td>' . $trang_thai . '</td>
                             <td style="display : flex ; justify-content:space-evenly;">
                             <a href="' . $xoa_tk . '" class="btn btn-danger btn-circle "><i class="fas fa-trash"></i></a>
+                            
                             </td>
                         </tr>
                     </tbody>';

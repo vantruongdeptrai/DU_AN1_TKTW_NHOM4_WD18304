@@ -163,6 +163,19 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
 
         // GIỎ HÀNG 
         case 'mua_them':
+            if (isset($_POST["keyword"]) && $_POST["keyword"] != "") {
+                $keyword = $_POST["keyword"];
+            } else {
+                $keyword = "";
+            }
+            if (isset($_GET["id_dm"]) && $_GET["id_dm"] > 0) {
+                $id_dm = $_GET["id_dm"];
+                $load_ctsp_home = load_ctsp($id_dm);
+            }else{
+                $id_dm = 0; 
+            }
+            $load_ctsp_home = load_ctsp($keyword,$id_dm);
+            include('view/shop-left-sidebar.php');
             // $loadall_gio_hang = loadall_gio_hang();
             include("view/shop-left-sidebar.php");
             break;
@@ -246,24 +259,15 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 $tong_tien = $_POST["tong_tien"];
                 $id_pttt = $_POST["id_pttt"];
                 $id_trangthai = 1;
-                insert_chitiet_donhang($id_chitiet_gh,$id_don_hang,$tong_tien,$id_pttt,$id_trangthai);
+                $id_chitiet_donhang = insert_chitiet_donhang($id_chitiet_gh,$id_ctsp,$id_don_hang,$tong_tien,$id_pttt,$id_trangthai);
                 $load_chitiet_giohang = load_chitiet_giohang();
-                
-                foreach ($load_chitiet_giohang as $ctgh) {
-                    $id_ctsp = $ctgh["id_ctsp"]; // Sử dụng $ctgh để truy cập dữ liệu từ mảng
-                    $id_user = $_SESSION["user"]["id_user"];
-                    $so_luong = $ctgh["so_luong"]; // Sử dụng $ctgh để truy cập dữ liệu từ mảng
+                $thongbao = "Khởi tạo đơn hàng thành công";
+                xoa_ctgh();
+                foreach($load_chitiet_giohang as $ctgh){
                     $id_chitiet_gh = $ctgh["id_chitiet_gh"];
-                    $loadall_chitiet_donhang = loadall_chitiet_donhang();
-                    foreach($loadall_chitiet_donhang as $ctdh){
-                        $id_chitiet_donhang= $ctdh["id_don_hang"];
-                        insert_lichsu_mua($id_ctsp, $id_user,$id_chitiet_donhang, $so_luong);
-                    }
-                    
+                    update_id_chitietdonhang($id_chitiet_donhang,$id_chitiet_gh);
                 }
                 
-                $thongbao = "Khởi tạo đơn hàng thành công";
-
             }
             $loadall_donhang = loadall_donhang();
             $load_trangthai = load_trangthai();
@@ -279,7 +283,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 $id_chitiet_donhang = $_GET["id_chitiet_donhang"];
                 $loadone_thongtin_donhang = loadone_thongtin_donhang($id_chitiet_donhang);
                 $id_don_hang = $_GET["id_don_hang"];
-                $load_lichsu_mua = load_lichsu_mua($id_user,$id_don_hang); 
+                $load_lichsu_mua = load_lichsu_mua($id_chitiet_donhang); 
             }
             include("view/cart/xem_chitiet_dh.php");
             break;

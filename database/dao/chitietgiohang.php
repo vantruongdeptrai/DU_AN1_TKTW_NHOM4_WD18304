@@ -11,6 +11,7 @@
         LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size
         LEFT JOIN gio_hang ON gio_hang.id_gio_hang = chi_tiet_giohang.id_gio_hang WHERE chi_tiet_giohang.trang_thai = 0";
         $load_chitiet_giohang = pdo_query($sql);
+        //var_dump($load_chitiet_giohang);
         return $load_chitiet_giohang;
     }
     function xoa_sp_giohang($id_chitiet_gh){
@@ -21,5 +22,8 @@
         $sql = "UPDATE chi_tiet_giohang SET trang_thai = 1";
         pdo_execute($sql);
     }
-
+    function update_id_chitietdonhang($id_chitiet_donhang,$id_chitiet_gh){
+        $sql = "UPDATE chi_tiet_giohang SET id_chitiet_donhang = '$id_chitiet_donhang' WHERE id_chitiet_gh = '$id_chitiet_gh'";
+        pdo_execute($sql);
+    }
 ?>

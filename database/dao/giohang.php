@@ -13,7 +13,7 @@
         return $load_giohang;
     }
     function xoa_giohang(){
-        $sql = "DELETE FROM gio_hang";
+        $sql = "UPDATE gio_hang SET trang_thai = 1";
         pdo_execute($sql);
     }
     

@@ -1,7 +1,7 @@
 <?php
 function loadall_taikhoan()
 {
-    $sql = "SELECT * FROM nguoi_dung WHERE trang_thai = 0 ";
+    $sql = "SELECT * FROM nguoi_dung ";
     $tk = pdo_query($sql);
     return $tk;
 }
