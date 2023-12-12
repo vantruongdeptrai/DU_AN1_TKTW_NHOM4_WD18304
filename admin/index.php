@@ -11,6 +11,8 @@ include "../database/dao/chitietdonhang.php";
 include "../database/dao/trangthai.php";
 include "../database/dao/thongke.php";
 include "../database/dao/chitietgiohang.php";
+include "../database/dao/lichsumuahang.php";
+include "../global.php";
 $thongke_tien_ngay = thongke_tien_ngay();
 $thongke_tien_thang = thongke_tien_thang();
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
@@ -267,7 +269,13 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             include("./donhang/list_donhang.php");
             break;
 
-
+        case 'lichsu_mua':
+            if (isset($_GET["id_chitiet_donhang"]) && $_GET["id_chitiet_donhang"]) {
+                $id_chitiet_donhang = $_GET["id_chitiet_donhang"];
+                $load_lichsu_mua = load_lichsu_mua($id_chitiet_donhang);
+            }
+            include("./donhang/lichsu_mua.php");
+            break;
         //THỐNG KÊ
 
         case 'thongke_tien_ngay':

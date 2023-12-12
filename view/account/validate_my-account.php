@@ -24,6 +24,13 @@ include("../../database/pdo.php");
             $error['sdt'] = 'Số điện thoại này đã tồn tại ! Vui lòng nhập số điện thoại khác !';
         }
     }
+    if ($email) {
+        $sql = "SELECT COUNT(*) FROM nguoi_dung WHERE email = '$email'";
+        $row = pdo_query_value($sql);
+        if ((int) $row > 0) {
+            $error['email'] = 'Email này đã tồn tại ! Vui lòng nhập email khác !';
+        }
+    }
     if($sdt){
         $sdt = preg_replace('/[^0-9]/','',$sdt);
         if(strlen($sdt)===10){

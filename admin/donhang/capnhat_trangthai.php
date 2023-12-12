@@ -22,7 +22,7 @@
                                             <?php
                                             foreach($loadall_trangthai as $trangthai){
                                                 extract($trangthai);
-                                                echo "<option value=$id_trangthai>$ten_trangthai</option>";
+                                                    echo "<option value=$id_trangthai>$ten_trangthai</option>";
                                             }
                                             ?>
                                         </select>
