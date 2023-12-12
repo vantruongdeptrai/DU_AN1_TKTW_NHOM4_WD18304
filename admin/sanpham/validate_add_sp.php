@@ -3,6 +3,7 @@ include("../../database/pdo.php");
     $ten_sp = isset($_POST["ten_sp"]) ? $_POST["ten_sp"] : false;
     $gia = isset($_POST["gia"]) ? $_POST["gia"] : false;
     $mota = isset($_POST["mota"]) ? $_POST["mota"] : false;
+    $id_dm = isset($_POST["id_dm"]) ? $_POST["id_dm"] : false;
     $hinh_anh = isset($_POST["hinh_anh"]) ? $_POST["hinh_anh"] : false;
     // Khai báo biến lưu lỗi
 
@@ -28,7 +29,7 @@ include("../../database/pdo.php");
     
     if (!$error['ten_sp']){
         // Tiến hành lưu vào CSDL nếu không có lỗi
-        $sql = "INSERT INTO san_pham(ten_sp,gia,hinh_anh,mota) VALUES('$ten_dm','$gia','$hinh_anh','$mota')";
+        $sql = "INSERT INTO san_pham(ten_sp,gia,hinh_anh,mo_ta,id_dm) VALUES('$ten_sp','$gia','$hinh_anh','$mota','$id_dm')";
         //echo $sql;
         pdo_execute($sql);
         echo $error['error'];

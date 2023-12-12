@@ -51,6 +51,7 @@
                                 <input type="submit" class="btn btn-primary btn-user btn-block" name="them_sp"
                                     value="Thêm mới">
                             </form>
+                            <div style="color:red;" id="showerror"></div>
                         </div>
                     </div>
                 </div>
@@ -66,7 +67,7 @@
 
                 var ten_sp = $('#ten_sp').val();
                 var gia = $('#gia').val();
-                var hinh_anh = $('#hinh_anh').val();
+                var hinh_anh = $('#hinh_anh')[0].files[0].name;
                 var id_dm = $('#id_dm').val();
                 
                 var mota = $('#mota').val();
@@ -100,7 +101,9 @@
                     data: {
                         ten_sp : ten_sp ,
                         gia : gia ,
-                        mota : mota                       
+                        mota : mota,
+                        id_dm : id_dm,
+                        hinh_anh : hinh_anh                    
                     },
                     success: function (result) {
                         $("#showerror").html(result);

@@ -23,12 +23,31 @@ include("../../database/pdo.php");
             $error['user'] = 'Tài khoản này đã tồn tại ! Vui lòng đăng kí tài khoản khác !';
         }
     }
+    if ($user) {
+        $regex = '/\s/';
+        if (preg_match($regex,$user)) {
+            $error['user'] = 'Tài khoản này chứa khoảng trắng ! Vui lòng đăng kí lại !';
+        }
+    }
+    if ($user) {
+        $regex = '/^[\p{L}\p{Mn}\s]+$/u';
+        if (preg_match($regex,$user)) {
+            $error['user'] = 'Tài khoản này chứa kí tự đặc biệt ! Vui lòng đăng kí lại !';
+        }
+    }
     if($email){
         if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
             $error['email']='Email không đúng định dạng';
         }
     }
-    if (!$error['user']){
+    if ($email) {
+        $sql = "SELECT COUNT(*) FROM nguoi_dung WHERE email = '$email'";
+        $row = pdo_query_value($sql);
+        if ((int) $row > 0) {
+            $error['email'] = 'Email này đã tồn tại ! Vui lòng đăng kí tài khoản khác !';
+        }
+    }
+    if (!$error['user'] && !$error['email']){
         // Tiến hành lưu vào CSDL nếu không có lỗi
         $sql = "INSERT INTO nguoi_dung(user,password,email) VALUES('$user','$password','$email')";
         //echo $sql;
@@ -36,6 +55,7 @@ include("../../database/pdo.php");
         echo $error['error'];
     }else{
         echo $error['user'];
+        echo $error['email'];
     }
     
     // Trả kết quả về cho client
