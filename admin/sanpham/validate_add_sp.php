@@ -29,10 +29,14 @@ include("../../database/pdo.php");
     
     if (!$error['ten_sp']){
         // Tiến hành lưu vào CSDL nếu không có lỗi
-        $sql = "INSERT INTO san_pham(ten_sp,gia,hinh_anh,mo_ta,id_dm) VALUES('$ten_sp','$gia','$hinh_anh','$mota','$id_dm')";
-        //echo $sql;
-        pdo_execute($sql);
-        echo $error['error'];
+            $target_dir = "../uploads/";
+            $target_file = $target_dir . basename($hinh_anh);
+            //move_uploaded_file($_FILES["hinh_anh"]["tmp_name"], $hinh_anh);
+            $sql = "INSERT INTO san_pham(ten_sp,gia,hinh_anh,mo_ta,id_dm) VALUES('$ten_sp','$gia','$hinh_anh','$mota','$id_dm')";
+            echo $sql;
+            pdo_execute($sql);
+            echo $error['error'];
+        
     }else{
         echo $error['ten_sp'];
     }

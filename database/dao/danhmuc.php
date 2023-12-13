@@ -13,7 +13,7 @@ function loadall_danhmuc()
 }
 function loadall_danhmuc_home()
 {
-    $sql = "SELECT * FROM danh_muc LIMIT 0,3";
+    $sql = "SELECT * FROM danh_muc WHERE trang_thai = 0 LIMIT 0,3 ";
     $list_dm = pdo_query($sql);
     //var_dump($list_dm);
     return $list_dm;

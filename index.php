@@ -18,7 +18,7 @@ include "global.php";
 $list_sp_home = loadall_sanpham_home();
 $list_dm_home = loadall_danhmuc_home();
 $load_ctsp_home = load_ctsp(" ",0);
-
+$load_ctsp = load_ctsp_home(" ",0);
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {
@@ -291,7 +291,6 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             if(isset($_GET["id_chitiet_donhang"])){
                 $id_chitiet_donhang = $_GET["id_chitiet_donhang"];
                 huy_don($id_chitiet_donhang);
-                xoa_lichsu_mua();
             }
             $id_user = $_SESSION["user"]["id_user"];
             $load_donhang_iduser = load_donhang_iduser($id_user);

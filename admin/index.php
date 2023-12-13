@@ -15,6 +15,7 @@ include "../database/dao/lichsumuahang.php";
 include "../global.php";
 $thongke_tien_ngay = thongke_tien_ngay();
 $thongke_tien_thang = thongke_tien_thang();
+$thongke_danhmuc_soluong = thongke_danhmuc_sl();
 if (isset($_GET['act']) && ($_GET['act'] != '')) {
     $act = $_GET['act'];
     switch ($act) {
@@ -278,9 +279,10 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
             break;
         //THỐNG KÊ
 
-        case 'thongke_tien_ngay':
-
-            include "giaodien/main.php";
+        case 'thongke':
+            $thongke_danhmuc_soluong = thongke_danhmuc_sl();
+            $thongke_sanpham_bienthe = thongke_sanpham_bienthe();
+            include "thongke/thongke.php";
             break;
         default:
             include "giaodien/main.php";

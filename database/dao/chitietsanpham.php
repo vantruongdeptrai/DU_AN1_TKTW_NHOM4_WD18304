@@ -19,6 +19,17 @@ function load_ctsp($kewword = " ",$id_dm = 0){
     //var_dump($list_ctsp);
     return $list_ctsp;
 }
+function load_ctsp_home($kewword = " ",$id_dm = 0){
+    $sql = "SELECT danh_muc.id_dm,chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong ,chi_tiet_sp.trang_thai, san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
+    FROM san_pham
+    LEFT JOIN chi_tiet_sp ON san_pham.id_sp = chi_tiet_sp.id_sp
+    LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size
+    LEFT JOIN danh_muc ON danh_muc.id_dm = san_pham.id_dm WHERE chi_tiet_sp.trang_thai = 0 LIMIT 0,3";
+    
+    $list_ctsp = pdo_query($sql);
+    //var_dump($list_ctsp);
+    return $list_ctsp;
+}
 function load_ctsp_sp($id){
     $sql = "SELECT danh_muc.id_dm , chi_tiet_sp.id_ctsp , chi_tiet_sp.so_luong , san_pham.id_sp, san_pham.ten_sp ,san_pham.gia , san_pham.hinh_anh , san_pham.mo_ta , size.ten_size
     FROM san_pham

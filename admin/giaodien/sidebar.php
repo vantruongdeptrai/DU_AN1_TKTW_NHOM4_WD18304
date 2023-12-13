@@ -84,7 +84,10 @@
     <a class="nav-link" href="index.php?act=list_donhang">
         <span>Quản lí đơn hàng</span></a>
 </li>
-
+<li class="nav-item">
+    <a class="nav-link" href="index.php?act=thongke">
+        <span>Quản lí thống kê</span></a>
+</li>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
