@@ -21,17 +21,17 @@ if (is_array($load_one_ctsp)) {
     </div>
 </div>
 <!-- breadcrumbs area end -->
-<?php if(is_array($load_one_ctsp)){
-        extract($load_one_ctsp);
-        $hinh = $img_path . $hinh_anh;
-        $link_sp = "index.php?act=single-product&id=" . $id_sp;
-        echo '<form action="index.php?act=add_to_cart" method="post">
+<?php if (is_array($load_one_ctsp)) {
+    extract($load_one_ctsp);
+    $hinh = $img_path . $hinh_anh;
+    $link_sp = "index.php?act=single-product&id=" . $id_sp;
+    echo '<form action="index.php?act=add_to_cart" method="post">
 
-        <input type="hidden" name="id_ctsp" value="'.$id_ctsp.'">
-        <input type="hidden" name="ten_sp" value="'.$ten_sp.'">
-        <input type="hidden" name="gia" value="'.$gia.'">
-        <input type="hidden" name="hinh" value="'.$hinh.'">
-        <input type="hidden" name="ten_size" value="'.$ten_size.'">
+        <input type="hidden" name="id_ctsp" value="' . $id_ctsp . '">
+        <input type="hidden" name="ten_sp" value="' . $ten_sp . '">
+        <input type="hidden" name="gia" value="' . $gia . '">
+        <input type="hidden" name="hinh" value="' . $hinh . '">
+        <input type="hidden" name="ten_size" value="' . $ten_size . '">
     
         <!-- single product section start-->
         <div class="single_product_section mb-100">
@@ -48,16 +48,16 @@ if (is_array($load_one_ctsp)) {
                     <div class="col-lg-6 col-md-6">
                         <div class="product_details_sidebar">
                             <h2 class="product__title"> Tên sản phẩm : 
-                                '.$ten_sp.'
+                                ' . $ten_sp . '
                             </h2>
                             <div class="price_box">
                                 <span class="current_price"> Giá : 
-                                    '.$gia.'
+                                    ' . $gia . '
                                 </span>
                             </div>
                             <div class="price_box">
                                 <span class="current_price"> Size :
-                                    '.$ten_size.'
+                                    ' . $ten_size . '
                                 </span>
                             </div>
                             <div class="quickview__info mb-0">
@@ -88,7 +88,7 @@ if (is_array($load_one_ctsp)) {
             </div>
         </div>
     </form>';
-    }
+}
 ?>
 
 <!-- product details section end-->
@@ -104,7 +104,7 @@ if (is_array($load_one_ctsp)) {
                             <a class="active" data-bs-toggle="tab" href="#description" aria-controls="description">Mô
                                 tả</a>
                         </li>
-                        
+
                         <li>
                             <a data-bs-toggle="tab" href="#reviews" aria-controls="reviews">Nhận xét</a>
                         </li>
@@ -118,7 +118,7 @@ if (is_array($load_one_ctsp)) {
                             </p>
                         </div>
                     </div>
-    
+
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="reviews__wrapper">
                             <h2>Bình luận về sản phẩm của khách hàng </h2>
@@ -150,46 +150,52 @@ if (is_array($load_one_ctsp)) {
         <div class="section_title text-center mb-55">
             <h2>Sản phẩm cùng loại</h2>
         </div>
-        <div class="row product_slick slick_navigation slick__activation" data-slick='{
-                "slidesToShow": 4,
-                "slidesToScroll": 1,
-                "arrows": true,
-                "dots": false,
-                "autoplay": false,
-                "speed": 300,
-                "infinite": true ,  
-                "responsive":[ 
-                  {"breakpoint":992, "settings": { "slidesToShow": 3 } }, 
-                  {"breakpoint":768, "settings": { "slidesToShow": 2 } }, 
-                  {"breakpoint":500, "settings": { "slidesToShow": 1 } }  
-                 ]                                                     
-            }'>
-            <div class="col-lg-3">
-                <article class="single_product">
-                    <figure>
-                        <div class="product_thumb">
-                            <a href="single-product.html"><img src="assets/img/product/product1.png" alt=""></a>
-                            <div class="action_links">
-                                <ul class="d-flex justify-content-center">
-                                    <li class="add_to_cart"><a href="cart.html" title="Add to cart"> <span
-                                                class="pe-7s-shopbag"></span></a></li>
-                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span
-                                                class="pe-7s-like"></span></a></li>
-                                    <li class="quick_button"><a href="#" title="Quick View" data-bs-toggle="modal"
-                                            data-bs-target="#modal_box"> <span class="pe-7s-look"></span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <figcaption class="product_content text-center">
-                            <h4><a href="single-product.html">Products Name Here</a></h4>
-                            <div class="price_box">
-                                <span class="current_price">$22.00</span>
-                            </div>
-                        </figcaption>
-                    </figure>
-                </article>
-            </div>
+        <div class="row grid__product">
+            <?php
+            if (is_array($sp_cungloai)) {
+                foreach ($sp_cungloai as $sp) {
+                    extract($sp);
+                    $hinh = $img_path . $hinh_anh;
+                    $link_sp = "index.php?act=single-product&id=" . $id_ctsp;
+                    echo '
+                                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                                    <article class="single_product wow fadeInUp" data-wow-delay="0.1s"
+                                                        data-wow-duration="1.1s">
+                                                        <form action="index.php?act=add_to_cart" method="post">
+                                                            <input type="hidden" name="id_ctsp" value="' . $id_ctsp . '">
+                                                            <input type="hidden" name="ten_sp" value="' . $ten_sp . '">
+                                                            <input type="hidden" name="gia" value="' . $gia . '">
+                                                            <input type="hidden" name="hinh" value="' . $hinh . '">
+                                                            <input type="hidden" name="ten_size" value="' . $ten_size . '">
+                                                        <figure>
+                                                            <div class="product_thumb">
+                                                                <a href="' . $link_sp . '"><img style ="widht:200px;height:200px;"
+                                                                        src="' . $hinh . '" alt=""></a>
+                                                                <div class="action_links">
+                                                                    <ul class="d-flex justify-content-center">
+                                                                        <li class="add_to_cart">
+                                                                        <span><input style="height:50px;background-color:#2b4174;color:#FFF; border:none;" class="pe-7s-shopbag" type="submit" name="add_to_cart" value="Thêm vào giỏ hàng"></span></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <figcaption class="product_content text-center">
+                                                                <h4><a href="single-product.html">Tên sản phẩm : ' . $ten_sp . '</a></h4>
+                                                                <div>
+                                                                    <span> Giá : ' . $gia . ' VNĐ</span>
+                                                                </div>
+                                                                <div>
+                                                                    <span> Size : ' . $ten_size . '</span>
+                                                                </div>
+                                                            </figcaption>
+                                                        </figure>
+                                                        </form>
+                                                    </article>
+                                                </div>
+                                                ';
+                }
+            }
 
+            ?>
         </div>
     </div>
 </div>

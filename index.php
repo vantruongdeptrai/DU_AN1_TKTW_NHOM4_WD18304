@@ -44,9 +44,9 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
         case 'single-product':
             if (isset($_GET['id']) && ($_GET['id'])) {
                 $id = $_GET['id'];
-
                 $load_one_ctsp = load_one_ctsp($id);
                 extract($load_one_ctsp);
+                $sp_cungloai = load_ctsp_cungloai($id_dm);
             } else {
                 include("view/home.php");
             }
@@ -186,21 +186,39 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                     $id_ctsp = $_POST["id_ctsp"];
                     $id_user = $_SESSION["user"]["id_user"];
                     $ngay_tao_gh = date("Y-m-d H:i:s");
+                    $so_luong_lucdau = lay_soluong($id_ctsp);
+                    //var_dump($so_luong_lucdau);
+                    //echo $so_luong_lucdau["so_luong"];
                     if (isset($_POST["so_luong"])) {
                         $so_luong = $_POST["so_luong"];
+                        //update_soluong_ctsp($so_luong,$id_ctsp);
                     } else {
                         $so_luong = 1;
+                        //update_soluong_ctsp($so_luong,$id_ctsp);
                     }
+                    // if($so_luong_lucdau["so_luong"]-$so_luong<0){
+                    //     $thongbao = "Vui lòng nhập lại số lượng";
+                    // }
+                    // $list_ctsp = load_ctsp();
+                    // foreach($list_ctsp as $ctsp){
+                    //     $so_luong_lucdau = lay_soluong($id_ctsp);
+                    //     $soluong_moi = $so_luong_lucdau - $so_luong;
+                    //     if($so_luong_lucdau >= $so_luong){
+                    //         update_soluong_ctsp($id_ctsp,$soluong_moi);
+                    //     }else{
+                    //         echo "Vui lòng nhập lại số lượng !";
+                    //     }
+                    // }
                     $gio_hang = gio_hang();
                     //var_dump($gio_hang);
                     //kiểm tra giỏ hàng trống hay không , nếu trống tạo giỏ hàng mới
                     if (!isset($gio_hang) || empty($gio_hang)) {
                         $id_gio_hang = insert_giohang($id_user, $ngay_tao_gh);
                     }
-
+                    
                     //thêm sản phẩm vào giỏ hàng
                     insert_chitiet_giohang($gio_hang[0]["id_gio_hang"], $id_ctsp, $so_luong);
-
+                    
                 } else {
                     $thongbao = "Vui lòng đăng nhập";
                 }
@@ -259,14 +277,51 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 $tong_tien = $_POST["tong_tien"];
                 $id_pttt = $_POST["id_pttt"];
                 $id_trangthai = 1;
-                $id_chitiet_donhang = insert_chitiet_donhang($id_chitiet_gh,$id_ctsp,$id_don_hang,$tong_tien,$id_pttt,$id_trangthai);
+                
                 $load_chitiet_giohang = load_chitiet_giohang();
-                $thongbao = "Khởi tạo đơn hàng thành công";
-                xoa_ctgh();
-                foreach($load_chitiet_giohang as $ctgh){
-                    $id_chitiet_gh = $ctgh["id_chitiet_gh"];
-                    update_id_chitietdonhang($id_chitiet_donhang,$id_chitiet_gh);
+                $coSoDuLieuOK = true;
+                foreach ($load_chitiet_giohang as $item) {
+                    $id_ctsp = $item['id_ctsp'];
+                    $so_luong_mua = $item['so_luong'];
+                
+                    // Lấy số lượng hiện có từ cơ sở dữ liệu
+                    $so_luong_hien_co = lay_soluong($id_ctsp);
+                    extract($so_luong_hien_co);
+                    //foreach($so_luong_hien_co as $sl){
+                        //extract($sl);
+                        if ($so_luong >= $so_luong_mua) {
+                            // Tính toán số lượng mới sau khi mua
+                            
+                            $so_luong_con_lai = (int)$so_luong - (int)$so_luong_mua;
+                            
+                            // Cập nhật số lượng mới vào cơ sở dữ liệu
+                            update_soluong_ctsp($so_luong_con_lai, $id_ctsp);
+                        }if($so_luong=0){
+                            $thongbao = "Số lượng sản phẩm này đã hết !";
+                            $coSoDuLieuOK = false;
+                            break;
+                        }
+                        else {
+                            // Xử lý trường hợp số lượng không đủ để mua
+                            $thongbao = "Số lượng sản phẩm không đủ !";
+                            $coSoDuLieuOK = false;
+                            break;
+                        }
+                    //}
+                    
                 }
+                if($coSoDuLieuOK=false){
+                    $thongbao = "Số lượng sản phẩm không đủ !";
+                }else{
+                    $id_chitiet_donhang = insert_chitiet_donhang($id_chitiet_gh,$id_ctsp,$id_don_hang,$tong_tien,$id_pttt,$id_trangthai);
+                    $thongbao = "Khởi tạo đơn hàng thành công";
+                    xoa_ctgh();
+                    foreach($load_chitiet_giohang as $ctgh){
+                        $id_chitiet_gh = $ctgh["id_chitiet_gh"];
+                        update_id_chitietdonhang($id_chitiet_donhang,$id_chitiet_gh);
+                    }
+                }
+                
                 
             }
             $loadall_donhang = loadall_donhang();

@@ -76,18 +76,7 @@
                                 </select>
 
                             </div>
-                            <div class="product__toolbar__btn">
-                                <ul class="nav" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="active" data-bs-toggle="tab" href="#grid" role="tab"
-                                            aria-controls="grid" aria-selected="true"><i class="ion-grid"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a data-bs-toggle="tab" href="#list" aria-controls="list" role="tab"
-                                            aria-selected="false"><i class="ion-ios-list"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
+                            
                         </div>
                     </div>
                     <!--shop toolbar area end-->
@@ -150,78 +139,10 @@
 
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="list">
-                                <div class="list__product">
-                                    <?php
-                                    if (is_array($list_sp_home)) {
-                                        foreach ($list_sp_home as $sp) {
-                                            extract($sp);
-                                            $hinh = $img_path . $hinh_anh;
-                                            $link_sp = "index.php?act=single-product&id=" . $id_sp;
-                                            echo '<article class="product_list_items border-bottom">
-                                                <figure class="product_list_flex d-flex align-items-center">
-                                                    <div class="product_thumb">
-                                                        <a href="' . $link_sp . '"><img style ="widht:200px;height:200px;"src="' . $hinh . '" alt=""></a>
-                                                        <div class="action_links">
-                                                            <ul class="d-flex justify-content-center">
-                                                                <li class="add_to_cart"><a href="cart.html" title="Add to cart">
-                                                                        <span class="pe-7s-shopbag"></span></a></li>
-                                                                <li class="wishlist"><a href="#" title="Add to Wishlist"><span
-                                                                            class="pe-7s-like"></span></a></li>
-                                                                <li class="quick_button"><a href="#" title="Quick View"
-                                                                        data-bs-toggle="modal" data-bs-target="#modal_box">
-                                                                        <span class="pe-7s-look"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <figcaption class="product_list_content">
-                                                        <h4><a href="single-product.html">' . $ten_sp . '</a></h4>
-                                                        <div class="product__ratting">
-                                                            <ul class="d-flex">
-                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                                <li><a href="#"><i class="ion-android-star-outline"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="price_box">
-                                                            <span class="current_price">' . $gia . '</span>
-                                                        </div>
-                                                        <div class="product__desc">
-                                                            <p>' . $mo_ta . '</p>
-                                                        </div>
-                                                        <div class="action_links product_list_action">
-                                                            <ul class="d-flex">
-                                                                <li class="add_to_cart"><a href="cart.html" title="Add to cart">
-                                                                        <span class="pe-7s-shopbag"></span></a></li>
-                                                                <li class="wishlist"><a href="#" title="Add to Wishlist"><span
-                                                                            class="pe-7s-like"></span></a></li>
-                                                                <li class="quick_button"><a href="#" title="Quick View"
-                                                                        data-bs-toggle="modal" data-bs-target="#modal_box">
-                                                                        <span class="pe-7s-look"></span></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </figcaption>
-                                                </figure>
-                                            </article>';
-                                        }
-                                    }
-                                    ?>
-
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
-                    <div class="pagination poduct_pagination">
-                        <ul>
-                            <li class="current"><span>1</span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="next"><a href="#"><i class="ion-chevron-right"></i></a></li>
-                        </ul>
-                    </div>
+                    
                     <!--shop gallery end-->
                 </div>
             </div>
