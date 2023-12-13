@@ -191,24 +191,12 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                     //echo $so_luong_lucdau["so_luong"];
                     if (isset($_POST["so_luong"])) {
                         $so_luong = $_POST["so_luong"];
-                        //update_soluong_ctsp($so_luong,$id_ctsp);
+                        
                     } else {
                         $so_luong = 1;
-                        //update_soluong_ctsp($so_luong,$id_ctsp);
+                        
                     }
-                    // if($so_luong_lucdau["so_luong"]-$so_luong<0){
-                    //     $thongbao = "Vui lòng nhập lại số lượng";
-                    // }
-                    // $list_ctsp = load_ctsp();
-                    // foreach($list_ctsp as $ctsp){
-                    //     $so_luong_lucdau = lay_soluong($id_ctsp);
-                    //     $soluong_moi = $so_luong_lucdau - $so_luong;
-                    //     if($so_luong_lucdau >= $so_luong){
-                    //         update_soluong_ctsp($id_ctsp,$soluong_moi);
-                    //     }else{
-                    //         echo "Vui lòng nhập lại số lượng !";
-                    //     }
-                    // }
+                    
                     $gio_hang = gio_hang();
                     //var_dump($gio_hang);
                     //kiểm tra giỏ hàng trống hay không , nếu trống tạo giỏ hàng mới
@@ -320,9 +308,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                         $id_chitiet_gh = $ctgh["id_chitiet_gh"];
                         update_id_chitietdonhang($id_chitiet_donhang,$id_chitiet_gh);
                     }
-                }
-                
-                
+                }    
             }
             $loadall_donhang = loadall_donhang();
             $load_trangthai = load_trangthai();
