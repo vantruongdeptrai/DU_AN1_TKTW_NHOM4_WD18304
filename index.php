@@ -290,10 +290,6 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                             
                             // Cập nhật số lượng mới vào cơ sở dữ liệu
                             update_soluong_ctsp($so_luong_con_lai, $id_ctsp);
-                        }if($so_luong=0){
-                            $thongbao = "Số lượng sản phẩm này đã hết !";
-                            $coSoDuLieuOK = false;
-                            break;
                         }
                         else {
                             // Xử lý trường hợp số lượng không đủ để mua
@@ -304,7 +300,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                     //}
                     
                 }
-                if($coSoDuLieuOK=false){
+                if(!$coSoDuLieuOK){
                     $thongbao = "Số lượng sản phẩm không đủ !";
                 }else{
                     $id_chitiet_donhang = insert_chitiet_donhang($id_chitiet_gh,$id_ctsp,$id_don_hang,$tong_tien,$id_pttt,$id_trangthai);

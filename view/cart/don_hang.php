@@ -49,7 +49,7 @@
                         </table>
                     </div>
                 <?php } else { ?>
-                    <div class="card-body">Vui lòng đăng nhập</div>
+                    <div class="card-body">Vui lòng cập nhật thông tin</div>
                 <?php } ?>
             </div>
         </div>
@@ -140,7 +140,7 @@
                     
                 </div>
             <?php } else { ?>
-                <div class="card-body">Vui lòng đăng nhập</div>
+                <div class="card-body">Vui lòng cập nhật thông tin</div>
             <?php } ?>
         </div>
     </div>
