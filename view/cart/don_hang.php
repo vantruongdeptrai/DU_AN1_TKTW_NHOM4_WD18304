@@ -8,7 +8,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Thông tin người đặt hàng</h6>
             </div>
             <div class="card-body">
-                <?php if (isset($_SESSION["user"]) && isset($_SESSION["user"]["sdt"]) && isset($_SESSION["user"]["dia_chi"])) { ?>
+                <?php if (isset($_SESSION["user"]) && $_SESSION["user"]["sdt"]!="" && $_SESSION["user"]["dia_chi"]!="") { ?>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -62,7 +62,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Thông tin đơn hàng</h6>
             </div>
             <div class="card-body">
-                <?php if (isset($_SESSION["user"]) && isset($_SESSION["user"]["sdt"]) && isset($_SESSION["user"]["dia_chi"])) { ?>
+                <?php if (isset($_SESSION["user"]) && $_SESSION["user"]["sdt"]!="" && $_SESSION["user"]["dia_chi"]!="") { ?>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>

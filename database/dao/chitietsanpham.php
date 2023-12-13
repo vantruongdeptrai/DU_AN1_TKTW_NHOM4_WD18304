@@ -10,7 +10,7 @@ function load_ctsp($kewword = " ",$id_dm = 0){
     LEFT JOIN size ON size.id_size = chi_tiet_sp.id_size
     LEFT JOIN danh_muc ON danh_muc.id_dm = san_pham.id_dm WHERE chi_tiet_sp.trang_thai = 0";
     if($id_dm>0){
-        $sql .= " WHERE danh_muc.id_dm = '$id_dm' AND chi_tiet_sp.trang_thai = 0";
+        $sql .= " AND danh_muc.id_dm = '$id_dm' AND chi_tiet_sp.trang_thai = 0";
     }
     if ($kewword != "") {
         $sql .= " AND san_pham.ten_sp like '%" . $kewword . "%'";

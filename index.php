@@ -134,9 +134,14 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 $user = $_POST['user'];
                 $password = $_POST['password'];
                 $newpass = $_POST['newpassword'];
-                update_mk($id, $user, $newpass);
-                $_SESSION["user"] = check_user($user, $password);
-                $thongbao = "Đổi mật khẩu thành công . Vui lòng đăng nhập lại !";
+                if($newpass!=$password){
+                    $thongbao = "Mật khẩu mới không trùng khớp !";
+                }else{
+                    update_mk($id, $user, $newpass);
+                    $_SESSION["user"] = check_user($user, $password);
+                    $thongbao = "Đổi mật khẩu thành công . Vui lòng đăng nhập lại !";
+                }
+                
             }
             include "view/account/doi_mk.php";
             break;
@@ -247,6 +252,7 @@ if (isset($_GET['act']) && ($_GET['act'] != '')) {
                 $id_user = $_SESSION["user"]["id_user"];
                 $ngay_dat_hang = date("Y-m-d H:i:s");
                 insert_donhang($id_user,$ngay_dat_hang);
+                //var_dump($_SESSION["user"]);
             }
             //$loadall_gio_hang = loadall_gio_hang();
             $load_trangthai = load_trangthai();
